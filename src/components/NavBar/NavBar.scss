@@ -1,0 +1,32 @@
+@use "../../styles/partials/mixins" as *;
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  color: white;
+  padding: 1rem 0;
+  width: 100%;
+
+  &-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  
+    width: 80%;
+  }
+
+  &__img {
+    width: 2rem;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+  }
+}
+

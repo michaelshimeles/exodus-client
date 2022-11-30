@@ -1,0 +1,36 @@
+@use "../../styles/partials/mixins" as *;
+
+.collection-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  background-color: #202020;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0.65rem;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+    font-size: .875rem;
+  }
+
+  &__img {
+    width: 2.5rem;
+    border-radius: 5rem;
+  }
+
+  &:hover {
+    // transition-duration: 200ms;
+    border: 2px solid black;
+  }
+}
