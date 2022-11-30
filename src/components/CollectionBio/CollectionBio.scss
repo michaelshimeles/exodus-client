@@ -1,0 +1,112 @@
+.collection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 0;
+  background-color: black;
+  color: white;
+
+  &-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 80%;
+  }
+
+  &__left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    width: 70%;
+  }
+
+  &__profile {
+  }
+
+  &__img {
+    width: 7rem;
+    border-radius: 5rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    height: 7rem;
+  }
+
+  &__name {
+    font-size: 2.5rem;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  &__site {
+    font-size: 1rem;
+    text-decoration: none;
+    color: black;
+
+    > p {
+      color: white;
+      font-size: 0.8rem;
+    }
+  }
+
+  &__social {
+    font-size: 1rem;
+    text-decoration: none;
+    color: black;
+
+    > p {
+      color: white;
+      font-size: 0.8rem;
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 7.25rem;
+    background-color: #202020;
+
+    &-section {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      gap: 2rem;
+    }
+
+    &:hover {
+        
+    }
+  }
+
+  &__price {
+    > p {
+      padding: 0.5rem 0;
+      color: white;
+      font-size: 1.2rem;
+    }
+  }
+
+  &__stats {
+    > p {
+      padding: 0.5rem 0;
+      color: white;
+      font-size: 1.2rem;
+    }
+  }
+}
