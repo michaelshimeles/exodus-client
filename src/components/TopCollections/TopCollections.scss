@@ -1,0 +1,45 @@
+@use "../../styles/partials/mixins" as *;
+
+.collections {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  &__table {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    padding-bottom: 1rem;
+    color: #90cdf4;
+    font-size: .875rem;
+
+    &-item {
+        width: 20%;
+        text-align: center;
+        font-size: .875rem;
+    }
+  }
+
+  &__card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    width: 100%;
+  }
+}
