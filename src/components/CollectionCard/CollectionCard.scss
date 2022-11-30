@@ -23,6 +23,10 @@
     align-items: center;
     width: 20%;
     font-size: 0.875rem;
+
+    > p {
+      color: white;
+    }
   }
 
   &__img {

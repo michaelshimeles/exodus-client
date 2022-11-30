@@ -2,6 +2,7 @@ import "./TopCollections.scss";
 import CollectionCard from "../../components/CollectionCard/CollectionCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const TopCollections = () => {
   const [topColletions, setTopCollections] = useState(null);
@@ -14,7 +15,6 @@ const TopCollections = () => {
       console.log("Top Collections", response.data.collections);
     });
   }, []);
-
 
   return (
     <div className="collections">
@@ -32,16 +32,21 @@ const TopCollections = () => {
       {topColletions ? (
         topColletions.map((collection, index) => {
           return (
-            <CollectionCard
-              image={collection.sampleImages[0]}
-              name={collection.name}
-              floorPrice={collection.floorAsk.price.amount.decimal}
-              supply={collection.tokenCount}
-              sales={collection.onSaleCount}
-              volume={collection.volume?.["1day"]}
-              change={collection.volumeChange?.["1day"]}
+            <Link
+              to={"/collection/" + collection.id}
+              className="collections__table-link"
               key={index}
-            />
+            >
+              <CollectionCard
+                image={collection.sampleImages[0]}
+                name={collection.name}
+                floorPrice={collection.floorAsk.price.amount.decimal}
+                supply={collection.tokenCount}
+                sales={collection.onSaleCount}
+                volume={collection.volume?.["1day"]}
+                change={collection.volumeChange?.["1day"]}
+              />
+            </Link>
           );
         })
       ) : (

@@ -44,8 +44,13 @@
     align-items: center;
     width: 80%;
 
-    &-item {
+    &-link {
       width: 30%;
+    }
+
+
+    &-item {
+      width: 100%;
       border-radius: .625rem;
 
       &:hover {
