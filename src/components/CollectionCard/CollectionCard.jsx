@@ -1,28 +1,28 @@
 import "./CollectionCard.scss";
-import MoonBird from "../../assets/images/moonbird.png";
 
-const CollectionCard = () => {
+const CollectionCard = ({ name, image, floorPrice, supply, sales, volume, change}) => {
+
   return (
     <div className="collection-cards">
       <div className="collection-cards__container">
         <div className="collection-cards__item">
-          <img className="collection-cards__img" src={MoonBird} />
-          <p>MoonBirds</p>
+          <img className="collection-cards__img" src={image} alt="Collection profile"/>
+          <p className="collection-cards__text">{name}</p>
         </div>
         <div className="collection-cards__item">
-          <p>8 ETH</p>
+          <p>{floorPrice}</p>
         </div>
         <div className="collection-cards__item">
-          <p>0.75</p>
+          <p>{supply}</p>
         </div>
         <div className="collection-cards__item">
-          <p>5</p>
+          <p>{sales}</p>
         </div>
         <div className="collection-cards__item">
-          <p>40 ETH</p>
+          <p>{volume}</p>
         </div>
         <div className="collection-cards__item">
-          <p>12%</p>
+          <p>{Math.round(change * 100)}%</p>
         </div>
       </div>
     </div>

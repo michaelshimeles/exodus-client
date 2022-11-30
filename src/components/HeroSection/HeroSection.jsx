@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <div className="hero">
       <div className="hero__text">
-        <h1 className="hero__text-header">Meet Exodus</h1>
+        <h1 className="hero__text-header">meet Exodus</h1>
         <p className="hero__text-paragraph">
           Your favorite NFT toolkit. Analyze, Trade, & Track all in one platform
         </p>

@@ -8,6 +8,7 @@
   background-color: #202020;
   border: 1px solid rgba(255, 255, 255, 0.16);
   padding: 0.65rem;
+  margin: 0.75rem 0;
 
   &__container {
     display: flex;
@@ -21,7 +22,7 @@
     justify-content: space-around;
     align-items: center;
     width: 20%;
-    font-size: .875rem;
+    font-size: 0.875rem;
   }
 
   &__img {
@@ -32,5 +33,12 @@
   &:hover {
     // transition-duration: 200ms;
     border: 2px solid black;
+  }
+
+  &__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 13ch;
   }
 }

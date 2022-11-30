@@ -2,7 +2,6 @@ import NavBar from "../../components/NavBar/NavBar";
 import HeroSection from "../../components/HeroSection/HeroSection";
 import TopCollections from "../../components/TopCollections/TopCollections";
 import "./Homepage.scss"
-import Footer from "../../components/Footer/Footer";
 
 const Homepage = () => {
 
@@ -12,7 +11,6 @@ const Homepage = () => {
       <NavBar />
       <HeroSection />
       <TopCollections />
-      <Footer />
     </div>
   );
 };
