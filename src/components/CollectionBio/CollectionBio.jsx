@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import eth from "../../assets/images/ethereum.svg"
+import eth from "../../assets/images/ethereum.svg";
 import "./CollectionBio.scss";
 const CollectionBio = () => {
   const [bioStats, setBioStats] = useState(null);
@@ -13,7 +13,6 @@ const CollectionBio = () => {
   useEffect(() => {
     axios.get(`${URL}`).then((response) => {
       setBioStats(response.data);
-      console.log("Bio Stats", response.data);
     });
   }, []);
 
@@ -34,14 +33,18 @@ const CollectionBio = () => {
           <div className="collection__link">
             <div className="collection__site">
               <p>
-                Floor Price: Ξ{bioStats ? bioStats.stats.floorPrice.price || "n/a" : ""}
+                Floor Price: Ξ
+                {bioStats ? bioStats.stats.floorPrice.price || "n/a" : ""}
               </p>
             </div>
             <div className="collection__social">
               <p>
                 Holder/Supply:
                 {bioStats
-                  ? bioStats.stats.holders / bioStats.stats.totalSupply
+                  ? Math.round(
+                      (bioStats.stats.holders / bioStats.stats.totalSupply) *
+                        100
+                    ) /100
                   : ""}
               </p>
             </div>

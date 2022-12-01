@@ -24,10 +24,10 @@ const TopCollections = () => {
       <div className="collections__table">
         <p className="collections__table-item">Name</p>
         <p className="collections__table-item">Floor Price</p>
-        <p className="collections__table-item">Holder/Supply</p>
-        <p className="collections__table-item">Sales</p>
-        <p className="collections__table-item">Volume</p>
-        <p className="collections__table-item">Change</p>
+        <p className="collections__table-item">Total Supply</p>
+        <p className="collections__table-item">Sales (1w)</p>
+        <p className="collections__table-item">Volume (1w)</p>
+        <p className="collections__table-item">Change %</p>
       </div>
       {topColletions ? (
         topColletions.map((collection, index) => {

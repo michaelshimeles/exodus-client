@@ -18,9 +18,9 @@ const ListingsCard = () => {
             <div className="listings__stats-price">
               <p>Ξ73</p>
             </div>
-            <div className="listings__stats-buy">
+            {/* <div className="listings__stats-buy">
               <p>Buy</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

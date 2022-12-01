@@ -1,7 +1,7 @@
 import NavBar from "../../components/NavBar/NavBar";
 import CollectionBio from "../../components/CollectionBio/CollectionBio";
 import StatsBar from "../../components/StatsBar/StatsBar";
-import ListingsCard from "../../components/ListingsCard/ListingsCard";
+import ListingsTable from "../../components/ListingsTable/ListingsTable";
 import SalesCard from "../../components/SalesCard/SalesCard";
 
 import "./Terminal.scss";
@@ -12,13 +12,20 @@ const Terminal = () => {
       <NavBar />
       <CollectionBio />
       <StatsBar />
+
       <div className="terminal__tx">
-        <SalesChart />
-        <div className="terminal__cards">
-          <ListingsCard />
+        <div className="terminal__charts">
+          <SalesChart />
+          <SalesChart />
         </div>
+
         <div className="terminal__cards">
-          <SalesCard />
+          <div className="terminal__card">
+            <ListingsTable />
+          </div>
+          <div className="terminal__card">
+            <SalesCard />
+          </div>
         </div>
       </div>
     </div>

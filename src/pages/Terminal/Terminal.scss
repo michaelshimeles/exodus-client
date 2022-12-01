@@ -10,19 +10,35 @@
 
   &__tx {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
     padding-top: 1rem;
     width: 80%;
-    height: 25.625rem;
+  }
+
+  &__charts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    gap: 1rem;
   }
 
   &__cards {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    gap: 1rem;
+  }
+
+  &__card {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    width: 30%;
+    width: 100%;
     gap: 1rem;
   }
 }
