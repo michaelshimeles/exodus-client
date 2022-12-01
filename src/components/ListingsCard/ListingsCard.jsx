@@ -1,22 +1,22 @@
 import "./ListingsCard.scss";
 import MoonBird from "../../assets/images/moonbird.png";
-const ListingsCard = () => {
+const ListingsCard = ( { image, tokenName, price }) => {
   return (
     <div className="listings">
       <div className="listings__container">
-        <img className="listings__img" src={MoonBird} />
+        <img className="listings__img" src={image} />
         <div className="listings__info">
           <div className="listings__stats-left">
             <div className="listings__stats-id">
-              <p>#9682</p>
+              <p>{tokenName}</p>
             </div>
-            <div className="listings__stats-rank">
+            {/* <div className="listings__stats-rank">
               <p>Rank: 1242</p>
-            </div>
+            </div> */}
           </div>
           <div className="listings__stats-right">
             <div className="listings__stats-price">
-              <p>Ξ73</p>
+              <p>Ξ{price}</p>
             </div>
             {/* <div className="listings__stats-buy">
               <p>Buy</p>

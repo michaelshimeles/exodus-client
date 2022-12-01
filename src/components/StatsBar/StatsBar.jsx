@@ -11,7 +11,6 @@ const StatsBar = () => {
 
   useEffect(() => {
     axios.get(`${URL}/${id}`).then((response) => {
-      console.log(response.data);
       setStatsBar(response.data);
     });
   }, []);
