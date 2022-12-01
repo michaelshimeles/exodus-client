@@ -1,7 +1,5 @@
-import Chart from "chart.js/auto";
 import "./SalesChart.scss";
 import { Scatter } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ping from "../../utils/ping";
