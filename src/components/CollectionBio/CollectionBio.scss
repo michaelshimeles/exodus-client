@@ -14,15 +14,6 @@
     gap: 1rem;
     width: 80%;
   }
-
-  &__left {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1rem;
-    width: 70%;
-  }
-
   &__profile {
   }
 
@@ -54,10 +45,12 @@
   &__site {
     font-size: 1rem;
     text-decoration: none;
-    color: black;
+    background-color: #90cdf4;
+    border-radius: 2px;
+    padding: 0.2rem;
 
     > p {
-      color: white;
+      color: rgb(0, 0, 0);
       font-size: 0.8rem;
     }
   }
@@ -65,48 +58,13 @@
   &__social {
     font-size: 1rem;
     text-decoration: none;
-    color: black;
+    background-color: #90cdf4;
+    padding: 0.2rem;
+    border-radius: 2px;
 
     > p {
-      color: white;
+      color: rgb(0, 0, 0);
       font-size: 0.8rem;
-    }
-  }
-
-  &__right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-    height: 7.25rem;
-    background-color: #202020;
-
-    &-section {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      width: 100%;
-      gap: 2rem;
-    }
-
-    &:hover {
-        
-    }
-  }
-
-  &__price {
-    > p {
-      padding: 0.5rem 0;
-      color: white;
-      font-size: 1.2rem;
-    }
-  }
-
-  &__stats {
-    > p {
-      padding: 0.5rem 0;
-      color: white;
-      font-size: 1.2rem;
     }
   }
 }

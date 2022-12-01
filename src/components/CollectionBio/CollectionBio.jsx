@@ -5,7 +5,6 @@ const CollectionBio = () => {
   return (
     <div className="collection">
       <div className="collection-container">
-        <div className="collection__left">
           <div className="collection-__profile">
             <img
               src={MoonBird}
@@ -19,26 +18,13 @@ const CollectionBio = () => {
             </div>
             <div className="collection__link">
               <Link className="collection__site">
-                <p>www.website.com</p>
+                <p>Floor Price: 5 ETH</p>
               </Link>
               <Link className="collection__social">
-                <p>www.twitter.com</p>
+                <p>Holder/Supply: 0.6</p>
               </Link>
             </div>
-          </div>
-        </div>
-        <div className="collection__right">
-          <div className="collection__right-section">
-            <div className="collection__price">
-              <p>Floor Price: 1</p>
-              <p>Ratio: 2</p>
-            </div>
-            <div className="collection__stats">
-              <p>Holders: 3</p>
-              <p>Supply: 4</p>
-            </div>
-          </div>
-        </div>
+        </div> 
       </div>
     </div>
   );

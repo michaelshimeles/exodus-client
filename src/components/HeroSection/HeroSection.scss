@@ -21,19 +21,27 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: white;
       font-size: 5rem;
+      background-image: linear-gradient(45deg, rgba(105, 234, 203, 1), rgba(234, 204, 248, 1), rgba(102, 84, 241, 1));
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
     }
 
     &-paragraph {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 1rem 0;  
-        text-align: center;
-        color: white;
-        padding-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+      text-align: center;
+      color: white;
+      padding-bottom: 1rem;
 
+      // rgba(105, 234, 203, 1)
+      // rgba(234, 204, 248, 1)
+      // rgba(102, 84, 241, 1)
     }
   }
 
@@ -48,10 +56,9 @@
       width: 30%;
     }
 
-
     &-item {
       width: 100%;
-      border-radius: .625rem;
+      border-radius: 0.625rem;
 
       &:hover {
         transition-duration: 500ms;
