@@ -1,6 +1,6 @@
 @use "../../styles/partials/mixins" as *;
 
-.listings {
+.sales {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -67,15 +67,6 @@
       > p {
         color: white;
         font-size: 0.875rem;
-      }
-    }
-    &-buy {
-      > p {
-        color: white;
-        font-size: 0.875rem;
-        border: 2px lightblue solid;
-        padding: 0.65rem 1rem;
-        border-radius: 7px;
       }
     }
   }

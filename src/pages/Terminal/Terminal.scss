@@ -1,1 +1,11 @@
 @use "../../styles/partials/mixins" as *;
+
+.terminal {
+  &__tx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+}
