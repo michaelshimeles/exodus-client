@@ -4,7 +4,8 @@ import StatsBar from "../../components/StatsBar/StatsBar";
 import ListingsCard from "../../components/ListingsCard/ListingsCard";
 import SalesCard from "../../components/SalesCard/SalesCard";
 
-import "./Terminal.scss"
+import "./Terminal.scss";
+import SalesChart from "../../components/SalesChart/SalesChart";
 const Terminal = () => {
   return (
     <div className="terminal">
@@ -12,8 +13,11 @@ const Terminal = () => {
       <CollectionBio />
       <StatsBar />
       <div className="terminal__tx">
-        <ListingsCard />
-        <SalesCard />
+        <SalesChart />
+        <div className="terminal__cards">
+          <ListingsCard />
+          <SalesCard />
+        </div>
       </div>
     </div>
   );

@@ -1,11 +1,28 @@
 @use "../../styles/partials/mixins" as *;
 
 .terminal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: black;
+
   &__tx {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 1rem;
     padding-top: 1rem;
+    width: 80%;
+    height: 25.625rem;
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    gap: 1rem;
   }
 }
