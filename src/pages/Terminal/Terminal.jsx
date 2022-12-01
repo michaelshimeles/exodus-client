@@ -16,6 +16,8 @@ const Terminal = () => {
         <SalesChart />
         <div className="terminal__cards">
           <ListingsCard />
+        </div>
+        <div className="terminal__cards">
           <SalesCard />
         </div>
       </div>

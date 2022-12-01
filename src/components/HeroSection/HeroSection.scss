@@ -38,10 +38,6 @@
       text-align: center;
       color: white;
       padding-bottom: 1rem;
-
-      // rgba(105, 234, 203, 1)
-      // rgba(234, 204, 248, 1)
-      // rgba(102, 84, 241, 1)
     }
   }
 
@@ -63,6 +59,7 @@
       &:hover {
         transition-duration: 500ms;
         border: 10px solid black;
+        border-radius: 0.625rem;
       }
     }
   }
