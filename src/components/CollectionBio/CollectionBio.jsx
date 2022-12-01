@@ -34,7 +34,7 @@ const CollectionBio = () => {
             <div className="collection__site">
               <p>
                 Floor Price: Ξ
-                {bioStats ? bioStats.stats.floorPrice.price || "n/a" : ""}
+                {bioStats ? bioStats.stats.floorPrice.price: ""}
               </p>
             </div>
             <div className="collection__social">

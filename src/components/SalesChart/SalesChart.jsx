@@ -2,11 +2,29 @@ import Chart from "chart.js/auto";
 import "./SalesChart.scss";
 import { Scatter } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import ping from "../../utils/ping";
+
 const SalesChart = () => {
+
+  const [salesChart, setSalesChart] = useState(null);
+
+  const { id } = useParams();
+
+  const URL = `http://localhost:8080/sales/${id}`;
+
+  useEffect(() => {
+    ping(`${URL}`, setSalesChart);
+    ping(`${URL}`, setSalesChart, 5000);
+  }, []);
+
+
+  let convertDate = new Date()
   const options = {
     scales: {
       y: {
-        beginAtZero: true,
+        beginAtZero: false,
       },
     },
   };
@@ -14,12 +32,14 @@ const SalesChart = () => {
   const data = {
     datasets: [
       {
-        label: "A dataset",
-        data: Array.from({ length: 100 }, () => ({
-          x: faker.datatype.number({ min: 0, max: 150 }),
-          y: faker.datatype.number({ min: 0, max: 150 }),
-        })),
-        backgroundColor: "rgba(255, 99, 132, 1)",
+        label: "Sales Chart",
+        data: salesChart ? salesChart.map((sales) => {
+          return {
+            x: sales.timestamp,
+            y: sales.priceInEth
+          }
+        }) : "",
+        // backgroundColor: "rgba(32, 32, 32, 1)",
       },
     ],
   };

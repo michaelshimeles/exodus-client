@@ -3,9 +3,9 @@ import CollectionBio from "../../components/CollectionBio/CollectionBio";
 import StatsBar from "../../components/StatsBar/StatsBar";
 import ListingsTable from "../../components/ListingsTable/ListingsTable";
 import SalesTable from "../../components/SalesTable/SalesTable";
-
 import "./Terminal.scss";
 import SalesChart from "../../components/SalesChart/SalesChart";
+
 const Terminal = () => {
   return (
     <div className="terminal">
@@ -16,7 +16,7 @@ const Terminal = () => {
       <div className="terminal__tx">
         <div className="terminal__charts">
           <SalesChart />
-          <SalesChart />
+          {/* <SalesChart /> */}
         </div>
 
         <div className="terminal__cards">
@@ -24,7 +24,7 @@ const Terminal = () => {
             <ListingsTable />
           </div>
           <div className="terminal__card">
-          <SalesTable />
+            <SalesTable />
           </div>
         </div>
       </div>

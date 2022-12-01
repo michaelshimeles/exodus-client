@@ -1,5 +1,4 @@
 import "./ListingsCard.scss";
-import MoonBird from "../../assets/images/moonbird.png";
 const ListingsCard = ( { image, tokenName, price }) => {
   return (
     <div className="listings">
@@ -8,7 +7,7 @@ const ListingsCard = ( { image, tokenName, price }) => {
         <div className="listings__info">
           <div className="listings__stats-left">
             <div className="listings__stats-id">
-              <p>{tokenName}</p>
+              <p>{String(tokenName)}</p>
             </div>
             {/* <div className="listings__stats-rank">
               <p>Rank: 1242</p>
@@ -16,7 +15,7 @@ const ListingsCard = ( { image, tokenName, price }) => {
           </div>
           <div className="listings__stats-right">
             <div className="listings__stats-price">
-              <p>Ξ{price}</p>
+              <p>Ξ{String(price)}</p>
             </div>
             {/* <div className="listings__stats-buy">
               <p>Buy</p>
