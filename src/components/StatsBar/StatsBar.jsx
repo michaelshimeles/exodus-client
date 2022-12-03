@@ -13,7 +13,7 @@ const StatsBar = () => {
     axios.get(`${URL}/${id}`).then((response) => {
       setStatsBar(response.data);
     });
-  }, []);
+  }, [id]);
 
   return (
     <div className="stats-bar">
@@ -21,7 +21,7 @@ const StatsBar = () => {
         <div className="stats-bar__item">
           <p className="stats-bar__title">Listings</p>
           <p className="stats-bar__text">
-            {statsBar ? statsBar.stats.tokenListedCount : ""}
+            {statsBar ? statsBar.stats.tokenListedCount : "n/a"}
           </p>
         </div>
         <div className="stats-bar__item">
@@ -33,7 +33,9 @@ const StatsBar = () => {
         <div className="stats-bar__item">
           <p className="stats-bar__title">Volume (24hr)</p>
           <p className="stats-bar__text">
-            {statsBar ? Math.round(statsBar.stats.dailyVolume * 100) / 10 : ""}
+            {statsBar
+              ? Math.round(statsBar.stats.dailyVolume * 100) / 10
+              : "n/a"}
           </p>
         </div>
         <div className="stats-bar__item">
@@ -41,7 +43,7 @@ const StatsBar = () => {
           <p className="stats-bar__text">
             {statsBar
               ? Math.round(statsBar.stats.dailySalesCount * 100) / 10
-              : ""}
+              : "n/a"}
           </p>
         </div>
         <div className="stats-bar__item">
@@ -49,7 +51,7 @@ const StatsBar = () => {
           <p className="stats-bar__text">
             {statsBar
               ? Math.round(statsBar.stats.dailyAveragePrice * 100) / 100
-              : ""}
+              : "n/a"}
           </p>
         </div>
         <div className="stats-bar__item">
@@ -57,7 +59,7 @@ const StatsBar = () => {
           <p className="stats-bar__text">
             {statsBar
               ? Math.round(statsBar.stats.weeklyAveragePrice * 100) / 100
-              : ""}
+              : "n/a"}
           </p>
         </div>
       </div>

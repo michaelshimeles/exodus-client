@@ -16,12 +16,16 @@ const CollectionBio = () => {
     });
   }, []);
 
+  if (!bioStats) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="collection">
       <div className="collection-container">
         <div className="collection__profile">
           <img
-            src={bioStats ? bioStats.images.image_url : eth}
+            src={bioStats.images.image_url || eth}
             alt="Collection Profile"
             className="collection__img"
           />
@@ -34,17 +38,19 @@ const CollectionBio = () => {
             <div className="collection__site">
               <p>
                 Floor Price: Ξ
-                {bioStats ? bioStats.stats.floorPrice.price: ""}
+                {bioStats.stats.floorPrice
+                  ? bioStats.stats.floorPrice.price
+                  : ""}
               </p>
             </div>
             <div className="collection__social">
               <p>
                 Holder/Supply:
-                {bioStats
+                {bioStats.stats.holders && bioStats.stats.totalSupply
                   ? Math.round(
                       (bioStats.stats.holders / bioStats.stats.totalSupply) *
                         100
-                    ) /100
+                    ) / 100
                   : ""}
               </p>
             </div>

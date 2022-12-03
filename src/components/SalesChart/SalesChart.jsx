@@ -14,11 +14,10 @@ const SalesChart = () => {
 
   useEffect(() => {
     ping(`${URL}`, setSalesChart);
-    ping(`${URL}`, setSalesChart, 5000);
-  }, []);
+    ping(`${URL}`, setSalesChart, 10000);
+  }, [URL]);
 
 
-  let convertDate = new Date()
   const options = {
     scales: {
       y: {

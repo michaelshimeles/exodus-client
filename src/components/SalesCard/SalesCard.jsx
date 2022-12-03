@@ -1,5 +1,4 @@
 import "./SalesCard.scss";
-import MoonBird from "../../assets/images/moonbird.png";
 const SalesCard = ({image, price, orderSource, tokenId}) => {
   return (
     <div className="sales">

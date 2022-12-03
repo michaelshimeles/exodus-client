@@ -5,6 +5,7 @@ import ListingsTable from "../../components/ListingsTable/ListingsTable";
 import SalesTable from "../../components/SalesTable/SalesTable";
 import "./Terminal.scss";
 import SalesChart from "../../components/SalesChart/SalesChart";
+import ListingsChart from "../../components/ListingsChart/ListingsChart";
 
 const Terminal = () => {
   return (
@@ -16,7 +17,7 @@ const Terminal = () => {
       <div className="terminal__tx">
         <div className="terminal__charts">
           <SalesChart />
-          {/* <SalesChart /> */}
+          <ListingsChart />
         </div>
 
         <div className="terminal__cards">

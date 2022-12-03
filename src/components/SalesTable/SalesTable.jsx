@@ -1,10 +1,10 @@
 import SalesCard from "../../components/SalesCard/SalesCard";
 import "./SalesTable.scss";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import eth from "../../assets/images/eth.svg";
 import ping from "../../utils/ping";
+import Loading from "../Loading/Loading";
 
 const SalesTable = () => {
   const [salesCards, setSalesCards] = useState(null);
@@ -15,8 +15,8 @@ const SalesTable = () => {
 
   useEffect(() => {
       ping(`${URL}`, setSalesCards);
-      ping(`${URL}`, setSalesCards, 5000);
-  }, []);
+      ping(`${URL}`, setSalesCards, 10000);
+  }, [URL]);
 
   return (
     <div className="sales-table">
@@ -33,7 +33,7 @@ const SalesTable = () => {
           );
         })
       ) : (
-        <></>
+        <Loading />
       )}
     </div>
   );

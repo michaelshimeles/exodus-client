@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage/Homepage";
-import Terminal from "./pages/Terminal/Terminal"
+import Terminal from "./pages/Terminal/Terminal";
 import "./App.scss";
 function App() {
   return (

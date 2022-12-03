@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import eth from "../../assets/images/eth.svg";
 import ping from "../../utils/ping";
+import Loading from "../Loading/Loading";
 
 const ListingsTable = () => {
   const [listingsCard, setListingsCard] = useState(null);
@@ -14,8 +15,8 @@ const ListingsTable = () => {
 
   useEffect(() => {
     ping(`${URL}`, setListingsCard);
-    ping(`${URL}`, setListingsCard, 5000);
-  }, []);
+    ping(`${URL}`, setListingsCard, 10000);
+  }, [URL]);
 
   return (
     <div className="listings-table">
@@ -32,7 +33,7 @@ const ListingsTable = () => {
           );
         })
       ) : (
-        <></>
+        <Loading />
       )}
     </div>
   );

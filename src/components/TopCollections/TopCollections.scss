@@ -1,11 +1,12 @@
 @use "../../styles/partials/mixins" as *;
+@use "../../styles//partials/variables" as *;
 
 .collections {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: $primary-color;
   color: white;
   width: 100%;
   
