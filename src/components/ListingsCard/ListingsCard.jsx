@@ -3,7 +3,7 @@ const ListingsCard = ({ image, tokenName, price }) => {
   return (
     <div className="listings">
       <div className="listings__container">
-        <img className="listings__img" src={image} alt="Listedn NFT profile" />
+        <img className="listings__img" src={image} alt="Listed NFT profile" />
         <div className="listings__info">
           <div className="listings__stats-left">
             <div className="listings__stats-id">

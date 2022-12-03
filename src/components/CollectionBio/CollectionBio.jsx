@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import eth from "../../assets/images/ethereum.svg";
 import "./CollectionBio.scss";
+import Loading from "../Loading/Loading";
+
 const CollectionBio = () => {
   const [bioStats, setBioStats] = useState(null);
 
@@ -14,10 +16,10 @@ const CollectionBio = () => {
     axios.get(`${URL}`).then((response) => {
       setBioStats(response.data);
     });
-  }, []);
+  }, [URL]);
 
   if (!bioStats) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return (

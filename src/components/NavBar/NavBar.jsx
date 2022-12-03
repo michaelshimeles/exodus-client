@@ -11,7 +11,9 @@ const NavBar = () => {
         </Link>
         <div className="navbar__links">
           <p>Trending</p>
-          <p>Portfolio</p>
+          <Link to="/portfolio:id" className="navbar__portfolio">
+            <p>Portfolio</p>
+          </Link>
         </div>
       </div>
     </div>

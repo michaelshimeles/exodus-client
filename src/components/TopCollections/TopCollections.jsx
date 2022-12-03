@@ -3,6 +3,7 @@ import CollectionCard from "../../components/CollectionCard/CollectionCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 const TopCollections = () => {
   const [topColletions, setTopCollections] = useState(null);
@@ -25,8 +26,8 @@ const TopCollections = () => {
         <p className="collections__table-item">Name</p>
         <p className="collections__table-item">Floor Price</p>
         <p className="collections__table-item">Total Supply</p>
-        <p className="collections__table-item">Sales (1w)</p>
-        <p className="collections__table-item">Volume (1w)</p>
+        <p className="collections__table-item">Sales (1W)</p>
+        <p className="collections__table-item">Volume (1W)</p>
         <p className="collections__table-item">Change %</p>
       </div>
       {topColletions ? (
@@ -50,7 +51,7 @@ const TopCollections = () => {
           );
         })
       ) : (
-        <></>
+        <Loading />
       )}
     </div>
   );

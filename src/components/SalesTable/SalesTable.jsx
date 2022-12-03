@@ -2,7 +2,7 @@ import SalesCard from "../../components/SalesCard/SalesCard";
 import "./SalesTable.scss";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import eth from "../../assets/images/eth.svg";
+import eth from "../../assets/images/ethereum.svg";
 import ping from "../../utils/ping";
 import Loading from "../Loading/Loading";
 

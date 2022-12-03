@@ -8,6 +8,8 @@ import SalesChart from "../../components/SalesChart/SalesChart";
 import ListingsChart from "../../components/ListingsChart/ListingsChart";
 
 const Terminal = () => {
+  window.scrollTo(0,0)
+
   return (
     <div className="terminal">
       <NavBar />
