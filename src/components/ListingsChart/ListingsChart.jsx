@@ -30,7 +30,7 @@ const ListingsChart = () => {
   };
 
   const data = {
-    labels: ["How many"],
+    labels: ["Price"],
     datasets: [
       {
         label: "Listings Distribution",
