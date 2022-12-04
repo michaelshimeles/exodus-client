@@ -1,2 +1,17 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles//partials/variables" as *;
+
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  &__pie {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    padding-top: 2rem;
+  }
+}
