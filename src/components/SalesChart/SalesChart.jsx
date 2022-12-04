@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import ping from "../../utils/ping";
 
 const SalesChart = () => {
-
   const [salesChart, setSalesChart] = useState(null);
 
   const { id } = useParams();
@@ -17,11 +16,14 @@ const SalesChart = () => {
     ping(`${URL}`, setSalesChart, 10000);
   }, [URL]);
 
-
   const options = {
     scales: {
-      y: {
-        beginAtZero: false,
+      xAxis: {
+        ticks: {
+          callback: (value) => {
+            return new Date(value).toLocaleTimeString();
+          },
+        },
       },
     },
   };
@@ -30,13 +32,14 @@ const SalesChart = () => {
     datasets: [
       {
         label: "Sales Chart",
-        data: salesChart ? salesChart.map((sales) => {
-          return {
-            x: sales.timestamp,
-            y: sales.priceInEth
-          }
-        }) : "",
-        // backgroundColor: "rgba(32, 32, 32, 1)",
+        data: salesChart
+          ? salesChart.map((sales) => {
+              return {
+                x: sales.timestamp,
+                y: sales.priceInEth,
+              };
+            })
+          : "",
       },
     ],
   };

@@ -10,7 +10,6 @@
   border: 1px solid rgba(255, 255, 255, 0.16);
   padding: 0.65rem;
   margin: 0.75rem 0;
-  
 
   &__container {
     display: flex;
@@ -21,10 +20,11 @@
 
   &__item {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     width: 20%;
     font-size: 0.875rem;
+    gap: 1rem;
 
     > p {
       color: white;

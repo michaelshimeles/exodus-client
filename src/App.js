@@ -3,15 +3,37 @@ import Homepage from "./pages/Homepage/Homepage";
 import Terminal from "./pages/Terminal/Terminal";
 import "./App.scss";
 import Portfolio from "./pages/Portfolio/Portfolio";
+
+import { WagmiConfig, createClient } from "wagmi";
+import { ConnectKitProvider, getDefaultClient } from "connectkit";
+
+const alchemyId = process.env.ALCHEMY_ID;
+
+const client = createClient(
+  getDefaultClient({
+    appName: "Your App Name",
+    alchemyId,
+  })
+);
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/collection/:id" element={<Terminal />} />
-        <Route path="/portfolio/:id" element={<Portfolio />} />
-      </Routes>
-    </BrowserRouter>
+    <WagmiConfig client={client}>
+      <ConnectKitProvider
+        theme="midnight"
+        customTheme={{
+          "--ck-font-family": '"Open Sans", sans-serif',
+        }}
+      >
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/collection/:id" element={<Terminal />} />
+            <Route path="/portfolio/:id" element={<Portfolio />} />
+          </Routes>
+        </BrowserRouter>
+      </ConnectKitProvider>
+    </WagmiConfig>
   );
 }
 

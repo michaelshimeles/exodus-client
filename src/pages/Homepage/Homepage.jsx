@@ -16,6 +16,3 @@ const Homepage = () => {
 };
 
 export default Homepage;
-
-// for anything that recieves data from the API
-// refer to https://beta.reactjs.org/apis/react/Suspense
