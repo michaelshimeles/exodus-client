@@ -6,7 +6,7 @@ import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
 
 const NavBar = () => {
-  const { address, isConnecting, isDisconnected } = useAccount();
+  const { address } = useAccount();
 
   const [addressState, setAddressState] = useState(address);
 
@@ -22,6 +22,7 @@ const NavBar = () => {
         </Link>
         <div className="navbar__links">
           <p>Trending</p>
+          <p>Hot Mints</p>
           {addressState ? (
             <Link to={"/portfolio/" + address} className="navbar__portfolio">
               <p>Portfolio</p>

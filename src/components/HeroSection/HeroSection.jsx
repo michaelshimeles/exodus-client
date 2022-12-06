@@ -14,14 +14,23 @@ const HeroSection = () => {
         </p>
       </div>
       <div className="hero__img">
-        <Link to="/collection/0x9a534628b4062e123ce7ee2222ec20b86e16ca8f" className="hero__img-link">
-          <img className="hero__img-item" src={MekaVerse} />
+        <Link
+          to="/collection/0x9a534628b4062e123ce7ee2222ec20b86e16ca8f"
+          className="hero__img-link"
+        >
+          <img className="hero__img-item" src={MekaVerse} alt="Mekaverse NFT" />
         </Link>
-        <Link to="/collection/0x23581767a106ae21c074b2276d25e5c3e136a68b" className="hero__img-link">
-        <img className="hero__img-item" src={MoonBird} />
+        <Link
+          to="/collection/0x23581767a106ae21c074b2276d25e5c3e136a68b"
+          className="hero__img-link"
+        >
+          <img className="hero__img-item" src={MoonBird} alt="MoonBird NFT" />
         </Link>
-        <Link to="/collection/0xed5af388653567af2f388e6224dc7c4b3241c544" className="hero__img-link">
-        <img className="hero__img-item" src={Azuki} />
+        <Link
+          to="/collection/0xed5af388653567af2f388e6224dc7c4b3241c544"
+          className="hero__img-link"
+        >
+          <img className="hero__img-item" src={Azuki} alt="Azuki NFT" />
         </Link>
       </div>
     </div>

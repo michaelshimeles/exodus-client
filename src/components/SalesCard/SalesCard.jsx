@@ -3,7 +3,7 @@ const SalesCard = ({image, price, orderSource, tokenId}) => {
   return (
     <div className="sales">
       <div className="sales__container">
-        <img className="sales__img" src={image} />
+        <img className="sales__img" src={image} alt="Sold NFT"/>
         <div className="sales__info">
           <div className="sales__stats-left">
             <div className="sales__stats-id">
