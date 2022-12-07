@@ -8,12 +8,12 @@ import Loading from "../Loading/Loading";
 const TopCollections = () => {
   const [topColletions, setTopCollections] = useState(null);
 
-  const URL = `${process.env.REACT_APP_URL}/topcollections`;
-
   useEffect(() => {
-    axios.get(`${URL}`).then((response) => {
-      setTopCollections(response.data.collections);
-    });
+    axios
+      .get(`${process.env.REACT_APP_URL}/topcollections`)
+      .then((response) => {
+        setTopCollections(response.data.collections);
+      });
   }, []);
 
   return (

@@ -16,13 +16,13 @@ const HotMintsCard = ({
 }) => {
   const [mintDetails, setMintDetails] = useState(null);
 
-  const URL = `${process.env.REACT_APP_URL}/info/resevoir/`;
-
   useEffect(() => {
-    axios.get(URL + contract_address).then((response) => {
-      console.log(response.data.data.collections[0]);
-      setMintDetails(response.data.data.collections[0]);
-    });
+    axios
+      .get(`${process.env.REACT_APP_URL}/info/resevoir/` + contract_address)
+      .then((response) => {
+        console.log(response.data.data.collections[0]);
+        setMintDetails(response.data.data.collections[0]);
+      });
   }, [time, contract_address]);
 
   return (

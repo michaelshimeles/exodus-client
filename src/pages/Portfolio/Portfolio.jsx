@@ -15,16 +15,13 @@ const Portfolio = () => {
 
   const { id } = useParams();
 
-  const WALLET = `${process.env.REACT_APP_URL}/wallet/${id}`;
-  const COLLECTIONS = `${process.env.REACT_APP_URL}/collections/${id}`;
-
   useEffect(() => {
-    axios.get(WALLET).then((response) => {
+    axios.get(`${process.env.REACT_APP_URL}/wallet/${id}`).then((response) => {
       setStats(response.data);
     });
 
     axios
-      .get(COLLECTIONS)
+      .get(`${process.env.REACT_APP_URL}/collections/${id}`)
       .then((response) => {
         // newCollections = response.data.nfts;
         setCollections(response.data.nfts);

@@ -7,10 +7,8 @@ const StatsBar = () => {
   const [statsBar, setStatsBar] = useState(null);
   const { id } = useParams();
 
-  const URL = `${process.env.REACT_APP_URL}/info`;
-
   useEffect(() => {
-    axios.get(`${URL}/${id}`).then((response) => {
+    axios.get(`${process.env.REACT_APP_URL}/info/${id}`).then((response) => {
       setStatsBar(response.data);
     });
   }, [id]);

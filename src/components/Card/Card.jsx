@@ -6,11 +6,9 @@ import axios from "axios";
 const Card = ({ name, image, tokenId, address }) => {
   const [floorPrice, setFloorPrice] = useState(null);
 
-  const URL = `${process.env.REACT_APP_URL}/floorprice`;
-
   useEffect(() => {
     axios
-      .post(URL, {
+      .post(`${process.env.REACT_APP_URL}/floorprice`, {
         address: address,
       })
       .then((response) => {
@@ -19,7 +17,7 @@ const Card = ({ name, image, tokenId, address }) => {
       .catch((error) => {
         return error;
       });
-  }, []);
+  }, [address]);
 
   return (
     <Link to={"/collection/" + address} className="card">

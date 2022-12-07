@@ -9,11 +9,10 @@ import Loading from "../../components/Loading/Loading";
 const HotMints = () => {
   const [hotMints, setHotMints] = useState(null);
   const [time, setTime] = useState("5m");
-  const URL = `${process.env.REACT_APP_URL}/hotmints`;
 
   useEffect(() => {
     axios
-      .post(URL, {
+      .post(`${process.env.REACT_APP_URL}/hotmints`, {
         time: time,
       })
       .then((response) => {
