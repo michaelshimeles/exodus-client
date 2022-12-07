@@ -1,9 +1,9 @@
 import "./NavBar.scss";
 import logo from "../../assets/logo/logo.png";
 import { Link } from "react-router-dom";
-import { ConnectKitButton } from "connectkit";
 import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const NavBar = () => {
   const { address } = useAccount();
@@ -12,7 +12,7 @@ const NavBar = () => {
 
   useEffect(() => {
     setAddressState(address);
-  }, [address]);
+  }, []);
 
   return (
     <div className="navbar">
@@ -33,7 +33,7 @@ const NavBar = () => {
             <></>
           )}
           <div className="navbar__button">
-            <ConnectKitButton />
+            <ConnectButton />
           </div>
         </div>
       </div>
