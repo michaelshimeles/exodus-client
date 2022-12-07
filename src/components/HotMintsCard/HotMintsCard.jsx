@@ -16,7 +16,7 @@ const HotMintsCard = ({
 }) => {
   const [mintDetails, setMintDetails] = useState(null);
 
-  const URL = "http://localhost:8080/info/resevoir/";
+  const URL = `${process.env.REACT_APP_URL}/info/resevoir/`;
 
   useEffect(() => {
     axios.get(URL + contract_address).then((response) => {
@@ -65,16 +65,18 @@ const HotMintsCard = ({
                 : fomo}
             </p>
           </div>
-          <Link to={{ pathname: url }} target="_blank">
-            <div className="mints-card__btn">
-              <button type="button">Mint</button>
-            </div>
-          </Link>
-          <Link to={"/collection/" + contract_address}>
-            <div className="mints-card__btn">
-              <button type="button">Data</button>
-            </div>
-          </Link>
+          <div className="mints-card__buttons">
+            <Link to={{ pathname: url }} target="_blank">
+              <div className="mints-card__btn">
+                <button type="button">Mint</button>
+              </div>
+            </Link>
+            <Link to={"/collection/" + contract_address}>
+              <div className="mints-card__btn">
+                <button type="button">Data</button>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

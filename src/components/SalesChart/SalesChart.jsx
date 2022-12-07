@@ -9,7 +9,7 @@ const SalesChart = () => {
 
   const { id } = useParams();
 
-  const URL = `http://localhost:8080/sales/${id}`;
+  const URL = `${process.env.REACT_APP_URL}/sales/${id}`;
 
   useEffect(() => {
     ping(`${URL}`, setSalesChart);

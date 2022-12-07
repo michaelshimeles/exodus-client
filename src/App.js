@@ -7,7 +7,7 @@ import HotMints from "./pages/HotMints/HotMints";
 import { WagmiConfig, createClient } from "wagmi";
 import { ConnectKitProvider, getDefaultClient } from "connectkit";
 
-const alchemyId = process.env.ALCHEMY_ID;
+const alchemyId = process.env.REACT_APP_ALCHEMY_ID;
 
 const client = createClient(
   getDefaultClient({

@@ -10,7 +10,7 @@ const CollectionBio = () => {
 
   const { id } = useParams();
 
-  const URL = `http://localhost:8080/info/${id}`;
+  const URL = `${process.env.REACT_APP_URL}/info/${id}`;
 
   useEffect(() => {
     axios.get(`${URL}`).then((response) => {

@@ -49,6 +49,15 @@
     color: lightgrey;
   }
 
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    width: 70%;
+    gap: 1rem;
+  }
+
   &__btn {
     
     > button {

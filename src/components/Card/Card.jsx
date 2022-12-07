@@ -6,7 +6,7 @@ import axios from "axios";
 const Card = ({ name, image, tokenId, address }) => {
   const [floorPrice, setFloorPrice] = useState(null);
 
-  const URL = `http://localhost:8080/floorprice`;
+  const URL = `${process.env.REACT_APP_URL}/floorprice`;
 
   useEffect(() => {
     axios

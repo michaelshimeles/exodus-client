@@ -15,8 +15,8 @@ const Portfolio = () => {
 
   const { id } = useParams();
 
-  const WALLET = `http://localhost:8080/wallet/${id}`;
-  const COLLECTIONS = `http://localhost:8080/collections/${id}`;
+  const WALLET = `${process.env.REACT_APP_URL}/wallet/${id}`;
+  const COLLECTIONS = `${process.env.REACT_APP_URL}/collections/${id}`;
 
   useEffect(() => {
     axios.get(WALLET).then((response) => {
@@ -92,7 +92,7 @@ const Portfolio = () => {
             );
           })
         ) : (
-          <></>
+          <Loading />
         )}
       </div>
     </div>

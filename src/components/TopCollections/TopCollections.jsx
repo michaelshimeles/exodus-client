@@ -8,7 +8,7 @@ import Loading from "../Loading/Loading";
 const TopCollections = () => {
   const [topColletions, setTopCollections] = useState(null);
 
-  const URL = "http://localhost:8080/topcollections";
+  const URL = `${process.env.REACT_APP_URL}/topcollections`;
 
   useEffect(() => {
     axios.get(`${URL}`).then((response) => {

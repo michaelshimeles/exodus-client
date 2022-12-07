@@ -7,7 +7,7 @@ const StatsBar = () => {
   const [statsBar, setStatsBar] = useState(null);
   const { id } = useParams();
 
-  const URL = "http://localhost:8080/info";
+  const URL = `${process.env.REACT_APP_URL}/info`;
 
   useEffect(() => {
     axios.get(`${URL}/${id}`).then((response) => {

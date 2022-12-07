@@ -11,7 +11,7 @@ const ListingsChart = () => {
 
   const { id } = useParams();
 
-  const URL = `http://localhost:8080/listings/${id}`;
+  const URL = `${process.env.REACT_APP_URL}/listings/${id}`;
 
   useEffect(() => {
     ping(`${URL}`, setBarChart);
