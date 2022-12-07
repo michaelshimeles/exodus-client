@@ -13,7 +13,6 @@ const TopCollections = () => {
   useEffect(() => {
     axios.get(`${URL}`).then((response) => {
       setTopCollections(response.data.collections);
-      console.log("Top Collections", response.data.collections);
     });
   }, []);
 

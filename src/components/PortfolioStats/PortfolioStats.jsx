@@ -9,7 +9,7 @@ const PortfolioStats = ({ stats }) => {
           <div className="portfolio-stats__title">
             <p>Flips</p>
           </div>
-          <div div className="portfolio-stats__stat">
+          <div className="portfolio-stats__stat">
             <p>{stats ? stats.flips : ""}</p>
           </div>
         </div>
@@ -17,7 +17,7 @@ const PortfolioStats = ({ stats }) => {
           <div className="portfolio-stats__title">
             <p>Mint</p>
           </div>
-          <div div className="portfolio-stats__stat">
+          <div className="portfolio-stats__stat">
             <p>{stats ? stats.mints : ""}</p>
           </div>
         </div>
@@ -25,7 +25,7 @@ const PortfolioStats = ({ stats }) => {
           <div className="portfolio-stats__title">
             <p>Profitable Flips</p>
           </div>
-          <div div className="portfolio-stats__stat">
+          <div className="portfolio-stats__stat">
             <p>{stats ? stats.profitableFlips : ""}</p>
           </div>
         </div>
@@ -33,7 +33,7 @@ const PortfolioStats = ({ stats }) => {
           <div className="portfolio-stats__title">
             <p>Buy</p>
           </div>
-          <div div className="portfolio-stats__stat">
+          <div className="portfolio-stats__stat">
             <p>{stats ? stats.purchases : ""}</p>
           </div>
         </div>
@@ -41,7 +41,7 @@ const PortfolioStats = ({ stats }) => {
           <div className="portfolio-stats__title">
             <p>Sales</p>
           </div>
-          <div div className="portfolio-stats__stat">
+          <div className="portfolio-stats__stat">
             <p>{stats ? stats.sales : ""}</p>
           </div>
         </div>
@@ -49,7 +49,7 @@ const PortfolioStats = ({ stats }) => {
           <div className="portfolio-stats__title">
             <p>Transfer In</p>
           </div>
-          <div div className="portfolio-stats__stat">
+          <div className="portfolio-stats__stat">
             <p>{stats ? stats.transfersIn : ""}</p>
           </div>
         </div>
@@ -57,7 +57,7 @@ const PortfolioStats = ({ stats }) => {
           <div className="portfolio-stats__title">
             <p>Transfer Out</p>
           </div>
-          <div div className="portfolio-stats__stat">
+          <div className="portfolio-stats__stat">
             <p>{stats ? stats.transfersOut : ""}</p>
           </div>
         </div>

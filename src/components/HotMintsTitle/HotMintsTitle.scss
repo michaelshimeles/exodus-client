@@ -1,0 +1,67 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles//partials/variables" as *;
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 0;
+  background-color: $primary-color;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    padding-bottom: 2rem;
+
+    &-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 5rem;
+      background-image: linear-gradient(45deg, rgba(105, 234, 203, 1), rgba(234, 204, 248, 1), rgba(102, 84, 241, 1));
+      background-size: 100%;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-text-fill-color: transparent;
+    }
+
+    &-paragraph {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+      text-align: center;
+      color: white;
+      padding-bottom: 1rem;
+    }
+  }
+
+  &__img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+
+    &-link {
+      width: 30%;
+    }
+
+    &-item {
+      width: 100%;
+      border-radius: 0.625rem;
+
+      &:hover {
+        transition-duration: 500ms;
+        border: 10px solid $primary-color;
+        border-radius: 0.625rem;
+      }
+    }
+  }
+}

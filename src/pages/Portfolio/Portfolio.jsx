@@ -15,18 +15,46 @@ const Portfolio = () => {
 
   const { id } = useParams();
 
-  const URL = `http://localhost:8080/wallet/${id}`;
-  const URL2 = `http://localhost:8080/collections/${id}`;
+  const WALLET = `http://localhost:8080/wallet/${id}`;
+  const COLLECTIONS = `http://localhost:8080/collections/${id}`;
 
   useEffect(() => {
-    axios.get(`${URL}`).then((response) => {
+    axios.get(WALLET).then((response) => {
       setStats(response.data);
     });
 
-    axios.get(`${URL2}`).then((response) => {
-      setCollections(response.data);
-    });
-  }, []);
+    axios
+      .get(COLLECTIONS)
+      .then((response) => {
+        // newCollections = response.data.nfts;
+        setCollections(response.data.nfts);
+        // setContinuation(response.data.continuation);
+        // return response.data.continuation;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
+
+  // const [continuation, setContinuation] = useState(null);
+
+  // let newCollections = [];
+
+  // .then((response) => {
+  //    console.log(response)
+  //   return axios
+  //     .get(COLLECTIONS, {
+  //       "continuation": response,
+  //     })
+  //     .then((response) => {
+  //       // console.log("New", ...[...newCollections], ...response.data.nfts)
+  //       setCollections([...[...collections], ...response.data.nfts]);
+  //     }).catch((error) => {
+  //       console.log(error)
+  //     })
+  // }).catch((error) => {
+  //   console.log(error)
+  // })
 
   if (!stats) {
     return (
@@ -41,23 +69,25 @@ const Portfolio = () => {
     <div className="portfolio">
       <NavBar />
       <PortfolioProfile
-        ens={stats.ensName}
-        totalValue={stats.portfolioStats.totalPortfolioValue}
-        scores={stats.scores}
+        ens={stats?.ensName}
+        totalValue={stats.portfolioStats?.totalPortfolioValue}
+        scores={stats?.scores}
+        labels={stats?.labels}
       />
       <PortfolioStats stats={stats.transferCounts} />
 
       <div className="portfolio__pie">
         {/* <PortfolioPie collectibles={stats.collectibles} /> */}
-
         {collections ? (
-          collections.nfts.map((collection) => {
+          collections.map((collection, index) => {
+            console.log(collections);
             return (
               <Card
-                name={collection.metadata.name}
-                image={collection.cached_file_url}
-                tokenId={collection.token_id}
-                // floorPrice={getFloorPrice(collection.contract_address)}
+                key={index}
+                name={collection.metadata?.name}
+                image={collection?.cached_file_url}
+                tokenId={collection?.token_id}
+                address={collection?.contract_address}
               />
             );
           })
@@ -70,21 +100,3 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
-
-  // const URL3 = `http://localhost:8080/floorprice`;
-
-  // const getFloorPrice = (contract) => {
-  //   return axios
-  //     .post(`${URL3}`, {
-  //       address: contract,
-  //     })
-  //     .then((response) => {
-  //       console.log(response.data.data.price);
-  //       return response.data.data.price;
-  //     })
-  //     .catch((error) => {
-  //       console.log("Broken");
-  //       return error;
-  //     });
-  // };
-

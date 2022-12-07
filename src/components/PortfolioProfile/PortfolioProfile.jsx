@@ -1,7 +1,7 @@
 import "./PortfolioProfile.scss";
 import logo from "../../assets/images/ethereum.svg";
 
-const PortfolioProfile = ({ ens, totalValue, scores }) => {
+const PortfolioProfile = ({ ens, totalValue, scores, labels }) => {
   return (
     <div className="profile">
       <div className="profile__container">
@@ -16,10 +16,25 @@ const PortfolioProfile = ({ ens, totalValue, scores }) => {
           </div>
         </div>
         <div className="profile__stats">
-            <p>{scores ? scores.hands : ""}</p>
-            <p>{scores ? scores.whaleness : ""}</p>
-            <p>{scores ? scores.hands : ""}</p>
-            <p>{scores ? scores.whaleness : ""}</p>
+          <p>{scores ? scores.hands : ""}</p>
+          <p>
+            {scores
+              ? scores.whaleness === 1
+                ? "🦐 Shrimp"
+                : scores.whaleness === 2
+                ? "🐟 fish"
+                : scores.whaleness === 3
+                ? "🐬 Dolphin"
+                : scores.whaleness === 4
+                ? "🦈 Shark"
+                : scores.whaleness === 5
+                ? "🐳 Whale"
+                : ""
+              : ""}
+          </p>
+          {labels.map((label) => {
+            return <p>{label.name}</p>;
+          })}
         </div>
       </div>
     </div>
