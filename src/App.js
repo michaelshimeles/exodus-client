@@ -11,7 +11,7 @@ const alchemyId = process.env.ALCHEMY_ID;
 
 const client = createClient(
   getDefaultClient({
-    appName: "Your App Name",
+    appName: "Exodus",
     alchemyId,
   })
 );

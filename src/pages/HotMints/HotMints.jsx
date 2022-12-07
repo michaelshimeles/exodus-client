@@ -26,7 +26,6 @@ const HotMints = () => {
   }, [time]);
 
   const clicked = (event) => {
-    console.log(event.target.value);
     setTime(event.target.value);
   };
 
@@ -43,6 +42,9 @@ const HotMints = () => {
               </option>
               <option id="time" value="10m">
                 10m
+              </option>
+              <option id="time" value="15m">
+                15m
               </option>
               <option id="time" value="30m">
                 30m
