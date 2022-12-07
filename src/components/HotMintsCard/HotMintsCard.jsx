@@ -11,27 +11,28 @@ const HotMintsCard = ({
   whale_num,
   fomo,
   volume,
-  address,
+  contract_address,
+  time,
 }) => {
   const [mintDetails, setMintDetails] = useState(null);
 
   const URL = "http://localhost:8080/info/resevoir/";
 
   useEffect(() => {
-    axios.get(URL + address).then((response) => {
+    axios.get(URL + contract_address).then((response) => {
       console.log(response.data.data.collections[0]);
       setMintDetails(response.data.data.collections[0]);
     });
-  }, [name]);
+  }, [time, contract_address]);
 
   return (
     <div className="mints-card">
       <div className="mints-card__container">
         <div className="mints-card__img">
           {mintDetails?.image ? (
-            <img src={mintDetails?.image} />
+            <img src={mintDetails?.image} alt="NFT profile" />
           ) : (
-            <img src={ethImage} />
+            <img src={ethImage} alt="NFT placeholder" />
           )}
         </div>
         <div className="mints-card__stats">
@@ -52,7 +53,7 @@ const HotMintsCard = ({
           </div>
           <div className="mints-card__text mints-card__subtext">
             <p>
-              Fomo Level:{" "}
+              Fomo Level:
               {fomo === "HIGH"
                 ? "🔥"
                 : fomo === "MEDIUM"
@@ -69,7 +70,7 @@ const HotMintsCard = ({
               <button type="button">Mint</button>
             </div>
           </Link>
-          <Link to={"/collection/" + address}>
+          <Link to={"/collection/" + contract_address}>
             <div className="mints-card__btn">
               <button type="button">Data</button>
             </div>

@@ -35,40 +35,41 @@ const HotMints = () => {
       <NavBar />
       <div className="hotmints__container">
         <HotMintsTitle />
-        <form onChange={clicked}>
-          <select id="time">
-            <option id="time" value="5m">
-              5m
-            </option>
-            <option id="time" value="10m">
-              10m
-            </option>
-            <option id="time" value="30m">
-              30m
-            </option>
-            <option id="time" value="1h">
-              1h
-            </option>
-            <option id="time" value="6h">
-              6h
-            </option>
-            <option id="time" value="12h">
-              12h
-            </option>
-            <option id="time" value="24h">
-              24h
-            </option>
-            <option id="time" value="7d">
-              7d
-            </option>
-            <option id="time" value="30d">
-              30d
-            </option>
-          </select>
-        </form>
-        <div className="hotmints__card">
-          {hotMints
-            ? hotMints.top_mint_collection_items.map((mint, index) => {
+        <div className="hotmints__cards">
+          <form className="hotmints__form" onChange={clicked}>
+            <select id="time">
+              <option id="time" value="5m">
+                5m
+              </option>
+              <option id="time" value="10m">
+                10m
+              </option>
+              <option id="time" value="30m">
+                30m
+              </option>
+              <option id="time" value="1h">
+                1h
+              </option>
+              <option id="time" value="6h">
+                6h
+              </option>
+              <option id="time" value="12h">
+                12h
+              </option>
+              <option id="time" value="24h">
+                24h
+              </option>
+              <option id="time" value="7d">
+                7d
+              </option>
+              <option id="time" value="30d">
+                30d
+              </option>
+            </select>
+          </form>
+          <div className="hotmints__card">
+            {hotMints ? (
+              hotMints.top_mint_collection_items.map((mint, index) => {
                 return (
                   <HotMintsCard
                     key={index}
@@ -79,11 +80,15 @@ const HotMints = () => {
                     minter_num={mint.minter_num}
                     whale_num={mint.whale_num}
                     fomo={mint.fomo}
-                    address={mint.contract_address}
+                    contract_address={mint.contract_address}
+                    time={time}
                   />
                 );
               })
-            : <Loading />}
+            ) : (
+              <Loading />
+            )}
+          </div>
         </div>
       </div>
     </div>
