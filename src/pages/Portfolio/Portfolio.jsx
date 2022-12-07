@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 // import PortfolioPie from "../../components/PortfolioPie/PortfolioPie";
 import Loading from "../../components/Loading/Loading";
 import Card from "../../components/Card/Card";
+import Footer from "../../components/Footer/Footer";
 
 const Portfolio = () => {
   const [stats, setStats] = useState(null);
@@ -92,6 +93,7 @@ const Portfolio = () => {
           <Loading />
         )}
       </div>
+      <Footer />
     </div>
   );
 };

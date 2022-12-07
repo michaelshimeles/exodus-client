@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./HotMints.scss";
 import Loading from "../../components/Loading/Loading";
+import Footer from "../../components/Footer/Footer";
 
 const HotMints = () => {
   const [hotMints, setHotMints] = useState(null);
@@ -92,6 +93,7 @@ const HotMints = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

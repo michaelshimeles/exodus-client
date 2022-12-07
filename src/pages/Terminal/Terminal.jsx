@@ -6,9 +6,10 @@ import SalesTable from "../../components/SalesTable/SalesTable";
 import "./Terminal.scss";
 import SalesChart from "../../components/SalesChart/SalesChart";
 import ListingsChart from "../../components/ListingsChart/ListingsChart";
+import HoldersChart from "../../components/HoldersChart/HoldersChart";
 
 const Terminal = () => {
-  window.scrollTo(0,0)
+  window.scrollTo(0, 0);
 
   return (
     <div className="terminal">
@@ -18,15 +19,20 @@ const Terminal = () => {
 
       <div className="terminal__tx">
         <div className="terminal__charts">
+          <p>Sales Chart</p>
           <SalesChart />
+          <p>Listings Distribution</p>
           <ListingsChart />
+          <HoldersChart />
         </div>
 
         <div className="terminal__cards">
           <div className="terminal__card">
+            <p>Listings</p>
             <ListingsTable />
           </div>
           <div className="terminal__card">
+            <p>Sales</p>
             <SalesTable />
           </div>
         </div>
