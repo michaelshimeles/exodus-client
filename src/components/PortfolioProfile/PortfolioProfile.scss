@@ -24,7 +24,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
 
     > img {
       width: 5rem;
@@ -43,6 +42,7 @@
 
   &__address {
     font-size: 1.4375rem;
+    text-overflow: ellipsis;
   }
 
   &__usd {

@@ -21,7 +21,6 @@ const HoldersChart = () => {
       .get(`${process.env.REACT_APP_URL}/whales/${id}`)
       .then((response) => {
         setWhales(response.data.owner);
-        console.log(response.data.owner);
       })
       .catch((error) => {
         console.log(error);

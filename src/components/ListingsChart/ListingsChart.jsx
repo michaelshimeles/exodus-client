@@ -18,8 +18,6 @@ const ListingsChart = () => {
     ping(`${URL}`, setBarChart, 10000);
   }, [URL]);
 
-  console.log("Bar Chart Before", barChart);
-
   const options = {
     responsive: true,
     plugins: {

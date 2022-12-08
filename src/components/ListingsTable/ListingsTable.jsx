@@ -25,6 +25,10 @@ const ListingsTable = () => {
           return (
             <ListingsCard
               className="listings-table__card"
+              createdTime={listing.createdAt}
+              status={listing.status}
+              orderKind={listing.kind}
+              updatedTime={listing.updatedTime}
               image={listing.metadata.data.image || eth}
               key={index}
               tokenName={listing.metadata.data.tokenName || ""}

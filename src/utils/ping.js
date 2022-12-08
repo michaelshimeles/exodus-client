@@ -4,7 +4,6 @@ const ping = (URL, setResult, freq) => {
     axios.get(URL).then((response) => {
       setResult(response.data);
     });
-    console.log("Intial API CALL");
     return;
   }
   setInterval(() => {

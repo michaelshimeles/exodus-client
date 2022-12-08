@@ -67,7 +67,7 @@ const Portfolio = () => {
     <div className="portfolio">
       <NavBar />
       <PortfolioProfile
-        ens={stats?.ensName}
+        ens={stats?.ensName ? stats.ensName : stats.address}
         totalValue={stats.portfolioStats?.totalPortfolioValue}
         scores={stats?.scores}
         labels={stats?.labels}
@@ -82,7 +82,7 @@ const Portfolio = () => {
             return (
               <Card
                 key={index}
-                name={collection.metadata?.name}
+                name={collection?.metadata?.name}
                 image={collection?.cached_file_url}
                 tokenId={collection?.token_id}
                 address={collection?.contract_address}
