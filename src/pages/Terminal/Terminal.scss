@@ -48,5 +48,27 @@
     align-items: flex-start;
     width: 100%;
     gap: 1rem;
+
+    &-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+}
+
+.blink_me {
+  animation: blinker 1.5s linear infinite;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  border: 1px solid green;
+  background-color: green;
+  border-radius: 100%;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0.6;
   }
 }

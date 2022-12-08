@@ -5,7 +5,7 @@ import "./HoldersChart.scss";
 import { useEffect } from "react";
 
 import { Doughnut, getDatasetAtEvent } from "react-chartjs-2";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -13,6 +13,8 @@ const HoldersChart = () => {
   const [whales, setWhales] = useState(null);
   const { id } = useParams();
   const chartRef = useRef();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -30,19 +32,19 @@ const HoldersChart = () => {
     console.log(getDatasetAtEvent(chartRef.current, event));
   };
 
+  const labels = whales?.map((whale) => {
+    return whale.address;
+  });
+
+  const holderData = whales?.map((whale) => {
+    return whale.ownedCount;
+  });
+
   const data = {
-    labels: whales
-      ? whales.map((whale) => {
-          return whale.address;
-        })
-      : "",
+    labels: labels,
     datasets: [
       {
-        data: whales
-          ? whales.map((whale) => {
-              return whale.ownedCount;
-            })
-          : "",
+        data: holderData,
         backgroundColor: ["#0072EF", "#A3D1F8"],
         borderColor: ["#0072EF", "#A3D1F8"],
       },
@@ -50,15 +52,17 @@ const HoldersChart = () => {
   };
 
   const options = {
-    legend: {
-      display: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
     },
     tooltips: {
       enabled: false,
     },
     onClick: (event, elements) => {
-      console.log(event)
-      console.log(elements)
+      let walletIndex = elements[0].index;
+      navigate("/portfolio/" + labels[walletIndex]);
     },
   };
 

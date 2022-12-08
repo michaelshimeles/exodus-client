@@ -28,11 +28,17 @@ const Terminal = () => {
 
         <div className="terminal__cards">
           <div className="terminal__card">
-            <p>Listings</p>
+            <div className="terminal__card-title">
+              <p>Listings</p>
+              <span className="blink_me"></span>
+            </div>
             <ListingsTable />
           </div>
           <div className="terminal__card">
-            <p>Sales</p>
+            <div className="terminal__card-title">
+              <p>Sales</p>
+              <span className="blink_me"></span>
+            </div>
             <SalesTable />
           </div>
         </div>

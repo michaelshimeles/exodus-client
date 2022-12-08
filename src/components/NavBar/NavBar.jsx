@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ConnectKitButton } from "connectkit";
 import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
+import Search from "../../components/Search/Search";
 
 const NavBar = () => {
   const { address } = useAccount();
@@ -20,6 +21,7 @@ const NavBar = () => {
         <Link to="/">
           <img className="navbar__img" src={logo} alt="Exodus logo" />
         </Link>
+
         <div className="navbar__links">
           <p>Trending</p>
           <Link to="/hotmints" className="navbar__portfolio">
@@ -35,6 +37,7 @@ const NavBar = () => {
           <div className="navbar__button">
             <ConnectKitButton />
           </div>
+          <Search />
         </div>
       </div>
     </div>
