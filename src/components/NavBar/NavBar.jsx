@@ -5,22 +5,75 @@ import { ConnectKitButton } from "connectkit";
 import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
 import Search from "../../components/Search/Search";
+import axios from "axios";
 
 const NavBar = () => {
   const { address } = useAccount();
-
   const [addressState, setAddressState] = useState(address);
+  const [search, setSearch] = useState("");
+  const [result, setResult] = useState("");
+
+  const URL = process.env.REACT_APP_URL;
 
   useEffect(() => {
     setAddressState(address);
   }, [address]);
 
+  const handleSearch = (event) => {
+    // event.preventDefault();
+    setSearch(event.target.value);
+    console.log(event.target.value);
+
+    axios
+      .get(`${URL}/search/${event.target.value}`)
+      .then((response) => {
+        setResult(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // if (result) {
+  //   clear(setResult);
+  // }
+
   return (
     <div className="navbar">
       <div className="navbar-container">
-        <Link to="/">
-          <img className="navbar__img" src={logo} alt="Exodus logo" />
-        </Link>
+        <div className="navbar__left">
+          <Link to="/">
+            <img className="navbar__img" src={logo} alt="Exodus logo" />
+          </Link>
+          <form className="navbar__form">
+            <input
+              id="search"
+              name="search"
+              value={search}
+              className="navbar__input"
+              placeholder="Search Collection..."
+              onClick={handleSearch}
+              onChange={handleSearch}
+            ></input>
+            <div className="navbar__results">
+              {result
+                ? result.collections.map((search, index) => {
+                    console.log(search?.name);
+                    return (
+                      <Link
+                        key={index}
+                        className="navbar__link"
+                        to={"/collection/" + search?.contract}
+                      >
+                        <p className="navbar__result">{search?.name}</p>
+                      </Link>
+                    );
+                  })
+                : null}
+            </div>
+          </form>
+        </div>
 
         <div className="navbar__links">
           <p>Trending</p>

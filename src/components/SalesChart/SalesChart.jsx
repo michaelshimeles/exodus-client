@@ -17,6 +17,14 @@ const SalesChart = () => {
   }, [URL]);
 
   const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    tooltips: {
+      enabled: false,
+    },
     scales: {
       xAxis: {
         ticks: {
@@ -32,14 +40,12 @@ const SalesChart = () => {
     datasets: [
       {
         label: "Sales Chart",
-        data: salesChart
-          ? salesChart.map((sales) => {
-              return {
-                x: sales.timestamp,
-                y: sales.priceInEth,
-              };
-            })
-          : "",
+        data: salesChart?.map((sales) => {
+          return {
+            x: sales.timestamp,
+            y: sales.priceInEth,
+          };
+        }),
       },
     ],
   };

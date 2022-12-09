@@ -40,7 +40,7 @@ const TopCollections = () => {
               <CollectionCard
                 image={collection.sampleImages[0]}
                 name={collection.name}
-                floorPrice={collection.floorAsk.price.amount.decimal}
+                floorPrice={collection.floorAsk.price?.amount.decimal}
                 supply={collection.tokenCount}
                 sales={collection.onSaleCount}
                 volume={collection.volume?.["1day"]}

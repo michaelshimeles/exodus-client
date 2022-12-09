@@ -15,12 +15,46 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
     width: 90%;
+  }
+
+  &__left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
   }
 
   &__img {
     width: 2rem;
+  }
+
+  &__form {
+    width: 13.7188rem;
+  }
+
+  &__input {
+    padding: 0.7rem 1rem;
+    padding-right: 4rem;
+    background-color: #131313;
+    color: white;
+    border: none;
+  }
+
+  &__results {
+    background-color: #151515;
+    font-size: 0.8rem;
+    position: absolute;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__result {
+    color: white;
+    width: 13.7188rem;
+    padding: 0.8rem 1rem;
   }
 
   &__links {

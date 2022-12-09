@@ -7,6 +7,10 @@ import Footer from "../../components/Footer/Footer"
 const Homepage = () => {
   window.scrollTo(0, 0);
 
+  // const clear = (setter) => {
+  //   console.log("CLICKED")
+  //   return setter("")
+  // }
   return (
     <div className="homepage">
       <NavBar />
