@@ -2,6 +2,13 @@
 @use "../../styles//partials/variables" as *;
 
 .doughnut {
+    background-color: #131313;
     width: 100%;
     height: 100%;
+    padding: 2rem;
+
+    &__title {
+        color: white;
+        padding-bottom: 1.5rem;
+    }
 }

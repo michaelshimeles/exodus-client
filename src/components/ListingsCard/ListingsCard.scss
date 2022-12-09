@@ -49,6 +49,10 @@
       > p {
         color: white;
         font-size: 0.875rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 100px;
       }
     }
 

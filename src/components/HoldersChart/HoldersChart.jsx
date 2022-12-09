@@ -67,6 +67,7 @@ const HoldersChart = () => {
 
   return (
     <div className="doughnut">
+      <h1 className="doughnut__title">Whales Distribution 🐳</h1>
       <Doughnut
         data={data}
         options={options}

@@ -39,21 +39,14 @@ const CollectionBio = () => {
           <div className="collection__link">
             <div className="collection__site">
               <p>
-                Floor Price: Ξ
-                {bioStats.stats.floorPrice
-                  ? bioStats.stats.floorPrice.price
-                  : ""}
+                Holders:{" "}
+                {bioStats.stats.holders ? bioStats.stats.holders : ""}
               </p>
             </div>
             <div className="collection__social">
               <p>
-                Holder/Supply:
-                {bioStats.stats.holders && bioStats.stats.totalSupply
-                  ? Math.round(
-                      (bioStats.stats.holders / bioStats.stats.totalSupply) *
-                        100
-                    ) / 100
-                  : ""}
+                Supply:{" "}
+                {bioStats.stats.totalSupply ? bioStats.stats.totalSupply : ""}
               </p>
             </div>
           </div>

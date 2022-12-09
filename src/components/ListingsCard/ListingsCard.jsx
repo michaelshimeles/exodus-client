@@ -1,5 +1,5 @@
 import "./ListingsCard.scss";
-const ListingsCard = ({ image, tokenName, price }) => {
+const ListingsCard = ({ image, tokenName, price, status }) => {
   return (
     <div className="listings">
       <div className="listings__container">

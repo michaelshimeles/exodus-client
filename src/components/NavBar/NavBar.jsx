@@ -6,8 +6,9 @@ import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
 import Search from "../../components/Search/Search";
 import axios from "axios";
+import { click } from "@testing-library/user-event/dist/click";
 
-const NavBar = () => {
+const NavBar = ({ clicked }) => {
   const { address } = useAccount();
   const [addressState, setAddressState] = useState(address);
   const [search, setSearch] = useState("");
@@ -23,6 +24,7 @@ const NavBar = () => {
     // event.preventDefault();
     setSearch(event.target.value);
     console.log(event.target.value);
+    clicked(true);
 
     axios
       .get(`${URL}/search/${event.target.value}`)

@@ -2,15 +2,11 @@ import NavBar from "../../components/NavBar/NavBar";
 import HeroSection from "../../components/HeroSection/HeroSection";
 import TopCollections from "../../components/TopCollections/TopCollections";
 import "./Homepage.scss";
-import Footer from "../../components/Footer/Footer"
+import Footer from "../../components/Footer/Footer";
 
 const Homepage = () => {
   window.scrollTo(0, 0);
 
-  // const clear = (setter) => {
-  //   console.log("CLICKED")
-  //   return setter("")
-  // }
   return (
     <div className="homepage">
       <NavBar />

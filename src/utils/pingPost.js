@@ -4,12 +4,11 @@ const pingPost = (URL, body, setResult, freq) => {
     axios
       .post(URL, body)
       .then((response) => {
-        console.log(response.data)
         setResult(response.data);
       })
       .catch((error) => {
         console.log(error);
-      }); 
+      });
     return;
   }
 
@@ -17,7 +16,6 @@ const pingPost = (URL, body, setResult, freq) => {
     axios
       .post(URL, body)
       .then((response) => {
-        console.log(response.data)
         setResult(response.data);
       })
       .catch((error) => {

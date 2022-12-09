@@ -7,7 +7,8 @@ const StatsBar = () => {
   const [statsBar, setStatsBar] = useState(null);
   const [salesStats, setSalesStats] = useState(null);
   const [listingsStats, setListingsStats] = useState(null);
-  const [time, setTime] = useState(5);
+  const [time, setTime] = useState(null || 5);
+  const [floorPrice, setFloorPrice] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,6 +20,25 @@ const StatsBar = () => {
       .catch((error) => {
         console.log(error);
       });
+  }, [id]);
+
+  useEffect(() => {
+    pingPost(
+      `${process.env.REACT_APP_URL}/floorprice`,
+      {
+        address: id,
+      },
+      setFloorPrice
+    );
+
+    pingPost(
+      `${process.env.REACT_APP_URL}/floorprice`,
+      {
+        address: id,
+      },
+      setFloorPrice,
+      20000
+    );
   }, [id]);
 
   useEffect(() => {
@@ -36,6 +56,7 @@ const StatsBar = () => {
       },
       setSalesStats
     );
+
     pingPost(
       `${process.env.REACT_APP_URL}/sales/time/${id}`,
       {
@@ -46,7 +67,7 @@ const StatsBar = () => {
       setSalesStats,
       20000
     );
-  }, [id, time]);
+  }, [time]);
 
   useEffect(() => {
     let currentTime = Math.round(new Date() / 1000);
@@ -73,16 +94,18 @@ const StatsBar = () => {
       setListingsStats,
       20000
     );
-  }, [id, time]);
+  }, [time]);
 
   const momentum = (sales, listings) => {
-    if (sales === listings) {
-      return "Neutral";
+    if (sales === listings && sales === 0) {
+      return "No Volume";
     } else if (sales > listings) {
       return "Bullish";
+    } else if (sales === listings && sales > 0) {
+      return "Pot. Reversal";
     }
 
-    return "Stagnant";
+    return "Bearish";
   };
 
   const clicked = (event) => {
@@ -128,6 +151,12 @@ const StatsBar = () => {
       <div className="stats-bar">
         <div className="stats-bar__container">
           <div className="stats-bar__item">
+            <p className="stats-bar__title">Floor Price</p>
+            <p className="stats-bar__text">
+              {floorPrice ? floorPrice.data.price : ""}
+            </p>
+          </div>
+          <div className="stats-bar__item">
             <p className="stats-bar__title">Total Listings</p>
             <p className="stats-bar__text">
               {statsBar ? statsBar.stats.tokenListedCount : "n/a"}
@@ -155,14 +184,6 @@ const StatsBar = () => {
             <p className="stats-bar__title">Momentum Indicator ({time}m)</p>
             <p className="stats-bar__text">
               {momentum(salesStats?.sales.length, listingsStats?.orders.length)}
-            </p>
-          </div>
-          <div className="stats-bar__item">
-            <p className="stats-bar__title">Avg Price (1w)</p>
-            <p className="stats-bar__text">
-              {statsBar
-                ? Math.round(statsBar.stats.weeklyAveragePrice * 100) / 100
-                : "n/a"}
             </p>
           </div>
         </div>
