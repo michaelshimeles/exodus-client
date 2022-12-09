@@ -29,6 +29,7 @@ const SalesTable = () => {
               orderSource={sales.orderSource}
               tokenId={sales.tokenId}
               key={index}
+              timestamp={sales.timestamp}
             />
           );
         })

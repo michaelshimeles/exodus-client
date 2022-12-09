@@ -30,7 +30,10 @@ const Terminal = () => {
           <div className="terminal__card">
             <div className="terminal__card-title">
               <p>Listings</p>
-              <span className="blink_me"></span>
+              <div className="terminal__card-sort">
+                <p>Price</p>
+                <span className="blink_me"></span>
+              </div>
             </div>
             <ListingsTable />
           </div>

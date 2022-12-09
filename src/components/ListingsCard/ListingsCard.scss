@@ -38,6 +38,11 @@
     justify-content: center;
     align-items: center;
 
+    &-time {
+      font-size: 0.7rem;
+      color: #ffffff5c;
+    }
+
     &-left {
       display: flex;
       justify-content: center;
@@ -55,6 +60,7 @@
         max-width: 100px;
       }
     }
+    
 
     &-rank {
       > p {

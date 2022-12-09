@@ -8,7 +8,6 @@ import Loading from "../Loading/Loading";
 
 const ListingsTable = () => {
   const [listingsCard, setListingsCard] = useState(null);
-
   const { id } = useParams();
 
   const URL = `${process.env.REACT_APP_URL}/listings/${id}`;
@@ -39,6 +38,26 @@ const ListingsTable = () => {
       ) : (
         <Loading />
       )}
+
+      {/* {listingsCard && sorted ? (
+        listingsCard.data.orders.map((listing, index) => {
+          return (
+            <ListingsCard
+              className="listings-table__card"
+              createdTime={listing.createdAt}
+              status={listing.status}
+              orderKind={listing.kind}
+              updatedTime={listing.updatedTime}
+              image={listing.metadata.data.image || eth}
+              key={index}
+              tokenName={listing.metadata.data.tokenName || ""}
+              price={`${listing.price.amount.decimal}` || ""}
+            />
+          );
+        })
+      ) : (
+        <Loading />
+      )} */}
     </div>
   );
 };
