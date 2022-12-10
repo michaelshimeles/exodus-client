@@ -1,16 +1,6 @@
 import "./SalesCard.scss";
 const SalesCard = ({ image, price, orderSource, tokenId }) => {
-  // let currentTime = new Date().toUTCString().split(" ")[4].split(":");
-  // let newCreatedTime = new Date(timestamp)
-  //   .toUTCString()
-  //   .split(" ")[4]
-  //   .split(":");
 
-
-  // console.log("Current Time", currentTime);
-  // console.log("New Created", newCreatedTime);
-
-  // let time = Number(currentTime[0]) - (Number(newCreatedTime[0]) + 12);
 
   return (
     <div className="sales">
@@ -26,7 +16,6 @@ const SalesCard = ({ image, price, orderSource, tokenId }) => {
             </div>
           </div>
           <div className="sales__stats-right">
-            {/* <p>  {time < 1 ? "< 1 min" : time + " min"}{" "}</p> */}
             <div className="sales__stats-price">
               <p>Ξ{price}</p>
             </div>

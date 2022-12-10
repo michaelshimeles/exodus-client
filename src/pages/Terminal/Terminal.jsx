@@ -7,8 +7,10 @@ import "./Terminal.scss";
 import SalesChart from "../../components/SalesChart/SalesChart";
 import ListingsChart from "../../components/ListingsChart/ListingsChart";
 import HoldersChart from "../../components/HoldersChart/HoldersChart";
+import { useState } from "react";
 
 const Terminal = () => {
+  const [clicked, setClicked] = useState(true);
   window.scrollTo(0, 0);
 
   return (
@@ -16,36 +18,51 @@ const Terminal = () => {
       <NavBar />
       <CollectionBio />
       <StatsBar />
+      <button
+        onClick={() => {
+          console.log("Clicked");
+          setClicked(!clicked);
+        }}
+      >
+        Other
+      </button>
 
-      <div className="terminal__tx">
-        <div className="terminal__charts">
-          <p>Sales Chart</p>
-          <SalesChart />
-          <p>Listings Distribution</p>
-          <ListingsChart />
-          <HoldersChart />
-        </div>
-
-        <div className="terminal__cards">
-          <div className="terminal__card">
-            <div className="terminal__card-title">
-              <p>Listings</p>
-              <div className="terminal__card-sort">
-                <p>Price</p>
+      {clicked ? (
+        <div className="terminal__tx">
+          <div className="terminal__charts">
+            <p>Sales Chart</p>
+            <SalesChart />
+            <p>Listings Distribution</p>
+            <ListingsChart />
+          </div>
+          <div className="terminal__cards">
+            <div className="terminal__card">
+              <div className="terminal__card-title">
+                <p>Listings</p>
+                <div className="terminal__card-sort">
+                  <p>Price</p>
+                  <span className="blink_me"></span>
+                </div>
+              </div>
+              <ListingsTable />
+            </div>
+            <div className="terminal__card">
+              <div className="terminal__card-title">
+                <p>Sales</p>
                 <span className="blink_me"></span>
               </div>
+              <SalesTable />
             </div>
-            <ListingsTable />
-          </div>
-          <div className="terminal__card">
-            <div className="terminal__card-title">
-              <p>Sales</p>
-              <span className="blink_me"></span>
-            </div>
-            <SalesTable />
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="terminal__other">
+          <div className="terminal__holders">
+            <HoldersChart />
+          </div>
+          <SalesChart />
+        </div>
+      )}
     </div>
   );
 };
