@@ -34,11 +34,12 @@
   }
 
   &__input {
-    padding: 0.7rem 1rem;
-    padding-right: 4rem;
+    padding: 0.5rem 0rem;
     background-color: #131313;
     color: white;
     border: none;
+    width: 14.0625rem;
+    padding-left: 0.8rem;
   }
 
   &__results {
@@ -48,12 +49,32 @@
   }
 
   &__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 14.0625rem;
     text-decoration: none;
+    padding: 0rem 1rem;
+
+    > img {
+      width: 0.8rem;
+      border-radius: 50%;
+    }
+  }
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > img {
+      width: 0.8rem;
+      border-radius: 50%;
+    }
   }
 
   &__result {
     color: white;
-    width: 13.7188rem;
     padding: 0.8rem 1rem;
   }
 

@@ -18,14 +18,16 @@ const Terminal = () => {
       <NavBar />
       <CollectionBio />
       <StatsBar />
+      <div className="terminal__button">
       <button
         onClick={() => {
           console.log("Clicked");
           setClicked(!clicked);
         }}
       >
-        Other
+        More
       </button>
+      </div>
 
       {clicked ? (
         <div className="terminal__tx">

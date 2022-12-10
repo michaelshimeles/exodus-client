@@ -17,6 +17,25 @@
     gap: 1rem;
   }
 
+  &__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 79%;
+
+    > button {
+      border: none;
+      background-color: #202020;
+      color: white;
+      padding: 0.3rem 0.8rem;
+
+      &:hover {
+        border: 2px solid #121212;
+      }
+    }
+  }
+
   &__holders {
     width: 80%;
   }

@@ -6,9 +6,8 @@ import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
 import Search from "../../components/Search/Search";
 import axios from "axios";
-import { click } from "@testing-library/user-event/dist/click";
 
-const NavBar = ({ clicked }) => {
+const NavBar = () => {
   const { address } = useAccount();
   const [addressState, setAddressState] = useState(address);
   const [search, setSearch] = useState("");
@@ -24,7 +23,6 @@ const NavBar = ({ clicked }) => {
     // event.preventDefault();
     setSearch(event.target.value);
     console.log(event.target.value);
-    clicked(true);
 
     axios
       .get(`${URL}/search/${event.target.value}`)
@@ -36,10 +34,6 @@ const NavBar = ({ clicked }) => {
         console.log(error);
       });
   };
-
-  // if (result) {
-  //   clear(setResult);
-  // }
 
   return (
     <div className="navbar">
@@ -61,14 +55,26 @@ const NavBar = ({ clicked }) => {
             <div className="navbar__results">
               {result
                 ? result.collections.map((search, index) => {
-                    console.log(search?.name);
+                    // search.contract
                     return (
                       <Link
                         key={index}
                         className="navbar__link"
                         to={"/collection/" + search?.contract}
                       >
-                        <p className="navbar__result">{search?.name}</p>
+                        <div className="navbar__image">
+                          <img src={search?.image} />
+                          <p className="navbar__result">
+                            {search?.name}
+                          </p>
+                        </div>
+                        <div>
+                          {search?.openseaVerificationStatus === "verified" ? (
+                            <p>✅</p>
+                          ) : (
+                            <p>🔵</p>
+                          )}
+                        </div>
                       </Link>
                     );
                   })

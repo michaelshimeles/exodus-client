@@ -1,7 +1,5 @@
 import "./SalesCard.scss";
 const SalesCard = ({ image, price, orderSource, tokenId }) => {
-
-
   return (
     <div className="sales">
       <div className="sales__container">
