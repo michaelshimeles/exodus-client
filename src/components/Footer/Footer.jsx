@@ -16,8 +16,6 @@ const Footer = () => {
       });
   }, []);
 
-  console.log(price);
-
   return (
     <div className="footer">
       <div className="footer__container">

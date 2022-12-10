@@ -9,11 +9,26 @@
   width: 100%;
   &__pie {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     width: 80%;
     padding-top: 2rem;
     gap: 1rem;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 1rem;
+
+    width: 80%;
+    > button {
+      border: none;
+      background-color: #202020;
+      color: white;
+      padding: 0.3rem 0.8rem;
+    }
   }
 }
