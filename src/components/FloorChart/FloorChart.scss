@@ -1,0 +1,22 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles//partials/variables" as *;
+
+.floor-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #131313;
+  width: 100%;
+  &__title {
+    font-size: ;
+    color: white;
+  }
+
+  &__line {
+    background-color: #131313;
+    padding: 1rem 0.5rem;
+    padding-top: 2rem;
+    width: 100%;
+  }
+}

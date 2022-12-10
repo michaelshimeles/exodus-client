@@ -8,6 +8,7 @@ import SalesChart from "../../components/SalesChart/SalesChart";
 import ListingsChart from "../../components/ListingsChart/ListingsChart";
 import HoldersChart from "../../components/HoldersChart/HoldersChart";
 import { useState } from "react";
+import FloorChart from "../../components/FloorChart/FloorChart";
 
 const Terminal = () => {
   const [clicked, setClicked] = useState(true);
@@ -19,14 +20,14 @@ const Terminal = () => {
       <CollectionBio />
       <StatsBar />
       <div className="terminal__button">
-      <button
-        onClick={() => {
-          console.log("Clicked");
-          setClicked(!clicked);
-        }}
-      >
-        More
-      </button>
+        <button
+          onClick={() => {
+            console.log("Clicked");
+            setClicked(!clicked);
+          }}
+        >
+          More
+        </button>
       </div>
 
       {clicked ? (
@@ -61,8 +62,8 @@ const Terminal = () => {
         <div className="terminal__other">
           <div className="terminal__holders">
             <HoldersChart />
+            <FloorChart />
           </div>
-          <SalesChart />
         </div>
       )}
     </div>

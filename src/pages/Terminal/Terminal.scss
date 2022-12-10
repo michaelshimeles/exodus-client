@@ -29,15 +29,17 @@
       background-color: #202020;
       color: white;
       padding: 0.3rem 0.8rem;
-
-      &:hover {
-        border: 2px solid #121212;
-      }
+      cursor: pointer;
     }
   }
 
   &__holders {
-    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 69%;
+    gap: 1rem;
   }
 
   &__tx {

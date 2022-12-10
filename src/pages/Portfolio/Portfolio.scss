@@ -22,13 +22,14 @@
     justify-content: flex-end;
     align-items: center;
     padding-top: 1rem;
-
     width: 80%;
+
     > button {
       border: none;
       background-color: #202020;
       color: white;
       padding: 0.3rem 0.8rem;
+      cursor: pointer;
     }
   }
 }

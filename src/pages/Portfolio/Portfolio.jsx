@@ -69,7 +69,7 @@ const Portfolio = () => {
             setClicked(!clicked);
           }}
         >
-          {clicked ? "📑 Not Grouped": "🗂️ Grouped"}
+          {clicked ? "📑 Not Grouped" : "🗂️ Grouped"}
         </button>
       </div>
       <div className="portfolio__pie">
@@ -97,8 +97,8 @@ const Portfolio = () => {
                 name={collection?.collection?.name}
                 image={collection?.collection?.image}
                 floorAskPrice={collection?.collection?.floorAskPrice}
-                floorSale={collection?.collection?.floorSale?.['1day']}
-                volume={collection?.collection?.volume?.['1day']}
+                floorSale={collection?.collection?.floorSale?.["1day"]}
+                volume={collection?.collection?.volume?.["1day"]}
                 liquidCount={collection?.collection?.ownership?.liquidCount}
                 tokenCount={collection?.ownership?.tokenCount}
                 address={collection?.collection?.id}

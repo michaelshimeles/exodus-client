@@ -25,15 +25,6 @@ const SalesChart = () => {
     tooltips: {
       enabled: false,
     },
-    scales: {
-      xAxis: {
-        ticks: {
-          callback: (value) => {
-            return new Date(value).toLocaleTimeString();
-          },
-        },
-      },
-    },
   };
 
   const data = {
@@ -42,8 +33,8 @@ const SalesChart = () => {
         label: "Sales Chart",
         data: salesChart?.map((sales) => {
           return {
-            x: sales.timestamp,
-            y: sales.priceInEth,
+            x: new Date(Number(sales?.timestamp)).toLocaleTimeString(),
+            y: sales?.priceInEth,
           };
         }),
       },
