@@ -33,7 +33,7 @@ const SalesChart = () => {
         label: "Sales Chart",
         data: salesChart?.map((sales) => {
           return {
-            x: new Date(Number(sales?.timestamp)).toLocaleTimeString(),
+            x: new Date(Number(`${sales?.timestamp}`) * 1000).toDateString(),
             y: sales?.priceInEth,
           };
         }),

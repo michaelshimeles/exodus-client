@@ -1,4 +1,4 @@
-import { Line } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -32,14 +32,30 @@ const FloorChart = () => {
     },
   };
 
-  const data = {
+  const dataLine = {
+    datasets: [
+      {
+        label: "Volume Chart",
+        data: floorChart?.map((floor, index, array) => {
+          let reverseArr = array[array.length - 1 - index];
+          return {
+            x: new Date(Number(reverseArr?.timestamp) * 1000).toDateString(),
+            y: reverseArr?.volume,
+          };
+        }),
+      },
+    ],
+  };
+
+  const dataBar = {
     datasets: [
       {
         label: "Floor Chart",
-        data: floorChart?.map((floor) => {
+        data: floorChart?.map((floor, index, array) => {
+          let reverseArr = array[array.length - 1 - index];
           return {
-            x: new Date(Number(floor?.timestamp)).toLocaleTimeString(),
-            y: floor?.volume,
+            x: new Date(Number(reverseArr?.timestamp) * 1000).toDateString(),
+            y: reverseArr?.floor_sell_value,
           };
         }),
       },
@@ -48,8 +64,20 @@ const FloorChart = () => {
 
   return (
     <div className="floor-chart">
-      <h1 className="floor-chart__title">Volume Chart (1d)</h1>
-      <Line className="floor-chart__line" data={data} options={options}></Line>
+      <div className="floor-chart__floor">
+        <h1 className="floor-chart__title">Floor Chart (1d)</h1>
+        <Line
+          data={dataBar}
+          options={options}
+        ></Line>
+      </div>
+      <div className="floor-chart__volume">
+        <h1 className="floor-chart__title">Volume Chart (1d)</h1>
+        <Bar
+          data={dataLine}
+          options={options}
+        ></Bar>
+      </div>
     </div>
   );
 };
