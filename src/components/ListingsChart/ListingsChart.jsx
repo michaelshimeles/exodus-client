@@ -22,8 +22,11 @@ const ListingsChart = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        display: false,
       },
+    },
+    tooltips: {
+      enabled: false,
     },
   };
 

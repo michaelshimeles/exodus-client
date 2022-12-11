@@ -17,6 +17,7 @@ const SalesChart = () => {
   }, [URL]);
 
   const options = {
+    responsive: true,
     plugins: {
       legend: {
         display: false,
@@ -25,6 +26,21 @@ const SalesChart = () => {
     tooltips: {
       enabled: false,
     },
+    scales: {
+      x: {
+        ticks: {
+          callback: function (dataLabel, index) {
+            return new Date(Number(dataLabel) * 1000).toLocaleTimeString();
+          },
+          fontSize: 16,
+          autoSkip: false,
+        },
+        scaleLabel: {
+          display: true,
+          labelString: "Week",
+        },
+      },
+    },
   };
 
   const data = {
@@ -32,8 +48,9 @@ const SalesChart = () => {
       {
         label: "Sales Chart",
         data: salesChart?.map((sales) => {
+          console.log(sales);
           return {
-            x: new Date(Number(`${sales?.timestamp}`) * 1000).toDateString(),
+            x: sales?.timestamp,
             y: sales?.priceInEth,
           };
         }),
