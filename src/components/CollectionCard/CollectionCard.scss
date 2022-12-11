@@ -21,7 +21,7 @@
 
   &__item {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: 20%;
     font-size: 0.875rem;
@@ -29,6 +29,12 @@
 
     > p {
       color: white;
+    }
+
+    &-name {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
     }
   }
 

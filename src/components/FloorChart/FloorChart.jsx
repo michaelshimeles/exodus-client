@@ -64,19 +64,13 @@ const FloorChart = () => {
 
   return (
     <div className="floor-chart">
-      <div className="floor-chart__floor">
-        <h1 className="floor-chart__title">Floor Chart (1d)</h1>
-        <Line
-          data={dataBar}
-          options={options}
-        ></Line>
-      </div>
       <div className="floor-chart__volume">
         <h1 className="floor-chart__title">Volume Chart (1d)</h1>
-        <Bar
-          data={dataLine}
-          options={options}
-        ></Bar>
+        <Bar data={dataLine} options={options}></Bar>
+      </div>
+      <div className="floor-chart__floor">
+        <h1 className="floor-chart__title">Floor Chart (1d)</h1>
+        <Line data={dataBar} options={options}></Line>
       </div>
     </div>
   );

@@ -1,12 +1,23 @@
 import "./CollectionCard.scss";
 
-const CollectionCard = ({ name, image, floorPrice, supply, sales, volume, change}) => {
-
+const CollectionCard = ({
+  name,
+  image,
+  floorPrice,
+  supply,
+  sales,
+  volume,
+  change,
+}) => {
   return (
     <div className="collection-cards">
       <div className="collection-cards__container">
-        <div className="collection-cards__item">
-          <img className="collection-cards__img" src={image} alt="Collection profile"/>
+        <div className="collection-cards__item collection-cards__item-name">
+          <img
+            className="collection-cards__img"
+            src={image}
+            alt="Collection profile"
+          />
           <p className="collection-cards__text">{name}</p>
         </div>
         <div className="collection-cards__item">

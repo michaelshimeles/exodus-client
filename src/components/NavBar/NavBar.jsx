@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import { ConnectKitButton } from "connectkit";
 import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
-import Search from "../../components/Search/Search";
 import axios from "axios";
 
-const NavBar = () => {
+const NavBar = ({clicked, setClicked}) => {
   const { address } = useAccount();
   const [addressState, setAddressState] = useState(address);
   const [search, setSearch] = useState("");
@@ -35,6 +34,7 @@ const NavBar = () => {
       });
   };
 
+  console.log("Clicked Nav", clicked)
   return (
     <div className="navbar">
       <div className="navbar-container">
@@ -49,11 +49,11 @@ const NavBar = () => {
               value={search}
               className="navbar__input"
               placeholder="Search Collection..."
-              onClick={handleSearch}
+              onClick={() => setClicked(false)}
               onChange={handleSearch}
             ></input>
             <div className="navbar__results">
-              {result
+              {result && clicked
                 ? result.collections.map((search, index) => {
                     // search.contract
                     return (
@@ -78,7 +78,7 @@ const NavBar = () => {
                       </Link>
                     );
                   })
-                : null}
+                : <></>}
             </div>
           </form>
         </div>
@@ -98,7 +98,6 @@ const NavBar = () => {
           <div className="navbar__button">
             <ConnectKitButton />
           </div>
-          <Search />
         </div>
       </div>
     </div>
