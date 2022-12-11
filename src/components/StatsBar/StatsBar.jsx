@@ -71,7 +71,7 @@ const StatsBar = () => {
       20000
     );
     console.log("Sales Time", time);
-  }, [time]);
+  }, [id, time]);
 
   useEffect(() => {
     let currentTime = Math.round(new Date() / 1000);
@@ -100,7 +100,7 @@ const StatsBar = () => {
     );
 
     console.log("Listings Time", time);
-  }, [time]);
+  }, [id, time]);
 
   const momentum = (sales, listings) => {
     if (sales === listings && sales === 0) {

@@ -61,7 +61,7 @@ const NavBar = ({ clicked, setClicked }) => {
                       to={"/collection/" + search?.contract}
                     >
                       <div className="navbar__image">
-                        <img src={search?.image} />
+                        <img src={search?.image} alt="Search result"/>
                         <p className="navbar__result">{search?.name}</p>
                       </div>
                       <div>

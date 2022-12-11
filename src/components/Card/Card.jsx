@@ -30,7 +30,7 @@ const Card = ({
           return error;
         });
     }
-  }, [address, clicked]);
+  }, [address, clicked, volume]);
 
   return (
     <Link to={"/collection/" + address} className="card">

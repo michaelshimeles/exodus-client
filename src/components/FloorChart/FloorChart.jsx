@@ -19,7 +19,7 @@ const FloorChart = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
 
   const options = {
     plugins: {
