@@ -22,14 +22,12 @@ const Terminal = () => {
       <div className="terminal__button">
         <button
           onClick={() => {
-            console.log("Clicked");
             setClicked(!clicked);
           }}
         >
           More
         </button>
       </div>
-
 
       {clicked ? (
         <div className="terminal__tx">
