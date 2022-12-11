@@ -7,9 +7,11 @@ const StatsBar = () => {
   const [statsBar, setStatsBar] = useState(null);
   const [salesStats, setSalesStats] = useState(null);
   const [listingsStats, setListingsStats] = useState(null);
-  const [time, setTime] = useState(null || 5);
+  const [time, setTime] = useState(5);
   const [floorPrice, setFloorPrice] = useState(null);
   const { id } = useParams();
+
+  console.log("Time", time);
 
   useEffect(() => {
     axios
@@ -22,6 +24,7 @@ const StatsBar = () => {
       });
   }, [id]);
 
+  // Floor Price
   useEffect(() => {
     pingPost(
       `${process.env.REACT_APP_URL}/floorprice`,
@@ -67,6 +70,7 @@ const StatsBar = () => {
       setSalesStats,
       20000
     );
+    console.log("Sales Time", time);
   }, [time]);
 
   useEffect(() => {
@@ -94,6 +98,8 @@ const StatsBar = () => {
       setListingsStats,
       20000
     );
+
+    console.log("Listings Time", time);
   }, [time]);
 
   const momentum = (sales, listings) => {

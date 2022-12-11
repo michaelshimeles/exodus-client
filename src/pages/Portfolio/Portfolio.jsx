@@ -19,12 +19,12 @@ const Portfolio = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_URL}/wallet/${id}`).then((response) => {
+    axios.get(`${process.env.REACT_APP_URL}/portfolio/wallet/${id}`).then((response) => {
       setStats(response.data);
     });
 
     axios
-      .get(`${process.env.REACT_APP_URL}/collections/${id}`)
+      .get(`${process.env.REACT_APP_URL}/portfolio/collections/${id}`)
       .then((response) => {
         setCollections(response.data.nfts);
       })

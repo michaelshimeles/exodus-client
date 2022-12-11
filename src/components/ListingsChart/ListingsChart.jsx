@@ -52,7 +52,6 @@ const ListingsChart = () => {
         fill: true,
 
         data: lineChart?.data.orders?.map((listing, index) => {
-          console.log("listing", listing);
           return {
             x: listing?.createdAt,
             y: listing?.price?.amount?.decimal,

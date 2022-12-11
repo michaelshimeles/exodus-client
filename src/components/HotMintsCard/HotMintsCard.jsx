@@ -20,7 +20,6 @@ const HotMintsCard = ({
     axios
       .get(`${process.env.REACT_APP_URL}/info/resevoir/` + contract_address)
       .then((response) => {
-        console.log(response.data.data.collections[0]);
         setMintDetails(response.data.data.collections[0]);
       });
   }, [time, contract_address]);

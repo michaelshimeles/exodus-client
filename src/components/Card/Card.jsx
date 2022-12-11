@@ -17,12 +17,13 @@ const Card = ({
   const [floorPrice, setFloorPrice] = useState(null);
 
   useEffect(() => {
-    if (!clicked) {
+    if (!clicked && volume !== 0) {
       axios
         .post(`${process.env.REACT_APP_URL}/floorprice`, {
           address: address,
         })
         .then((response) => {
+          console.log(response.data.data.price)
           setFloorPrice(response.data.data.price);
         })
         .catch((error) => {

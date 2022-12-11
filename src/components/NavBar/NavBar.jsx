@@ -6,7 +6,7 @@ import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const NavBar = ({clicked, setClicked}) => {
+const NavBar = ({ clicked, setClicked }) => {
   const { address } = useAccount();
   const [addressState, setAddressState] = useState(address);
   const [search, setSearch] = useState("");
@@ -27,14 +27,12 @@ const NavBar = ({clicked, setClicked}) => {
       .get(`${URL}/search/${event.target.value}`)
       .then((response) => {
         setResult(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  console.log("Clicked Nav", clicked)
   return (
     <div className="navbar">
       <div className="navbar-container">
@@ -53,32 +51,32 @@ const NavBar = ({clicked, setClicked}) => {
               onChange={handleSearch}
             ></input>
             <div className="navbar__results">
-              {result && clicked
-                ? result.collections.map((search, index) => {
-                    // search.contract
-                    return (
-                      <Link
-                        key={index}
-                        className="navbar__link"
-                        to={"/collection/" + search?.contract}
-                      >
-                        <div className="navbar__image">
-                          <img src={search?.image} />
-                          <p className="navbar__result">
-                            {search?.name}
-                          </p>
-                        </div>
-                        <div>
-                          {search?.openseaVerificationStatus === "verified" ? (
-                            <p>✅</p>
-                          ) : (
-                            <p>🔵</p>
-                          )}
-                        </div>
-                      </Link>
-                    );
-                  })
-                : <></>}
+              {result && clicked ? (
+                result.collections.map((search, index) => {
+                  // search.contract
+                  return (
+                    <Link
+                      key={index}
+                      className="navbar__link"
+                      to={"/collection/" + search?.contract}
+                    >
+                      <div className="navbar__image">
+                        <img src={search?.image} />
+                        <p className="navbar__result">{search?.name}</p>
+                      </div>
+                      <div>
+                        {search?.openseaVerificationStatus === "verified" ? (
+                          <p>✅</p>
+                        ) : (
+                          <p>🔵</p>
+                        )}
+                      </div>
+                    </Link>
+                  );
+                })
+              ) : (
+                <></>
+              )}
             </div>
           </form>
         </div>
