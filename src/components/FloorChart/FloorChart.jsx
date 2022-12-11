@@ -30,6 +30,15 @@ const FloorChart = () => {
     tooltips: {
       enabled: false,
     },
+    animations: {
+      tension: {
+        duration: 1000,
+        easing: "linear",
+        from: 1,
+        to: 0,
+        loop: true,
+      },
+    },
   };
 
   const dataLine = {

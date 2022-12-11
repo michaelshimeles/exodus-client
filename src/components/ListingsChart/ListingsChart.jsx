@@ -1,5 +1,5 @@
 import "./ListingsChart.scss";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ping from "../../utils/ping";
@@ -7,15 +7,15 @@ import ping from "../../utils/ping";
 import Chart from "chart.js/auto";
 
 const ListingsChart = () => {
-  const [barChart, setBarChart] = useState(null);
+  const [lineChart, setLineChart] = useState(null);
 
   const { id } = useParams();
 
-  const URL = `${process.env.REACT_APP_URL}/listings/${id}`;
+  const URL = `${process.env.REACT_APP_URL}/listings/chart/${id}`;
 
   useEffect(() => {
-    ping(`${URL}`, setBarChart);
-    ping(`${URL}`, setBarChart, 10000);
+    ping(`${URL}`, setLineChart);
+    ping(`${URL}`, setLineChart, 10000);
   }, [URL]);
 
   const options = {
@@ -28,25 +28,45 @@ const ListingsChart = () => {
     tooltips: {
       enabled: false,
     },
+    scales: {
+      x: {
+        ticks: {
+          callback: function (dataLabel, index) {
+            // return dataLabel
+          },
+          fontSize: 16,
+          autoSkip: false,
+        },
+        scaleLabel: {
+          display: true,
+          labelString: "Week",
+        },
+      },
+    },
   };
 
   const data = {
     labels: ["Price"],
     datasets: [
       {
-        label: "Listings Distribution",
-        data: barChart
-          ? barChart.data.orders.map(
-              (listing, index) => listing.price.amount.decimal
-            )
-          : "",
+        fill: true,
+
+        data: lineChart?.data.orders?.map((listing, index) => {
+          console.log("listing", listing);
+          return {
+            x: listing?.createdAt,
+            y: listing?.price?.amount?.decimal,
+          };
+        }),
+        borderColor: "rgb(53, 162, 235)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
   };
 
   return (
     <div className="listings-section">
-      <Bar className="listings-section__chart" options={options} data={data} />
+      <Line className="listings-section__chart" options={options} data={data} />
     </div>
   );
 };

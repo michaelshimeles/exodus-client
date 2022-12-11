@@ -20,7 +20,7 @@ const ListingsTable = () => {
   return (
     <div className="listings-table">
       {listingsCard ? (
-        listingsCard.data.orders.map((listing, index) => {
+        listingsCard?.data?.orders.map((listing, index) => {
           return (
             <ListingsCard
               className="listings-table__card"
@@ -38,26 +38,6 @@ const ListingsTable = () => {
       ) : (
         <Loading />
       )}
-
-      {/* {listingsCard && sorted ? (
-        listingsCard.data.orders.map((listing, index) => {
-          return (
-            <ListingsCard
-              className="listings-table__card"
-              createdTime={listing.createdAt}
-              status={listing.status}
-              orderKind={listing.kind}
-              updatedTime={listing.updatedTime}
-              image={listing.metadata.data.image || eth}
-              key={index}
-              tokenName={listing.metadata.data.tokenName || ""}
-              price={`${listing.price.amount.decimal}` || ""}
-            />
-          );
-        })
-      ) : (
-        <Loading />
-      )} */}
     </div>
   );
 };

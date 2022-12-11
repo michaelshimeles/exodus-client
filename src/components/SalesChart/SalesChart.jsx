@@ -37,7 +37,6 @@ const SalesChart = () => {
         },
         scaleLabel: {
           display: true,
-          labelString: "Week",
         },
       },
     },
@@ -48,7 +47,6 @@ const SalesChart = () => {
       {
         label: "Sales Chart",
         data: salesChart?.map((sales) => {
-          console.log(sales);
           return {
             x: sales?.timestamp,
             y: sales?.priceInEth,

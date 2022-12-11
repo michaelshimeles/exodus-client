@@ -5,7 +5,6 @@ const ListingsCard = ({ image, tokenName, price, status, createdTime }) => {
 
   // let hour = Number(currentTime[0]) - Number(newCreatedTime[0]);
   let minute = Number(currentTime[1]) - Number(newCreatedTime[1]);
-
   return (
     <div className="listings">
       <div className="listings__container">

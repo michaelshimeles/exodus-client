@@ -30,6 +30,7 @@ const Terminal = () => {
         </button>
       </div>
 
+
       {clicked ? (
         <div className="terminal__tx">
           <div className="terminal__charts">
@@ -43,7 +44,6 @@ const Terminal = () => {
               <div className="terminal__card-title">
                 <p>Listings</p>
                 <div className="terminal__card-sort">
-                  <p>Price</p>
                   <span className="blink_me"></span>
                 </div>
               </div>
