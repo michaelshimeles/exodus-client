@@ -52,16 +52,14 @@ const StatsBar = () => {
       (new Date().getTime() - Number(time) * 60 * 1000) / 1000
     );
 
-    clearInterval(
-      pingPost(
-        `${process.env.REACT_APP_URL}/sales/time/${id}`,
-        {
-          start: diffTime,
-          end: currentTime,
-          metadata: true,
-        },
-        setSalesStats
-      )
+    pingPost(
+      `${process.env.REACT_APP_URL}/sales/time/${id}`,
+      {
+        start: diffTime,
+        end: currentTime,
+        metadata: true,
+      },
+      setSalesStats
     );
 
     clearInterval(
@@ -73,7 +71,7 @@ const StatsBar = () => {
           metadata: true,
         },
         setSalesStats,
-        20000
+        5000
       )
     );
   }, [id, time]);
@@ -85,18 +83,15 @@ const StatsBar = () => {
       (new Date().getTime() - Number(time) * 60 * 1000) / 1000
     );
 
-    clearInterval(
-      pingPost(
-        `${process.env.REACT_APP_URL}/listings/time/${id}`,
-        {
-          start: diffTime,
-          end: currentTime,
-          metadata: true,
-        },
-        setListingsStats
-      )
+    pingPost(
+      `${process.env.REACT_APP_URL}/listings/time/${id}`,
+      {
+        start: diffTime,
+        end: currentTime,
+        metadata: true,
+      },
+      setListingsStats
     );
-
     clearInterval(
       pingPost(
         `${process.env.REACT_APP_URL}/listings/time/${id}`,
@@ -106,7 +101,7 @@ const StatsBar = () => {
           metadata: true,
         },
         setListingsStats,
-        20000
+        5000
       )
     );
   }, [id, time]);

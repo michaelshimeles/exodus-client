@@ -6,11 +6,12 @@ import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const NavBar = ({ clicked, setClicked }) => {
+const NavBar = ({ }) => {
   const { address } = useAccount();
   const [addressState, setAddressState] = useState(address);
   const [search, setSearch] = useState("");
   const [result, setResult] = useState("");
+  const [resultCopy, setResultCopy] = useState("")
 
   const URL = process.env.REACT_APP_URL;
 
@@ -33,6 +34,10 @@ const NavBar = ({ clicked, setClicked }) => {
       });
   };
 
+  const handleBlur = () => {
+    setResult("")
+  }
+
   return (
     <div className="navbar">
       <div className="navbar-container">
@@ -47,11 +52,12 @@ const NavBar = ({ clicked, setClicked }) => {
               value={search}
               className="navbar__input"
               placeholder="Search Collection..."
-              onClick={() => setClicked(false)}
               onChange={handleSearch}
+              onBlur={handleBlur}
+              onClick={handleSearch}
             ></input>
             <div className="navbar__results">
-              {result && clicked ? (
+              {result !== "" ? (
                 result.collections.map((search, index) => {
                   // search.contract
                   return (
@@ -61,7 +67,7 @@ const NavBar = ({ clicked, setClicked }) => {
                       to={"/collection/" + search?.contract}
                     >
                       <div className="navbar__image">
-                        <img src={search?.image} alt="Search result"/>
+                        <img src={search?.image} alt="Search result" />
                         <p className="navbar__result">{search?.name}</p>
                       </div>
                       <div>

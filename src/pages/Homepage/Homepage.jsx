@@ -7,15 +7,15 @@ import { useState } from "react";
 
 const Homepage = () => {
   window.scrollTo(0, 0);
-  const [clicked, setClicked] = useState(false);
+  // const [clicked, setClicked] = useState(false);
 
-  const click = (answer) => {
-    console.log(answer)
-    setClicked(answer)
-  }
+  // const click = (answer) => {
+  //   console.log(answer);
+  //   setClicked(answer);
+  // };
   return (
-    <div className="homepage" onClick={() => click(true || clicked)}>
-      <NavBar clicked={clicked} setClicked={click}/>
+    <div className="homepage">
+      <NavBar />
       <HeroSection />
       <TopCollections />
       <Footer />
