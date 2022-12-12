@@ -19,9 +19,12 @@ const Portfolio = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_URL}/portfolio/wallet/${id}`).then((response) => {
-      setStats(response.data);
-    });
+    axios
+      .get(`${process.env.REACT_APP_URL}/portfolio/wallet/${id}`)
+      .then((response) => {
+        console.log("Stats", response.data)
+        setStats(response.data);
+      });
 
     axios
       .get(`${process.env.REACT_APP_URL}/portfolio/collections/${id}`)
@@ -68,6 +71,7 @@ const Portfolio = () => {
           onClick={() => {
             setClicked(!clicked);
           }}
+          // className={clicked ? "flip-2-ver-right-1" : ""}
         >
           {clicked ? "📑 Not Grouped" : "🗂️ Grouped"}
         </button>

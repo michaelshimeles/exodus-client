@@ -1,7 +1,5 @@
 import "./Card.scss";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 const Card = ({
   name,
@@ -12,26 +10,9 @@ const Card = ({
   clicked,
   setClicked,
   volume,
+  floorAskPrice,
   floorSale
 }) => {
-  const [floorPrice, setFloorPrice] = useState(null);
-
-  useEffect(() => {
-    if (!clicked && volume !== 0) {
-      axios
-        .post(`${process.env.REACT_APP_URL}/floorprice`, {
-          address: address,
-        })
-        .then((response) => {
-          console.log(response.data.data.price)
-          setFloorPrice(response.data.data.price);
-        })
-        .catch((error) => {
-          return error;
-        });
-    }
-  }, [address, clicked, volume]);
-
   return (
     <Link to={"/collection/" + address} className="card">
       <div className="card__container">
@@ -45,7 +26,7 @@ const Card = ({
           </div>
           <div className="card__price">
             {clicked === undefined ? (
-              <h2>{volume > 0 && floorPrice ? floorPrice + " ETH" : "💩"}</h2>
+              <h2>{volume > 0 && floorSale ? floorSale + " ETH" : "💩"}</h2>
             ) : (
               <h2>{volume > 0 && floorSale ? floorSale + " Ξ" : "💩"} </h2>
             )}

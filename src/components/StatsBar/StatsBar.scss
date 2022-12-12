@@ -15,11 +15,10 @@
     align-items: center;
     width: 85%;
     > select {
-      background-color:#202020;
+      background-color: #202020;
       color: white;
       border-color: #131313;
       padding: 0.3rem 0.5rem;
-      
     }
   }
   &-bar {
@@ -29,6 +28,7 @@
     width: 100%;
     padding: 0.65rem;
     background-color: $primary-color;
+    position: relative;
 
     &__container {
       display: flex;

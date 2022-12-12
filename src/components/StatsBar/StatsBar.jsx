@@ -11,6 +11,8 @@ const StatsBar = () => {
   const [floorPrice, setFloorPrice] = useState(null);
   const { id } = useParams();
   const [dropDown, setDropDown] = useState(false);
+  const [salesDayStats, setSalesDayStats] = useState(null);
+  const [listingsDayStats, setListingsDayStats] = useState(null);
 
   useEffect(() => {
     axios
@@ -43,6 +45,7 @@ const StatsBar = () => {
     );
   }, [id, time, dropDown]);
 
+  // Sales Stats
   useEffect(() => {
     let currentTime = Math.round(new Date() / 1000);
     let diffTime = Math.round(
@@ -75,6 +78,7 @@ const StatsBar = () => {
     );
   }, [id, time]);
 
+  // Listings Stats
   useEffect(() => {
     let currentTime = Math.round(new Date() / 1000);
     let diffTime = Math.round(
@@ -106,6 +110,38 @@ const StatsBar = () => {
       )
     );
   }, [id, time]);
+
+  // 24hr stats
+  useEffect(() => {
+    let currentTime = Math.round(new Date() / 1000);
+    let diffTime = Math.round((new Date().getTime() - 1440 * 60 * 1000) / 1000);
+
+    axios
+      .post(`${process.env.REACT_APP_URL}/sales/time/${id}`, {
+        start: diffTime,
+        end: currentTime,
+        metadata: true,
+      })
+      .then((response) => {
+        setSalesDayStats(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .post(`${process.env.REACT_APP_URL}/listings/time/${id}`, {
+        start: diffTime,
+        end: currentTime,
+        metadata: true,
+      })
+      .then((response) => {
+        setListingsDayStats(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [dropDown]);
 
   const momentum = (sales, listings) => {
     if (sales === listings && sales === 0) {
@@ -156,31 +192,31 @@ const StatsBar = () => {
             <div className="stats-bar__item">
               <p className="stats-bar__title">Floor Price</p>
               <p className="stats-bar__text">
-                {floorPrice ? floorPrice.sources[0].floorAskPrice : "n/a"}
+                {floorPrice ? floorPrice.sources[0]?.floorAskPrice : "n/a"}
               </p>
             </div>
             <div className="stats-bar__item">
               <p className="stats-bar__title">Total Listings</p>
               <p className="stats-bar__text">
-                {statsBar ? statsBar.stats.tokenListedCount : "n/a"}
+                {statsBar ? statsBar.stats?.tokenListedCount : "n/a"}
               </p>
             </div>
             <div className="stats-bar__item">
               <p className="stats-bar__title">Total Supply</p>
               <p className="stats-bar__text">
-                {statsBar ? statsBar.stats.totalSupply : "n/a"}
+                {statsBar ? statsBar.stats?.totalSupply : "n/a"}
               </p>
             </div>
             <div className="stats-bar__item">
               <p className="stats-bar__title">{time} Min Listings</p>
               <p className="stats-bar__text">
-                {listingsStats ? listingsStats.orders.length : 0}
+                {listingsStats ? listingsStats?.orders.length : 0}
               </p>
             </div>
             <div className="stats-bar__item">
               <p className="stats-bar__title">{time} Min Sales</p>
               <p className="stats-bar__text">
-                {salesStats ? salesStats.sales.length : 0}
+                {salesStats ? salesStats?.sales.length : 0}
               </p>
             </div>
             <div className="stats-bar__item">
@@ -199,15 +235,24 @@ const StatsBar = () => {
             <div className="stats-bar__container">
               <div className="stats-bar__item">
                 <p className="stats-bar__title">24hr Listings</p>
-                <p className="stats-bar__text">40</p>
+                <p className="stats-bar__text">
+                  {listingsDayStats ? listingsDayStats?.orders.length : "n/a"}
+                </p>
               </div>
               <div className="stats-bar__item">
                 <p className="stats-bar__title">24hr Sales</p>
-                <p className="stats-bar__text">30</p>
+                <p className="stats-bar__text">
+                  {salesDayStats ? salesDayStats?.sales.length : "n/a"}
+                </p>
               </div>
               <div className="stats-bar__item">
                 <p className="stats-bar__title">Momentum Indicator (24hr)</p>
-                <p className="stats-bar__text">12</p>
+                <p className="stats-bar__text">
+                  {momentum(
+                    salesDayStats?.sales.length,
+                    listingsDayStats?.orders.length
+                  )}
+                </p>
               </div>
             </div>
           </div>
