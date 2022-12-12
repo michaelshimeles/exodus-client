@@ -159,7 +159,7 @@ const StatsBar = () => {
           <div className="stats-bar__item">
             <p className="stats-bar__title">Floor Price</p>
             <p className="stats-bar__text">
-              {floorPrice ? floorPrice.data.price : ""}
+              {floorPrice ? floorPrice.sources[0].floorAskPrice : ""}
             </p>
           </div>
           <div className="stats-bar__item">
