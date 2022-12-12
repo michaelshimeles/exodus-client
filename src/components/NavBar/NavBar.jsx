@@ -6,12 +6,11 @@ import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const NavBar = ({ }) => {
+const NavBar = () => {
   const { address } = useAccount();
   const [addressState, setAddressState] = useState(address);
   const [search, setSearch] = useState("");
   const [result, setResult] = useState("");
-  const [resultCopy, setResultCopy] = useState("")
 
   const URL = process.env.REACT_APP_URL;
 
