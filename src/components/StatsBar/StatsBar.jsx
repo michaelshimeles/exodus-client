@@ -10,8 +10,7 @@ const StatsBar = () => {
   const [time, setTime] = useState(5);
   const [floorPrice, setFloorPrice] = useState(null);
   const { id } = useParams();
-
-  console.log("Time", time);
+  const [dropDown, setDropDown] = useState(false);
 
   useEffect(() => {
     axios
@@ -22,7 +21,7 @@ const StatsBar = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [id]);
+  }, [id, time, dropDown]);
 
   // Floor Price
   useEffect(() => {
@@ -42,64 +41,70 @@ const StatsBar = () => {
       setFloorPrice,
       20000
     );
-  }, [id]);
+  }, [id, time, dropDown]);
 
   useEffect(() => {
     let currentTime = Math.round(new Date() / 1000);
-    let fiveMinutes = Math.round(
+    let diffTime = Math.round(
       (new Date().getTime() - Number(time) * 60 * 1000) / 1000
     );
 
-    pingPost(
-      `${process.env.REACT_APP_URL}/sales/time/${id}`,
-      {
-        start: fiveMinutes,
-        end: currentTime,
-        metadata: true,
-      },
-      setSalesStats
+    clearInterval(
+      pingPost(
+        `${process.env.REACT_APP_URL}/sales/time/${id}`,
+        {
+          start: diffTime,
+          end: currentTime,
+          metadata: true,
+        },
+        setSalesStats
+      )
     );
 
-    pingPost(
-      `${process.env.REACT_APP_URL}/sales/time/${id}`,
-      {
-        start: fiveMinutes,
-        end: currentTime,
-        metadata: true,
-      },
-      setSalesStats,
-      20000
+    clearInterval(
+      pingPost(
+        `${process.env.REACT_APP_URL}/sales/time/${id}`,
+        {
+          start: diffTime,
+          end: currentTime,
+          metadata: true,
+        },
+        setSalesStats,
+        20000
+      )
     );
-    console.log("Sales Time", time);
   }, [id, time]);
 
   useEffect(() => {
     let currentTime = Math.round(new Date() / 1000);
-    let fiveMinutes = Math.round(
+    let diffTime = Math.round(
       (new Date().getTime() - Number(time) * 60 * 1000) / 1000
     );
 
-    pingPost(
-      `${process.env.REACT_APP_URL}/listings/time/${id}`,
-      {
-        start: fiveMinutes,
-        end: currentTime,
-        metadata: true,
-      },
-      setListingsStats
-    );
-    pingPost(
-      `${process.env.REACT_APP_URL}/listings/time/${id}`,
-      {
-        start: fiveMinutes,
-        end: currentTime,
-        metadata: true,
-      },
-      setListingsStats,
-      20000
+    clearInterval(
+      pingPost(
+        `${process.env.REACT_APP_URL}/listings/time/${id}`,
+        {
+          start: diffTime,
+          end: currentTime,
+          metadata: true,
+        },
+        setListingsStats
+      )
     );
 
-    console.log("Listings Time", time);
+    clearInterval(
+      pingPost(
+        `${process.env.REACT_APP_URL}/listings/time/${id}`,
+        {
+          start: diffTime,
+          end: currentTime,
+          metadata: true,
+        },
+        setListingsStats,
+        20000
+      )
+    );
   }, [id, time]);
 
   const momentum = (sales, listings) => {
@@ -115,13 +120,19 @@ const StatsBar = () => {
   };
 
   const clicked = (event) => {
+    event.preventDefault();
+    console.log("Time", event.target.value);
     setTime(event.target.value);
+  };
+
+  const handleDropDown = () => {
+    setDropDown(!dropDown);
   };
 
   return (
     <div className="stats">
-      <form className="stats__form" onChange={clicked}>
-        <select id="time">
+      <form className="stats__form">
+        <select id="time" onChange={clicked}>
           <option id="time" value="5">
             5m
           </option>
@@ -137,62 +148,72 @@ const StatsBar = () => {
           <option id="time" value="60">
             1h
           </option>
-          {/* <option id="time" value="360">
-            6h
-          </option>
-          <option id="time" value="720">
-            12h
-          </option>
-          <option id="time" value="1440">
-            24h
-          </option>
-          <option id="time" value="10080">
-            7d
-          </option>
-          <option id="time" value="43200">
-            30d
-          </option> */}
         </select>
       </form>
-      <div className="stats-bar">
-        <div className="stats-bar__container">
-          <div className="stats-bar__item">
-            <p className="stats-bar__title">Floor Price</p>
-            <p className="stats-bar__text">
-              {floorPrice ? floorPrice.sources[0].floorAskPrice : ""}
-            </p>
-          </div>
-          <div className="stats-bar__item">
-            <p className="stats-bar__title">Total Listings</p>
-            <p className="stats-bar__text">
-              {statsBar ? statsBar.stats.tokenListedCount : "n/a"}
-            </p>
-          </div>
-          <div className="stats-bar__item">
-            <p className="stats-bar__title">Total Supply</p>
-            <p className="stats-bar__text">
-              {statsBar ? statsBar.stats.totalSupply : ""}
-            </p>
-          </div>
-          <div className="stats-bar__item">
-            <p className="stats-bar__title">{time} Min Listings</p>
-            <p className="stats-bar__text">
-              {listingsStats ? listingsStats.orders.length : 0}
-            </p>
-          </div>
-          <div className="stats-bar__item">
-            <p className="stats-bar__title">{time} Min Sales</p>
-            <p className="stats-bar__text">
-              {salesStats ? salesStats.sales.length : 0}
-            </p>
-          </div>
-          <div className="stats-bar__item">
-            <p className="stats-bar__title">Momentum Indicator ({time}m)</p>
-            <p className="stats-bar__text">
-              {momentum(salesStats?.sales.length, listingsStats?.orders.length)}
-            </p>
+      <div className="stats">
+        <div className="stats-bar" onClick={handleDropDown}>
+          <div className="stats-bar__container">
+            <div className="stats-bar__item">
+              <p className="stats-bar__title">Floor Price</p>
+              <p className="stats-bar__text">
+                {floorPrice ? floorPrice.sources[0].floorAskPrice : "n/a"}
+              </p>
+            </div>
+            <div className="stats-bar__item">
+              <p className="stats-bar__title">Total Listings</p>
+              <p className="stats-bar__text">
+                {statsBar ? statsBar.stats.tokenListedCount : "n/a"}
+              </p>
+            </div>
+            <div className="stats-bar__item">
+              <p className="stats-bar__title">Total Supply</p>
+              <p className="stats-bar__text">
+                {statsBar ? statsBar.stats.totalSupply : "n/a"}
+              </p>
+            </div>
+            <div className="stats-bar__item">
+              <p className="stats-bar__title">{time} Min Listings</p>
+              <p className="stats-bar__text">
+                {listingsStats ? listingsStats.orders.length : 0}
+              </p>
+            </div>
+            <div className="stats-bar__item">
+              <p className="stats-bar__title">{time} Min Sales</p>
+              <p className="stats-bar__text">
+                {salesStats ? salesStats.sales.length : 0}
+              </p>
+            </div>
+            <div className="stats-bar__item">
+              <p className="stats-bar__title">Momentum Indicator ({time}m)</p>
+              <p className="stats-bar__text">
+                {momentum(
+                  salesStats?.sales.length,
+                  listingsStats?.orders.length
+                )}
+              </p>
+            </div>
           </div>
         </div>
+        {dropDown ? (
+          <div className="stats-bar">
+            <div className="stats-bar__container">
+              <div className="stats-bar__item">
+                <p className="stats-bar__title">24hr Listings</p>
+                <p className="stats-bar__text">40</p>
+              </div>
+              <div className="stats-bar__item">
+                <p className="stats-bar__title">24hr Sales</p>
+                <p className="stats-bar__text">30</p>
+              </div>
+              <div className="stats-bar__item">
+                <p className="stats-bar__title">Momentum Indicator (24hr)</p>
+                <p className="stats-bar__text">12</p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

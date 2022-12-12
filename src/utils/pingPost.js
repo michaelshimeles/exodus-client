@@ -11,8 +11,7 @@ const pingPost = (URL, body, setResult, freq) => {
       });
     return;
   }
-
-  setInterval(() => {
+  const intervalId = setInterval(() => {
     axios
       .post(URL, body)
       .then((response) => {
@@ -22,6 +21,8 @@ const pingPost = (URL, body, setResult, freq) => {
         console.log(error);
       });
   }, freq);
+
+  return intervalId;
 };
 
 export default pingPost;

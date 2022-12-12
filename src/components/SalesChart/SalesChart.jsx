@@ -33,7 +33,7 @@ const SalesChart = () => {
       setFloorChart,
       20000
     );
-  }, [URL]);
+  }, [URL, id]);
 
   const options = {
     scaleBeginAtZero: false,
