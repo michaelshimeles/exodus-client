@@ -18,7 +18,6 @@ const ListingsChart = () => {
     ping(`${URL}`, setLineChart, 10000);
   }, [URL]);
 
-  let delayed;
   
   const options = {
     responsive: true,
@@ -45,18 +44,6 @@ const ListingsChart = () => {
         },
       },
     },
-    // animation: {
-    //   onComplete: () => {
-    //     delayed = true;
-    //   },
-    //   delay: (context) => {
-    //     let delay = 0;
-    //     if (context.type === 'data' && context.mode === 'default' && !delayed) {
-    //       delay = context.dataIndex * 30 + context.datasetIndex * 10;
-    //     }
-    //     return delay;
-    //   },
-    // },
   };
 
   const data = {
