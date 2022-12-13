@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import Loading from "../../components/Loading/Loading";
 import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
+import eth from "../../assets/images/ethereum.svg"
 
 const Portfolio = () => {
   const [stats, setStats] = useState(null);
@@ -99,7 +100,7 @@ const Portfolio = () => {
               <Card
                 key={index}
                 name={collection?.collection?.name}
-                image={collection?.collection?.image}
+                image={collection?.collection?.image ? collection?.collection?.image : eth}
                 floorAskPrice={collection?.collection?.floorAskPrice}
                 floorSale={collection?.collection?.floorSale?.["1day"]}
                 volume={collection?.collection?.volume?.["1day"]}

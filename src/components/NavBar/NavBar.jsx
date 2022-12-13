@@ -58,7 +58,6 @@ const NavBar = () => {
             <div className="navbar__results">
               {result !== "" ? (
                 result.collections.map((search, index) => {
-                  // search.contract
                   return (
                     <Link
                       key={index}

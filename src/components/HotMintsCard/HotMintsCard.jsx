@@ -65,11 +65,11 @@ const HotMintsCard = ({
             </p>
           </div>
           <div className="mints-card__buttons">
-            <Link to={{ pathname: url }} target="_blank">
+            <a href={url} target="_blank" rel="noopener noreferrer">
               <div className="mints-card__btn">
                 <button type="button">Mint</button>
               </div>
-            </Link>
+            </a>
             <Link to={"/collection/" + contract_address}>
               <div className="mints-card__btn">
                 <button type="button">Data</button>

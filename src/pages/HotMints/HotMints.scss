@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-bottom: 5rem;
 
   &__container {
     display: flex;
@@ -32,11 +33,19 @@
     align-items: flex-end;
   }
 
+  &__select {
+    background-color: #202020;
+    color: white;
+    border-color: #131313;
+    padding: 0.3rem 0.5rem;
+  }
+
   &__card {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+    padding: 1rem 0;
   }
 }

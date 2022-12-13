@@ -35,7 +35,7 @@ const HotMints = () => {
         <HotMintsTitle />
         <div className="hotmints__cards">
           <form className="hotmints__form" onChange={clicked}>
-            <select id="time">
+            <select id="time" className="hotmints__select">
               <option id="time" value="5m">
                 5m
               </option>
