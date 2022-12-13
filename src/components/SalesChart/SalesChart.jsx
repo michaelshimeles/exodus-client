@@ -34,7 +34,6 @@ const SalesChart = () => {
       20000
     );
   }, [URL, id]);
-  let delayed;
 
   const options = {
     scaleBeginAtZero: false,
