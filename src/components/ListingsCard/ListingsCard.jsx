@@ -1,4 +1,5 @@
 import "./ListingsCard.scss";
+
 const ListingsCard = ({ image, tokenName, price, status, createdTime }) => {
   let currentTime = new Date().toUTCString().split(" ")[4].split(":");
   let newCreatedTime = createdTime.split("T")[1].split(".")[0].split(":");
@@ -6,7 +7,7 @@ const ListingsCard = ({ image, tokenName, price, status, createdTime }) => {
   // let hour = Number(currentTime[0]) - Number(newCreatedTime[0]);
   let minute = Number(currentTime[1]) - Number(newCreatedTime[1]);
   return (
-    <div className="listings">
+    <div className="listings" >
       <div className="listings__container">
         <img className="listings__img" src={image} alt="Listed NFT profile" />
         <div className="listings__info">

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import eth from "../../assets/images/ethereum.svg";
 import "./CollectionBio.scss";
-import Loading from "../Loading/Loading";
+import LoadingComp from "../LoadingComp/LoadingComp"
 import verified from "../../assets/images/verified.svg.png";
 import { TiArrowForward } from "react-icons/ti";
 
@@ -21,7 +21,7 @@ const CollectionBio = () => {
   }, [URL]);
 
   if (!bioStats) {
-    return <Loading />;
+    return <LoadingComp />;
   }
 
   return (

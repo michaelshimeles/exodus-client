@@ -3,7 +3,7 @@ import CollectionCard from "../../components/CollectionCard/CollectionCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Loading from "../Loading/Loading";
+import LoadingComp from "../LoadingComp/LoadingComp";
 
 const TopCollections = () => {
   const [topColletions, setTopCollections] = useState(null);
@@ -50,7 +50,7 @@ const TopCollections = () => {
           );
         })
       ) : (
-        <Loading />
+        <LoadingComp />
       )}
     </div>
   );

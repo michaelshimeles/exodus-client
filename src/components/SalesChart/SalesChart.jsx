@@ -61,31 +61,6 @@ const SalesChart = () => {
           display: true,
         },
       },
-      y: {
-        ticks: {
-          callback: function (dataLabel, index) {
-            return dataLabel < floorChart * 2 ? dataLabel : dataLabel;
-          },
-          beginAtZero: true,
-          fontSize: 16,
-          autoSkip: false,
-        },
-        scaleLabel: {
-          display: true,
-        },
-      },
-    },
-    animation: {
-      onComplete: () => {
-        delayed = true;
-      },
-      delay: (context) => {
-        let delay = 0;
-        if (context.type === "data" && context.mode === "default" && !delayed) {
-          delay = context.dataIndex * 30 + context.datasetIndex * 10;
-        }
-        return delay;
-      },
     },
   };
 
@@ -97,7 +72,8 @@ const SalesChart = () => {
           return {
             x: sales?.timestamp,
             y:
-              Number(sales?.priceInEth) < (Number(floorChart?.sources[0].floorAskPrice) * 2)
+              Number(sales?.priceInEth) <
+              Number(floorChart?.sources[0]?.floorAskPrice) * 2
                 ? sales?.priceInEth
                 : "",
           };

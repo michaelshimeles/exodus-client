@@ -9,7 +9,8 @@ import { useState, useEffect } from "react";
 import Loading from "../../components/Loading/Loading";
 import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
-import eth from "../../assets/images/ethereum.svg"
+import eth from "../../assets/images/ethereum.svg";
+import LoadingComp from "../../components/LoadingComp/LoadingComp";
 
 const Portfolio = () => {
   const [stats, setStats] = useState(null);
@@ -23,7 +24,7 @@ const Portfolio = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/portfolio/wallet/${id}`)
       .then((response) => {
-        console.log("Stats", response.data)
+        console.log("Stats", response.data);
         setStats(response.data);
       });
 
@@ -52,7 +53,7 @@ const Portfolio = () => {
     return (
       <div className="portfolio">
         <NavBar />
-        <Loading />
+        <LoadingComp />
       </div>
     );
   }
@@ -92,7 +93,9 @@ const Portfolio = () => {
               );
             })
           ) : (
-            <Loading />
+            <div className="portfolio__pie-loading">
+              <Loading />
+            </div>
           )
         ) : groupPortfolio ? (
           groupPortfolio.map((collection, index) => {
@@ -100,7 +103,11 @@ const Portfolio = () => {
               <Card
                 key={index}
                 name={collection?.collection?.name}
-                image={collection?.collection?.image ? collection?.collection?.image : eth}
+                image={
+                  collection?.collection?.image
+                    ? collection?.collection?.image
+                    : eth
+                }
                 floorAskPrice={collection?.collection?.floorAskPrice}
                 floorSale={collection?.collection?.floorSale?.["1day"]}
                 volume={collection?.collection?.volume?.["1day"]}

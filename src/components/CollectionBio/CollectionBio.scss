@@ -29,7 +29,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-
+    width: 100%;
   }
 
   &__name {
@@ -37,12 +37,12 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-
+    // width: 100%;
     font-size: 2.5rem;
 
     &-cta {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       width: 100%;
       color: rgba(white, 0.4);
@@ -54,6 +54,7 @@
 
     > p {
       font-weight: bold;
+      width: 100%;
 
       &:hover {
         background-image: linear-gradient(
@@ -87,7 +88,7 @@
     padding: 0.2rem;
 
     > p {
-      color: #90CDF4;
+      color: #90cdf4;
       font-size: 0.8rem;
       padding: 0.1rem 0.3rem;
       padding-top: 0.2rem;
@@ -97,12 +98,12 @@
   &__social {
     font-size: 1rem;
     text-decoration: none;
-    background-color:  #90cdf429;
+    background-color: #90cdf429;
     padding: 0.2rem;
     border-radius: 2px;
 
     > p {
-      color: #90CDF4;
+      color: #90cdf4;
       font-size: 0.8rem;
       padding: 0.1rem 0.3rem;
       padding-top: 0.2rem;

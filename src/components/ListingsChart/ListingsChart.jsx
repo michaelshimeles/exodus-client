@@ -45,18 +45,18 @@ const ListingsChart = () => {
         },
       },
     },
-    animation: {
-      onComplete: () => {
-        delayed = true;
-      },
-      delay: (context) => {
-        let delay = 0;
-        if (context.type === 'data' && context.mode === 'default' && !delayed) {
-          delay = context.dataIndex * 30 + context.datasetIndex * 10;
-        }
-        return delay;
-      },
-    },
+    // animation: {
+    //   onComplete: () => {
+    //     delayed = true;
+    //   },
+    //   delay: (context) => {
+    //     let delay = 0;
+    //     if (context.type === 'data' && context.mode === 'default' && !delayed) {
+    //       delay = context.dataIndex * 30 + context.datasetIndex * 10;
+    //     }
+    //     return delay;
+    //   },
+    // },
   };
 
   const data = {
