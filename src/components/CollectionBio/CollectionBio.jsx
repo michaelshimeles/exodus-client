@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import eth from "../../assets/images/ethereum.svg";
 import "./CollectionBio.scss";
 import Loading from "../Loading/Loading";
+import verified from "../../assets/images/verified.svg.png";
 
 const CollectionBio = () => {
   const [bioStats, setBioStats] = useState(null);
@@ -22,6 +23,7 @@ const CollectionBio = () => {
     return <Loading />;
   }
 
+  // bioStats.verified
   return (
     <div className="collection">
       <div className="collection-container">
@@ -35,18 +37,18 @@ const CollectionBio = () => {
         <div className="collection__info">
           <div className="collection__name">
             <p>{bioStats ? bioStats.name : ""}</p>
+            {bioStats.verified === true ? <img src={verified} /> : <></>}
           </div>
           <div className="collection__link">
             <div className="collection__site">
               <p>
-                Holders:{" "}
-                {bioStats.stats.holders ? bioStats.stats.holders : ""}
+                Holders:{" "}{bioStats?.stats.holders ? bioStats.stats.holders : ""}
               </p>
             </div>
             <div className="collection__social">
               <p>
                 Supply:{" "}
-                {bioStats.stats.totalSupply ? bioStats.stats.totalSupply : ""}
+                {bioStats?.stats.totalSupply ? bioStats.stats.totalSupply : ""}
               </p>
             </div>
           </div>

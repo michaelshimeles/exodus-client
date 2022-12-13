@@ -34,6 +34,7 @@ const SalesChart = () => {
       20000
     );
   }, [URL, id]);
+  let delayed;
 
   const options = {
     scaleBeginAtZero: false,
@@ -54,7 +55,7 @@ const SalesChart = () => {
           },
           fontSize: 16,
           autoSkip: false,
-          beginAtZero:true
+          beginAtZero: true,
         },
         scaleLabel: {
           display: true,
@@ -65,13 +66,25 @@ const SalesChart = () => {
           callback: function (dataLabel, index) {
             return dataLabel < floorChart * 2 ? dataLabel : dataLabel;
           },
-          beginAtZero:true,
+          beginAtZero: true,
           fontSize: 16,
           autoSkip: false,
         },
         scaleLabel: {
           display: true,
         },
+      },
+    },
+    animation: {
+      onComplete: () => {
+        delayed = true;
+      },
+      delay: (context) => {
+        let delay = 0;
+        if (context.type === "data" && context.mode === "default" && !delayed) {
+          delay = context.dataIndex * 30 + context.datasetIndex * 10;
+        }
+        return delay;
       },
     },
   };
@@ -83,7 +96,10 @@ const SalesChart = () => {
         data: salesChart?.map((sales) => {
           return {
             x: sales?.timestamp,
-            y: sales?.priceInEth,
+            y:
+              Number(sales?.priceInEth) < (Number(floorChart?.sources[0].floorAskPrice) * 2)
+                ? sales?.priceInEth
+                : "",
           };
         }),
       },

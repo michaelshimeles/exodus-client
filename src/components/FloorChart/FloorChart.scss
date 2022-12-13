@@ -23,6 +23,10 @@
     align-items: center;
     width: 100%;
     background-color: #131313;
+
+    &-line {
+      padding: 1rem;
+    }
   }
 
   &__volume {
@@ -33,6 +37,10 @@
     width: 100%;
     width: 100%;
     background-color: #131313;
+
+    &-bar {
+      padding: 1rem;
+    }
   }
 
 }

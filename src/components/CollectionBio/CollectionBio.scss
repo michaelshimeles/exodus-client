@@ -19,20 +19,30 @@
   }
 
   &__img {
-    width: 7rem;
+    width: 5rem;
     border-radius: 5rem;
+    height: 5rem;
   }
 
   &__info {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: flex-start;
-    height: 7rem;
+
   }
 
   &__name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
     font-size: 2.5rem;
+
+    > img {
+      width: 1.75rem;
+    }
 
     > p {
       font-weight: bold;
@@ -64,26 +74,30 @@
   &__site {
     font-size: 1rem;
     text-decoration: none;
-    background-color: #90cdf4;
+    background-color: #90cdf429;
     border-radius: 2px;
     padding: 0.2rem;
 
     > p {
-      color: rgb(0, 0, 0);
+      color: #90CDF4;
       font-size: 0.8rem;
+      padding: 0.1rem 0.3rem;
+      padding-top: 0.2rem;
     }
   }
 
   &__social {
     font-size: 1rem;
     text-decoration: none;
-    background-color: #90cdf4;
+    background-color:  #90cdf429;
     padding: 0.2rem;
     border-radius: 2px;
 
     > p {
-      color: rgb(0, 0, 0);
+      color: #90CDF4;
       font-size: 0.8rem;
+      padding: 0.1rem 0.3rem;
+      padding-top: 0.2rem;
     }
   }
 }

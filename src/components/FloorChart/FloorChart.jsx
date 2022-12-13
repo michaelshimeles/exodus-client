@@ -13,7 +13,6 @@ const FloorChart = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/volume/${id}`)
       .then((response) => {
-        console.log(response.data.collections);
         setFloorChart(response.data.collections);
       })
       .catch((error) => {
@@ -48,7 +47,18 @@ const FloorChart = () => {
         data: floorChart?.map((floor, index, array) => {
           let reverseArr = array[array.length - 1 - index];
           return {
-            x: new Date(Number(reverseArr?.timestamp) * 1000).toDateString(),
+            x:
+              new Date(Number(reverseArr?.timestamp) * 1000)
+                .toDateString()
+                .split(" ")[1] +
+              " " +
+              new Date(Number(reverseArr?.timestamp) * 1000)
+                .toDateString()
+                .split(" ")[2] +
+              " " +
+              new Date(Number(reverseArr?.timestamp) * 1000)
+                .toDateString()
+                .split(" ")[3],
             y: reverseArr?.volume,
           };
         }),
@@ -63,7 +73,18 @@ const FloorChart = () => {
         data: floorChart?.map((floor, index, array) => {
           let reverseArr = array[array.length - 1 - index];
           return {
-            x: new Date(Number(reverseArr?.timestamp) * 1000).toDateString(),
+            x:
+              new Date(Number(reverseArr?.timestamp) * 1000)
+                .toDateString()
+                .split(" ")[1] +
+              " " +
+              new Date(Number(reverseArr?.timestamp) * 1000)
+                .toDateString()
+                .split(" ")[2] +
+              " " +
+              new Date(Number(reverseArr?.timestamp) * 1000)
+                .toDateString()
+                .split(" ")[3],
             y: reverseArr?.floor_sell_value,
           };
         }),
@@ -75,11 +96,19 @@ const FloorChart = () => {
     <div className="floor-chart">
       <div className="floor-chart__volume">
         <h1 className="floor-chart__title">Volume Chart (1d)</h1>
-        <Bar data={dataLine} options={options}></Bar>
+        <Bar
+          data={dataLine}
+          options={options}
+          className="floor-chart__volume-bar"
+        ></Bar>
       </div>
       <div className="floor-chart__floor">
         <h1 className="floor-chart__title">Floor Chart (1d)</h1>
-        <Line data={dataBar} options={options}></Line>
+        <Line
+          data={dataBar}
+          options={options}
+          className="floor-chart__floor-line"
+        ></Line>
       </div>
     </div>
   );

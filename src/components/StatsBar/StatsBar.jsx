@@ -9,10 +9,11 @@ const StatsBar = () => {
   const [listingsStats, setListingsStats] = useState(null);
   const [time, setTime] = useState(5);
   const [floorPrice, setFloorPrice] = useState(null);
-  const { id } = useParams();
   const [dropDown, setDropDown] = useState(false);
   const [salesDayStats, setSalesDayStats] = useState(null);
   const [listingsDayStats, setListingsDayStats] = useState(null);
+
+  const { id } = useParams();
 
   useEffect(() => {
     axios
@@ -136,7 +137,7 @@ const StatsBar = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, [dropDown]);
+  }, [id, dropDown]);
 
   const momentum = (sales, listings) => {
     if (sales === listings && sales === 0) {
