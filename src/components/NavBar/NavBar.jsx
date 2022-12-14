@@ -98,7 +98,7 @@ const NavBar = () => {
         </div>
 
         <div className="navbar__links">
-          <p>Trending</p>
+          {/* <p>Trending</p> */}
           <Link to="/hotmints" className="navbar__portfolio">
             <p>Hot Mints</p>
           </Link>
