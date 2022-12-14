@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Meet Exodus
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Exodus is an NFT analytics platform that allows NFT traders to track, trade and analyze. All in one platform.
 
-## Available Scripts
+The thesis behind this project is "Data is good, Insights are Better, Actionable Insight is the Best" 
 
-In the project directory, you can run:
+## Tech Stack
 
-### `npm start`
+**Client:** React, HTML, SASS, Chart.JS, Axios, Ether.js, ConnectKit, WAGMI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Server:** Node, Express, Axios
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Search for any NFTs on the Ethereum Blockchain
+- Live Sales & Listings Data for each NFT collection
+- Momentum Indicator for each NFT collection
+- Tracking all new NFT collections as they launch 
+- Portfolio Breakdown
+- Trader Grade & Wallet Analysis
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Run Locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/michaelshimeles/Exodus-Client
+```
 
-### `npm run eject`
+Go to the project directory
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  cd Exodus-Client
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Start the server
 
-## Learn More
+```bash
+  npm run start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Environment Variables
 
-### Code Splitting
+To run this project, you will need to add the following environment variables to your .env file
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Client:
 
-### Analyzing the Bundle Size
+`REACT_APP_ALCHEMY_ID`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+`REACT_APP_URL`
 
-### Making a Progressive Web App
+Server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+`PORT`
 
-### Advanced Configuration
+`RESEVOIR_API_KEY`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`MODULE_API_KEY`
 
-### Deployment
+`FIVE_API_KEY`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+`ETH_SALES_API_KEY`
 
-### `npm run build` fails to minify
+`TRANSPOSE_API`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`NFT_PORT_API`
+
+`NFT_GO_API`
+## API Reference
+
+#### Please refer to the server repo for this project
+
+https://github.com/michaelshimeles/Exodus-Server
+
+
+## Screenshots
+
+### Homepage:
+![Homepage](https://user-images.githubusercontent.com/69605071/207727873-c7ece8d2-354b-4593-829d-5ff4ebdd73f9.png)
+
+### Terminal:
+![Terminal Page](https://user-images.githubusercontent.com/69605071/207727880-4eef6076-eb6b-402d-be4d-3973556499b3.png)
+
+### Terminal (More):
+![Terminal Page (More)](https://user-images.githubusercontent.com/69605071/207727868-66f8e88b-d8a7-46cf-a5fc-f07fd06b607a.png)
+
+### Hot Mints:
+![Hot Mints Page](https://user-images.githubusercontent.com/69605071/207727877-f10c0771-7310-46f3-8ae0-358a5f73beae.png)
+
+### Portfolio:
+![Portfolio Page](https://user-images.githubusercontent.com/69605071/207727878-948b4396-0a83-43d4-849d-ce782f1b6468.png)
+## Lessons Learned
+
+When building Exodus, the thesis behind this project was to present as much actionable data to the end user to make sound and educated decisions.
+
+The lessons I've learned are as follows:
+
+- Planning is just as important as development (at least if you want a smooth dev experience)
+- Always assuming requests will fail and planning what to do when the request fails 

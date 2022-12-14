@@ -62,6 +62,7 @@ const NavBar = () => {
               onChange={handleSearch}
               onBlur={result && search ? "" : handleBlur}
               onClick={handleSearch}
+              autoComplete="off"
             ></input>
             <div
               className="navbar__results"
