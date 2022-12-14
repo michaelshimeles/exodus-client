@@ -95,13 +95,13 @@ const SalesChart = () => {
           <option id="time" value="10">
             10m
           </option>
-          <option id="time" value="15" selected="selected">
+          <option id="time" value="15">
             15m
           </option>
           <option id="time" value="30">
             30m
           </option>
-          <option id="time" value="60">
+          <option id="time" value="60" selected="selected">
             1h
           </option>
           <option id="time" value="240">
