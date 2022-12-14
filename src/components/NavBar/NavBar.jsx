@@ -19,7 +19,7 @@ const NavBar = () => {
   }, [address]);
 
   const handleSearch = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     setSearch(event.target.value);
     console.log(event.target.value);
 
@@ -34,8 +34,16 @@ const NavBar = () => {
   };
 
   const handleBlur = () => {
-    setResult("")
-  }
+    if (result !== "")
+    {
+      setResult("")
+    }
+    return
+  };
+
+  // const handleBlurr = (event) => {
+  //   setResult(event.target.value)
+  // }
 
   return (
     <div className="navbar">
@@ -52,10 +60,13 @@ const NavBar = () => {
               className="navbar__input"
               placeholder="Search Collection..."
               onChange={handleSearch}
-              onBlur={handleBlur}
+              onBlur={result && search ? "" : handleBlur}
               onClick={handleSearch}
             ></input>
-            <div className="navbar__results">
+            <div
+              className="navbar__results"
+
+            >
               {result !== "" ? (
                 result.collections.map((search, index) => {
                   return (

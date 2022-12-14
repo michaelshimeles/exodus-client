@@ -1,10 +1,9 @@
 import "./ListingsCard.scss";
+import eth from "../../assets/images/ethereum.svg"
 
 const ListingsCard = ({ image, tokenName, price, status, createdTime }) => {
   let currentTime = new Date().toUTCString().split(" ")[4].split(":");
   let newCreatedTime = createdTime.split("T")[1].split(".")[0].split(":");
-
-  // let hour = Number(currentTime[0]) - Number(newCreatedTime[0]);
   let minute = Number(currentTime[1]) - Number(newCreatedTime[1]);
   return (
     <div className="listings" >

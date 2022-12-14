@@ -14,9 +14,9 @@ const SalesTable = () => {
   const URL = `${process.env.REACT_APP_URL}/sales/${id}`;
 
   useEffect(() => {
-      ping(`${URL}`, setSalesCards);
-      ping(`${URL}`, setSalesCards, 10000);
-  }, [URL]);
+    ping(`${URL}`, setSalesCards);
+    ping(`${URL}`, setSalesCards, 10000);
+  }, [URL, id]);
 
   return (
     <div className="sales-table">
@@ -24,12 +24,12 @@ const SalesTable = () => {
         salesCards.map((sales, index) => {
           return (
             <SalesCard
-              image={sales.image || eth}
-              price={sales.priceInEth}
-              orderSource={sales.orderSource}
-              tokenId={sales.tokenId}
+              image={sales?.image || eth}
+              price={sales?.priceInEth}
+              orderSource={sales?.orderSource}
+              tokenId={sales?.tokenId}
               key={index}
-              timestamp={sales.timestamp}
+              timestamp={sales?.timestamp}
             />
           );
         })

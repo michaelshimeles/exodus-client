@@ -2,38 +2,47 @@ import "./SalesChart.scss";
 import { Scatter } from "react-chartjs-2";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ping from "../../utils/ping";
 import pingPost from "../../utils/pingPost";
 
 const SalesChart = () => {
   const [salesChart, setSalesChart] = useState(null);
-  const [floorChart, setFloorChart] = useState(null);
+  // const [floorChart, setFloorChart] = useState(null);
+  const [time, setTime] = useState(60);
 
   const { id } = useParams();
 
   const URL = `${process.env.REACT_APP_URL}/sales/${id}`;
 
   useEffect(() => {
-    ping(`${URL}`, setSalesChart);
-    ping(`${URL}`, setSalesChart, 10000);
-
-    pingPost(
-      `${process.env.REACT_APP_URL}/floorprice`,
-      {
-        address: id,
-      },
-      setFloorChart
+    let end = Math.round(new Date() / 1000);
+    let start = Math.round(
+      (new Date().getTime() - Number(time) * 60 * 1000) / 1000
     );
-
     pingPost(
-      `${process.env.REACT_APP_URL}/floorprice`,
+      `${URL}`,
       {
-        address: id,
+        start: start,
+        end: end,
       },
-      setFloorChart,
-      20000
+      setSalesChart
     );
-  }, [URL, id]);
+    clearInterval(
+      pingPost(
+        `${URL}`,
+        {
+          start: start,
+          end: end,
+        },
+        setSalesChart,
+        10000
+      )
+    );
+  }, [URL, id, time]);
+
+  const clicked = (event) => {
+    console.log(event.target.value);
+    setTime(event.target.value);
+  };
 
   const options = {
     scaleBeginAtZero: false,
@@ -70,11 +79,7 @@ const SalesChart = () => {
         data: salesChart?.map((sales) => {
           return {
             x: sales?.timestamp,
-            y:
-              Number(sales?.priceInEth) <
-              Number(floorChart?.sources[0]?.floorAskPrice) * 2
-                ? sales?.priceInEth
-                : "",
+            y: sales?.priceInEth,
           };
         }),
       },
@@ -82,6 +87,43 @@ const SalesChart = () => {
   };
   return (
     <div className="sales-section">
+      <form onChange={clicked}>
+        <select className="sales-section__form" id="time">
+          <option id="time" value="5">
+            5m
+          </option>
+          <option id="time" value="10">
+            10m
+          </option>
+          <option id="time" value="15" selected="selected">
+            15m
+          </option>
+          <option id="time" value="30">
+            30m
+          </option>
+          <option id="time" value="60">
+            1h
+          </option>
+          <option id="time" value="240">
+            4h
+          </option>
+          <option id="time" value="720">
+            12h
+          </option>
+          <option id="time" value="1440">
+            24h
+          </option>
+          <option id="time" value="10080">
+            1w
+          </option>
+          <option id="time" value="40320">
+            1m
+          </option>
+          <option id="time" value="483840">
+            1y
+          </option>
+        </select>
+      </form>
       <Scatter className="sales-section__chart" options={options} data={data} />
     </div>
   );

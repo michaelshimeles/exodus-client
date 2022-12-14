@@ -23,6 +23,13 @@
     justify-content: flex-end;
     align-items: center;
     width: 85%;
+    height: auto;
+
+    &-lottie {
+      width: 3.125rem;
+      height: 3.125rem;
+    }
+    
 
     > button {
       border: none;

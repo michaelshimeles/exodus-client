@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import eth from "../../assets/images/ethereum.svg";
 import "./CollectionBio.scss";
-import LoadingComp from "../LoadingComp/LoadingComp"
+import LoadingComp from "../LoadingComp/LoadingComp";
 import verified from "../../assets/images/verified.svg.png";
 import { TiArrowForward } from "react-icons/ti";
 
@@ -37,19 +37,21 @@ const CollectionBio = () => {
         <div className="collection__info">
           <div className="collection__name">
             <p>{bioStats ? bioStats.name : ""}</p>
-            {bioStats.verified === true ? (
-              <img src={verified} alt="Verified badge" />
-            ) : (
-              <></>
-            )}
-            <a
-              href={bioStats?.socials?.external_url}
-              className="collection__name-cta"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <TiArrowForward />
-            </a>
+            <div className="collection__name-stats">
+              {bioStats.verified === true ? (
+                <img src={verified} alt="Verified badge" />
+              ) : (
+                <></>
+              )}
+              <a
+                href={bioStats?.socials?.external_url}
+                className="collection__name-cta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <TiArrowForward />
+              </a>
+            </div>
           </div>
           <div className="collection__link">
             <div className="collection__site">
