@@ -6,7 +6,6 @@ import pingPost from "../../utils/pingPost";
 
 const SalesChart = () => {
   const [salesChart, setSalesChart] = useState(null);
-  // const [floorChart, setFloorChart] = useState(null);
   const [time, setTime] = useState(60);
 
   const { id } = useParams();
@@ -40,7 +39,6 @@ const SalesChart = () => {
   }, [URL, id, time]);
 
   const clicked = (event) => {
-    console.log(event.target.value);
     setTime(event.target.value);
   };
 
@@ -87,8 +85,13 @@ const SalesChart = () => {
   };
   return (
     <div className="sales-section">
-      <form onChange={clicked}>
-        <select className="sales-section__form" id="time">
+      <form>
+        <select
+          className="sales-section__form"
+          id="time"
+          value={time}
+          onChange={clicked}
+        >
           <option id="time" value="5">
             5m
           </option>
@@ -101,7 +104,7 @@ const SalesChart = () => {
           <option id="time" value="30">
             30m
           </option>
-          <option id="time" value="60" selected="selected">
+          <option id="time" value="60">
             1h
           </option>
           <option id="time" value="240">

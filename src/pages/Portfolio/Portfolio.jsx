@@ -5,7 +5,6 @@ import PortfolioStats from "../../components/PortfolioStats/PortfolioStats";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import PortfolioPie from "../../components/PortfolioPie/PortfolioPie";
 import Loading from "../../components/Loading/Loading";
 import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
@@ -24,7 +23,6 @@ const Portfolio = () => {
     axios
       .get(`${process.env.REACT_APP_URL}/portfolio/wallet/${id}`)
       .then((response) => {
-        console.log("Stats", response.data);
         setStats(response.data);
       });
 
@@ -73,7 +71,6 @@ const Portfolio = () => {
           onClick={() => {
             setClicked(!clicked);
           }}
-          // className={clicked ? "flip-2-ver-right-1" : ""}
         >
           {clicked ? "📑 Not Grouped" : "🗂️ Grouped"}
         </button>

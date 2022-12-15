@@ -153,7 +153,6 @@ const StatsBar = () => {
 
   const clicked = (event) => {
     event.preventDefault();
-    console.log("Time", event.target.value);
     setTime(event.target.value);
   };
 

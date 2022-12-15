@@ -20,6 +20,7 @@ const FloorChart = () => {
       });
   }, [id]);
 
+  // Using chartjs to implement chart
   const options = {
     plugins: {
       legend: {

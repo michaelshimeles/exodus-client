@@ -21,7 +21,6 @@ const NavBar = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     setSearch(event.target.value);
-    console.log(event.target.value);
 
     axios
       .get(`${URL}/search/${event.target.value}`)
