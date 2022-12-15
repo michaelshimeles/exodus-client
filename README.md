@@ -1,17 +1,17 @@
-# Meet Exodus
+# Meet Exodus 🧠
 
 Exodus is an NFT analytics platform that allows NFT traders to track, trade and analyze. All in one platform.
 
 The thesis behind this project is "Data is good, Insights are Better, Actionable Insight is the Best" 
 
-## Tech Stack
+## 👾 Tech Stack
 
 **Client:** React, HTML, SASS, Chart.JS, Axios, Ether.js, ConnectKit, WAGMI
 
 **Server:** Node, Express, Axios
 
 
-## Features
+## 🎯 Features
 
 - Search for any NFTs on the Ethereum Blockchain
 - Live Sales & Listings Data for each NFT collection
@@ -21,7 +21,7 @@ The thesis behind this project is "Data is good, Insights are Better, Actionable
 - Trader Grade & Wallet Analysis
 
 
-## Run Locally
+## 🏃 Run Locally
 
 Clone the project
 
@@ -47,6 +47,7 @@ Start the server
   npm run start
 ```
 
+⚠️ NOTE: When running the app, console might output warnings from certain dependencies. These warnings do not cause any problems with the application.
 
 ## Environment Variables
 
@@ -75,6 +76,7 @@ Server:
 `NFT_PORT_API`
 
 `NFT_GO_API`
+
 ## API Reference
 
 #### Please refer to the server repo for this project
