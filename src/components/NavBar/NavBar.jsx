@@ -37,13 +37,6 @@ const NavBar = () => {
       });
   };
 
-  const handleBlur = () => {
-    if (result !== "") {
-      setResult("");
-    }
-    return result;
-  };
-
   return (
     <div className="navbar">
       <div className="navbar-container">
