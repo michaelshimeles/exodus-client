@@ -46,7 +46,7 @@ Start the server
   npm run start
 ```
 
-In order to run the server please refer to this repo:
+### In order to run the server please refer to this repo:
 
 https://github.com/michaelshimeles/Exodus-Server
 
