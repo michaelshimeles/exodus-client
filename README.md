@@ -41,10 +41,8 @@ Install dependencies
   npm install
 ```
 
-```
 In order to run the server please refer to this repo:
 https://github.com/michaelshimeles/Exodus-Server
-```
 
 ⚠️ NOTE: When running the app, console might output warnings from certain dependencies. These warnings do not cause any problems with the application.
 
