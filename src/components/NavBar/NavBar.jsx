@@ -5,6 +5,7 @@ import { ConnectKitButton } from "connectkit";
 import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import useOnclickOutside from "react-cool-onclickoutside";
 
 const NavBar = () => {
   const { address } = useAccount();
@@ -13,6 +14,10 @@ const NavBar = () => {
   const [result, setResult] = useState("");
 
   const URL = process.env.REACT_APP_URL;
+
+  const searchRef = useOnclickOutside(() => {
+    setResult("")
+  })
 
   useEffect(() => {
     setAddressState(address);
@@ -33,16 +38,11 @@ const NavBar = () => {
   };
 
   const handleBlur = () => {
-    if (result !== "")
-    {
-      setResult("")
+    if (result !== "") {
+      setResult("");
     }
-    return
+    return result;
   };
-
-  // const handleBlurr = (event) => {
-  //   setResult(event.target.value)
-  // }
 
   return (
     <div className="navbar">
@@ -51,7 +51,7 @@ const NavBar = () => {
           <Link to="/">
             <img className="navbar__img" src={logo} alt="Exodus logo" />
           </Link>
-          <form className="navbar__form">
+          <form className="navbar__form" ref={searchRef}>
             <input
               id="search"
               name="search"
@@ -59,14 +59,10 @@ const NavBar = () => {
               className="navbar__input"
               placeholder="Search Collection..."
               onChange={handleSearch}
-              onBlur={result && search ? "" : handleBlur}
               onClick={handleSearch}
               autoComplete="off"
             ></input>
-            <div
-              className="navbar__results"
-
-            >
+            <div className="navbar__results">
               {result !== "" ? (
                 result.collections.map((search, index) => {
                   return (
