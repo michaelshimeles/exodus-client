@@ -111,3 +111,7 @@ The lessons I've learned are as follows:
 
 - Planning is just as important as development (at least if you want a smooth dev experience)
 - Always assuming requests will fail and planning what to do when the request fails 
+- Using and implementing Chartjs to create live charts
+- Implementing Wallet authentication
+- Using Ether.js and Alchemy node to connect to the blockchain
+- Using Wagmi & ConnectKit for wallet connection
