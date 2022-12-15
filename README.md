@@ -26,7 +26,7 @@ The thesis behind this project is "Data is good, Insights are Better, Actionable
 Clone the project
 
 ```bash
-git clone https://github.com/michaelshimeles/Exodus-Client
+git clone git@github.com:michaelshimeles/Exodus-Client.git
 ```
 
 Go to the project directory
