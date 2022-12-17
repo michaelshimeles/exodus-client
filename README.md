@@ -60,6 +60,8 @@ Client:
 
 `REACT_APP_ALCHEMY_ID`
 
+For the Alchemy ID, you'll need to get API KEY from https://www.alchemy.com/
+
 `REACT_APP_URL`
 
 Server:
