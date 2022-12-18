@@ -10,7 +10,7 @@ import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
 import eth from "../../assets/images/ethereum.svg";
 import LoadingComp from "../../components/LoadingComp/LoadingComp";
-import UserActivity from "../../components/UserActivity/UserActivity"
+import UserActivity from "../../components/UserActivity/UserActivity";
 
 const Portfolio = () => {
   const [stats, setStats] = useState(null);
