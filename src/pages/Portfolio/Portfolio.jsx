@@ -10,12 +10,15 @@ import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
 import eth from "../../assets/images/ethereum.svg";
 import LoadingComp from "../../components/LoadingComp/LoadingComp";
+import UserActivity from "../../components/UserActivity/UserActivity"
 
 const Portfolio = () => {
   const [stats, setStats] = useState(null);
   const [collections, setCollections] = useState(null);
   const [groupPortfolio, setGroupPortfolio] = useState(null);
   const [clicked, setClicked] = useState(false);
+  const [txLog, setTxLog] = useState(null);
+  const [txClicked, setTxClicked] = useState(false);
 
   const { id } = useParams();
 
@@ -47,6 +50,17 @@ const Portfolio = () => {
       });
   }, [id, clicked]);
 
+  if (txClicked) {
+    axios
+      .get(`${process.env.REACT_APP_URL}/owner/activity/${id}`)
+      .then((response) => {
+        setTxLog(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   if (!stats) {
     return (
       <div className="portfolio">
@@ -69,57 +83,75 @@ const Portfolio = () => {
       <div className="portfolio__button">
         <button
           onClick={() => {
-            setClicked(!clicked);
+            setTxClicked(!txClicked);
+            console.log(txLog);
           }}
         >
-          {clicked ? "📑 Not Grouped" : "🗂️ Grouped"}
+          {txClicked ? "📊 Portfolio" : "🧾 Tx Log"}
         </button>
       </div>
-      <div className="portfolio__pie">
-        {clicked ? (
-          collections ? (
-            collections.map((collection, index) => {
+      <div className="portfolio__button">
+        {!txClicked ? (
+          <button
+            onClick={() => {
+              setClicked(!clicked);
+            }}
+          >
+            {clicked ? "📑 Not Grouped" : "🗂️ Grouped"}
+          </button>
+        ) : (
+          <></>
+        )}
+      </div>
+      {!txClicked ? (
+        <div className="portfolio__pie">
+          {clicked ? (
+            collections ? (
+              collections.map((collection, index) => {
+                return (
+                  <Card
+                    key={index}
+                    name={collection?.metadata?.name}
+                    image={collection?.cached_file_url}
+                    tokenId={collection?.token_id}
+                    address={collection?.contract_address}
+                  />
+                );
+              })
+            ) : (
+              <div className="portfolio__pie-loading">
+                <Loading />
+              </div>
+            )
+          ) : groupPortfolio ? (
+            groupPortfolio.map((collection, index) => {
               return (
                 <Card
                   key={index}
-                  name={collection?.metadata?.name}
-                  image={collection?.cached_file_url}
-                  tokenId={collection?.token_id}
-                  address={collection?.contract_address}
+                  name={collection?.collection?.name}
+                  image={
+                    collection?.collection?.image
+                      ? collection?.collection?.image
+                      : eth
+                  }
+                  floorAskPrice={collection?.collection?.floorAskPrice}
+                  floorSale={collection?.collection?.floorSale?.["1day"]}
+                  volume={collection?.collection?.volume?.["1day"]}
+                  liquidCount={collection?.collection?.ownership?.liquidCount}
+                  tokenCount={collection?.ownership?.tokenCount}
+                  address={collection?.collection?.id}
+                  clicked={clicked}
+                  setClicked={setClicked}
                 />
               );
             })
           ) : (
-            <div className="portfolio__pie-loading">
-              <Loading />
-            </div>
-          )
-        ) : groupPortfolio ? (
-          groupPortfolio.map((collection, index) => {
-            return (
-              <Card
-                key={index}
-                name={collection?.collection?.name}
-                image={
-                  collection?.collection?.image
-                    ? collection?.collection?.image
-                    : eth
-                }
-                floorAskPrice={collection?.collection?.floorAskPrice}
-                floorSale={collection?.collection?.floorSale?.["1day"]}
-                volume={collection?.collection?.volume?.["1day"]}
-                liquidCount={collection?.collection?.ownership?.liquidCount}
-                tokenCount={collection?.ownership?.tokenCount}
-                address={collection?.collection?.id}
-                clicked={clicked}
-                setClicked={setClicked}
-              />
-            );
-          })
-        ) : (
-          <Loading />
-        )}
-      </div>
+            <Loading />
+          )}
+        </div>
+      ) : (
+        <UserActivity />
+      )}
       <Footer />
     </div>
   );
