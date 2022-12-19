@@ -51,6 +51,7 @@ const Footer = () => {
                   which indicates the amount of interest the market has for
                   NFTs.
                   <br /> 
+                  <br /> 
                   ❄️ (between 1 and 40)
                   <br />
                   🌫️ (between 40 and 60)
