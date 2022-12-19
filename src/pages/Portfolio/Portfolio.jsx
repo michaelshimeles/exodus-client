@@ -50,7 +50,7 @@ const Portfolio = () => {
       });
   }, [id, clicked]);
 
-  if (txClicked) {
+  useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_URL}/owner/activity/${id}`)
       .then((response) => {
@@ -59,7 +59,7 @@ const Portfolio = () => {
       .catch((error) => {
         console.log(error);
       });
-  }
+  }, [txClicked, id]);
 
   if (!stats) {
     return (
@@ -150,7 +150,28 @@ const Portfolio = () => {
           )}
         </div>
       ) : (
-        <UserActivity />
+        <div className="portfolio__activity">
+          {[...txLog?.activities].reverse().map((info, index) => {
+            console.log(txLog)
+            return (
+              <UserActivity
+                key={index}
+                type={info.type}
+                fromAddress={info.fromAddress}
+                toAddress={info.toAddress}
+                price={info.price}
+                timestamp={info.timestamp}
+                amount={info.amount}
+                contract={info.contract}
+                tokenImage={info.token.tokenImage}
+                tokenName={info.token.tokenName}
+                collectionId={info.collection.collectionId}
+                txHash={info.txHash}
+                myAddress={id}
+              />
+            );
+          })}
+        </div>
       )}
       <Footer />
     </div>
