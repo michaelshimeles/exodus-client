@@ -50,6 +50,12 @@ const Footer = () => {
                   <br />
                   which indicates the amount of interest the market has for
                   NFTs.
+                  <br /> 
+                  ❄️ (between 1 and 40)
+                  <br />
+                  🌫️ (between 40 and 60)
+                  <br />
+                  🔥 (between 60 and 100)
                 </p>
               </div>
             ) : (
@@ -62,7 +68,7 @@ const Footer = () => {
                 sentiment?.market_sentiment?.score > 40
               ? "🌫️"
               : "❄️"}{" "}
-            {sentiment?.market_sentiment?.score}
+            {sentiment ? sentiment.market_sentiment?.score : ""}
           </p>
           <p className="footer__price-text">
             ${price} <span className="footer__price-currency">USD/ETH</span>
