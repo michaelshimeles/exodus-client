@@ -42,9 +42,9 @@ const UserActivity = ({
           <div className="user-activity__action">
             <div className="user-activity__img-type">
               {tokenImage !== null ? (
-                <img src={tokenImage} />
+                <img src={tokenImage} alt="Token"/>
               ) : (
-                <img src={eth} />
+                <img src={eth} alt="Token"/>
               )}
               <p>{typeFunc(type, fromAddress, toAddress, myAddress)}</p>
             </div>

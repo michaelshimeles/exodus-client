@@ -1,5 +1,4 @@
 import "./ListingsCard.scss";
-import eth from "../../assets/images/ethereum.svg"
 
 const ListingsCard = ({ image, tokenName, price, status, createdTime }) => {
   let currentTime = new Date().toUTCString().split(" ")[4].split(":");
