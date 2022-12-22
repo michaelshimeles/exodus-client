@@ -1,9 +1,11 @@
 @use "/src/styles/partials/fonts" as *;
+@use "src/styles/partials/mixins" as *;
+@use "src/styles//partials/variables" as *;
 
 * {
     box-sizing: border-box;
     margin:0%;
-    font-family: 'Consola Bold';
+    font-family: "Consola Bold";
     scroll-behavior: smooth;
 }
 

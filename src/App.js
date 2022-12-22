@@ -6,6 +6,10 @@ import Portfolio from "./pages/Portfolio/Portfolio";
 import HotMints from "./pages/HotMints/HotMints";
 import { WagmiConfig, createClient } from "wagmi";
 import { ConnectKitProvider, getDefaultClient } from "connectkit";
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+
+const queryClient = new QueryClient();
 
 const alchemyId = process.env.REACT_APP_ALCHEMY_ID;
 
@@ -18,24 +22,27 @@ const client = createClient(
 
 function App() {
   return (
-    <WagmiConfig client={client}>
-      <ConnectKitProvider
-        theme="midnight"
-        customTheme={{
-          "--ck-font-family": '"Open Sans", sans-serif',
-        }}
-      >
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/collection/:id" element={<Terminal />} />
-            <Route path="/portfolio/:id" element={<Portfolio />} />
-            <Route path="/hotmints" element={<HotMints />} />
-            <Route path="*" element={<Homepage />} />
-          </Routes>
-        </BrowserRouter>
-      </ConnectKitProvider>
-    </WagmiConfig>
+    <QueryClientProvider client={queryClient}>
+      <WagmiConfig client={client}>
+        <ConnectKitProvider
+          theme="midnight"
+          customTheme={{
+            "--ck-font-family": '"Open Sans", sans-serif',
+          }}
+        >
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/collection/:id" element={<Terminal />} />
+              <Route path="/portfolio/:id" element={<Portfolio />} />
+              <Route path="/hotmints" element={<HotMints />} />
+              <Route path="*" element={<Homepage />} />
+            </Routes>
+          </BrowserRouter>
+        </ConnectKitProvider>
+      </WagmiConfig>
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right"/>
+    </QueryClientProvider>
   );
 }
 

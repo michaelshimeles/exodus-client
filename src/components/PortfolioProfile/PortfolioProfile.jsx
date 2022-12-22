@@ -12,7 +12,6 @@ const PortfolioProfile = ({ ens, totalValue, scores, labels }) => {
           </div>
           <div className="profile__value">
             <p className="profile__address">{ens ? ens : ""}</p>
-            {/* <p className="profile__usd">$36.35</p> */}
             <p className="profile__eth">Ξ{totalValue}</p>
           </div>
         </div>

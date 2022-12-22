@@ -1,8 +1,8 @@
 import "./HeroSection.scss";
-import MoonBird from "../../assets/images/moonbird.png";
-import Azuki from "../../assets/images/azuki.png";
-import MekaVerse from "../../assets/images/mekaverse.png";
-import { Link } from "react-router-dom";
+// import MoonBird from "../../assets/images/moonbird.png";
+// import Azuki from "../../assets/images/azuki.png";
+// import MekaVerse from "../../assets/images/mekaverse.png";
+// import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -13,7 +13,7 @@ const HeroSection = () => {
           Your favorite NFT toolkit. Analyze, Trade, & Track all in one platform
         </p>
       </div>
-      <div className="hero__img">
+      {/* <div className="hero__img">
         <Link
           to="/collection/0x9a534628b4062e123ce7ee2222ec20b86e16ca8f"
           className="hero__img-link"
@@ -32,7 +32,7 @@ const HeroSection = () => {
         >
           <img className="hero__img-item" src={Azuki} alt="Azuki NFT" />
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };

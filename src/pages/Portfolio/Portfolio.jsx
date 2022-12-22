@@ -2,64 +2,31 @@ import NavBar from "../../components/NavBar/NavBar";
 import PortfolioProfile from "../../components/PortfolioProfile/PortfolioProfile";
 import "./Portfolio.scss";
 import PortfolioStats from "../../components/PortfolioStats/PortfolioStats";
-import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Loading from "../../components/Loading/Loading";
 import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
 import eth from "../../assets/images/ethereum.svg";
 import LoadingComp from "../../components/LoadingComp/LoadingComp";
 import UserActivity from "../../components/UserActivity/UserActivity";
+import { usePortfolioStats } from "../../hooks/usePortfolioStats";
+import { usePortfolioCollection } from "../../hooks/usePortfolioCollection";
+import { usePortfolioGrouped } from "../../hooks/usePortfolioGrouped";
+import { useTransactionLog } from "../../hooks/useTransactionLog";
 
 const Portfolio = () => {
-  const [stats, setStats] = useState(null);
-  const [collections, setCollections] = useState(null);
-  const [groupPortfolio, setGroupPortfolio] = useState(null);
   const [clicked, setClicked] = useState(false);
-  const [txLog, setTxLog] = useState(null);
   const [txClicked, setTxClicked] = useState(false);
 
   const { id } = useParams();
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_URL}/portfolio/wallet/${id}`)
-      .then((response) => {
-        setStats(response.data);
-      });
+  const { data: stats } = usePortfolioStats(id);
+  const { data: collections } = usePortfolioCollection(id);
+  const { data: groupPortfolio } = usePortfolioGrouped(id);
+  const { data: txLog } = useTransactionLog(id);
 
-    axios
-      .get(`${process.env.REACT_APP_URL}/portfolio/collections/${id}`)
-      .then((response) => {
-        setCollections(response.data.nfts);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
-
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_URL}/portfolio/grouped/${id}`)
-      .then((response) => {
-        setGroupPortfolio(response.data.collections);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id, clicked]);
-
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_URL}/owner/activity/${id}`)
-      .then((response) => {
-        setTxLog(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [txClicked, id]);
+  console.log(txLog);
 
   if (!stats) {
     return (
@@ -74,12 +41,12 @@ const Portfolio = () => {
     <div className="portfolio">
       <NavBar />
       <PortfolioProfile
-        ens={stats?.ensName ? stats.ensName : stats.address}
-        totalValue={stats.portfolioStats?.totalPortfolioValue}
-        scores={stats?.scores}
-        labels={stats?.labels}
+        ens={stats?.data?.ensName ? stats?.data.ensName : stats?.data.address}
+        totalValue={stats?.data.portfolioStats?.totalPortfolioValue}
+        scores={stats?.data?.scores}
+        labels={stats?.data?.labels}
       />
-      <PortfolioStats stats={stats.transferCounts} />
+      <PortfolioStats stats={stats?.data.transferCounts} />
       <div className="portfolio__button">
         <button
           onClick={() => {
@@ -107,7 +74,7 @@ const Portfolio = () => {
         <div className="portfolio__pie">
           {clicked ? (
             collections ? (
-              collections.map((collection, index) => {
+              collections?.data?.nfts.map((collection, index) => {
                 return (
                   <Card
                     key={index}
@@ -124,7 +91,7 @@ const Portfolio = () => {
               </div>
             )
           ) : groupPortfolio ? (
-            groupPortfolio.map((collection, index) => {
+            groupPortfolio?.data?.collections.map((collection, index) => {
               return (
                 <Card
                   key={index}
@@ -151,8 +118,8 @@ const Portfolio = () => {
         </div>
       ) : (
         <div className="portfolio__activity">
-          {[...txLog?.activities].reverse().map((info, index) => {
-            console.log(txLog)
+          {[...txLog?.data?.activities].reverse().map((info, index) => {
+            console.log(txLog);
             return (
               <UserActivity
                 key={index}
