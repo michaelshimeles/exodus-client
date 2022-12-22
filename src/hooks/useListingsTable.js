@@ -8,7 +8,6 @@ const fetchListingsCard = ({ queryKey }) => {
 
 export const useListingsTable = (id) => {
   return useQuery(["listings-table", id], fetchListingsCard, {
-    cacheTime: 0,
     refetchInterval: 5000,
     // refetchIntervalInBackground: true // refreshes data while out of focus
   });

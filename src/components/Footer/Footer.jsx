@@ -1,33 +1,20 @@
-import axios from "axios";
-import { useEffect } from "react";
 import { useState } from "react";
+import { useQuery } from "react-query";
+import axios from "axios";
 import "./Footer.scss";
 const Footer = () => {
-  const [price, setPrice] = useState("");
-  const [sentiment, setSentiment] = useState(null);
   const [hover, setHover] = useState(false);
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_URL}/gas`)
-      .then((response) => {
-        setPrice(response.data.data.priceUSD);
-      })
-      .catch((error) => {
-        console.log("Gas error", error);
-      });
-  }, []);
+  const fetchGas = () => {
+    return axios.get(`${process.env.REACT_APP_URL}/gas`);
+  };
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_URL}/metrics`)
-      .then((response) => {
-        setSentiment(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const fetchMetrics = () => {
+    return axios.get(`${process.env.REACT_APP_URL}/metrics`);
+  };
+
+  const { data: price } = useQuery("gas", fetchGas);
+  const { data: sentiment } = useQuery("metrics", fetchMetrics);
 
   return (
     <div className="footer">
@@ -50,8 +37,8 @@ const Footer = () => {
                   <br />
                   which indicates the amount of interest the market has for
                   NFTs.
-                  <br /> 
-                  <br /> 
+                  <br />
+                  <br />
                   ❄️ (between 1 and 40)
                   <br />
                   🌫️ (between 40 and 60)
@@ -65,14 +52,15 @@ const Footer = () => {
             <span className="footer__market">Market Sentiment: </span>{" "}
             {sentiment?.market_sentiment?.score > 60
               ? "🔥"
-              : sentiment?.market_sentiment?.score < 60 &&
-                sentiment?.market_sentiment?.score > 40
+              : sentiment?.data?.market_sentiment?.score < 60 &&
+                sentiment?.data?.market_sentiment?.score > 40
               ? "🌫️"
               : "❄️"}{" "}
-            {sentiment ? sentiment.market_sentiment?.score : ""}
+            {sentiment ? sentiment?.data?.market_sentiment?.score : ""}
           </p>
           <p className="footer__price-text">
-            ${price} <span className="footer__price-currency">USD/ETH</span>
+            ${price?.data?.data?.priceUSD}{" "}
+            <span className="footer__price-currency">USD/ETH</span>
           </p>
           <span className="blink_me"></span>
         </div>
