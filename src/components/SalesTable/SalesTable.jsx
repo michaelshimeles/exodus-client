@@ -20,7 +20,7 @@ const SalesTable = () => {
               price={sales?.priceInEth}
               orderSource={sales?.orderSource}
               tokenId={sales?.tokenId}
-              key={index}
+              key={sales?.id}
               timestamp={sales?.timestamp}
             />
           );

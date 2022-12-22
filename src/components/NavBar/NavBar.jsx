@@ -1,6 +1,6 @@
 import "./NavBar.scss";
 import logo from "../../assets/logo/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ConnectKitButton } from "connectkit";
 import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
@@ -15,11 +15,9 @@ const NavBar = () => {
 
   const URL = process.env.REACT_APP_URL;
 
-  const redirect = useNavigate()
-
   const searchRef = useOnclickOutside(() => {
-    setResult("")
-  })
+    setResult("");
+  });
 
   useEffect(() => {
     setAddressState(address);
@@ -60,15 +58,16 @@ const NavBar = () => {
             <div className="navbar__results">
               {result !== "" ? (
                 result.collections.map((search, index) => {
+                  console.log(search?.collectionId);
                   return (
-                    <div
-                      key={index}
+                    <Link
+                      key={search?.collectionId}
                       className="navbar__link"
                       onClick={() => {
-                        setResult("")
-                        setSearch("")
-                        redirect("/collection/" + search?.contract)
+                        setResult("");
+                        setSearch("");
                       }}
+                      to={"/collection/" + search?.contract}
                     >
                       <div className="navbar__image">
                         <img src={search?.image} alt="Search result" />
@@ -81,7 +80,7 @@ const NavBar = () => {
                           <p>🔵</p>
                         )}
                       </div>
-                    </div>
+                    </Link>
                   );
                 })
               ) : (

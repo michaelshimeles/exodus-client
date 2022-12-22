@@ -1,18 +1,21 @@
 import "./TopCollections.scss";
-import { useQuery } from "react-query";
 import CollectionCard from "../../components/CollectionCard/CollectionCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import LoadingComp from "../LoadingComp/LoadingComp";
+import { useTopCollections } from "../../hooks/useTopCollections";
 
 const TopCollections = () => {
   const [trending, setTrending] = useState(null);
   const [topColClicked, setTopColClicked] = useState(true);
   const [time, setTime] = useState("5m");
 
-  const { data: topCol } = useQuery("top-collections", () => {
-    return axios.get(`${process.env.REACT_APP_URL}/topcollections`);
-  });
+  const { data: topCol, isLoading: topColLoading } = useTopCollections();
+
+  if (topColLoading) {
+    <LoadingComp />;
+  }
 
   useEffect(() => {
     axios
@@ -132,12 +135,12 @@ const TopCollections = () => {
         <p className="collections__table-item">Change %</p>
       </div>
       {topColClicked
-        ? topCol?.data?.collections.map((collection, index) => {
+        ? topCol?.data?.collections.map((collection) => {
             return (
               <Link
                 to={"/collection/" + collection.id}
                 className="collections__table-link"
-                key={index}
+                key={collection?.id}
               >
                 <CollectionCard
                   image={collection.sampleImages[0]}

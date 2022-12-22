@@ -37,6 +37,22 @@ const Portfolio = () => {
     );
   }
 
+  if (!collections) {
+    return (
+      <div className="portfolio">
+        <NavBar />
+        <PortfolioProfile
+          ens={stats?.data?.ensName ? stats?.data.ensName : stats?.data.address}
+          totalValue={stats?.data.portfolioStats?.totalPortfolioValue}
+          scores={stats?.data?.scores}
+          labels={stats?.data?.labels}
+        />
+        <PortfolioStats stats={stats?.data.transferCounts} />
+        <LoadingComp />
+      </div>
+    );
+  }
+
   return (
     <div className="portfolio">
       <NavBar />

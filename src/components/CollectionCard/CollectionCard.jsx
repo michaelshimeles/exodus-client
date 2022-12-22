@@ -29,7 +29,6 @@ const CollectionCard = ({
         address: address,
       })
       .then((response) => {
-        console.log(response.data);
         let answer = response.data?.sources
           ? response.data?.sources[0]?.floorAskPrice
             ? response.data?.sources[1]?.floorAskPrice

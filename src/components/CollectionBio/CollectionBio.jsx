@@ -1,23 +1,15 @@
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import eth from "../../assets/images/ethereum.svg";
 import "./CollectionBio.scss";
 import LoadingComp from "../LoadingComp/LoadingComp";
 import verified from "../../assets/images/verified.svg.png";
 import { TiArrowForward } from "react-icons/ti";
-import { useQuery } from "react-query";
+import { useBioStats } from "../../hooks/useBioStats";
 
 const CollectionBio = () => {
-
   const { id } = useParams();
 
-  const fetchBioStats = () => {
-    return axios.get(`${process.env.REACT_APP_URL}/info/${id}`);
-  };
-
-  const { data: bioStats, isLoading } = useQuery("bio-stats", fetchBioStats, {
-    cacheTime: 0, // no caching
-  });
+  const { data: bioStats, isLoading } = useBioStats(id)
 
   if (isLoading) {
     return <LoadingComp />;

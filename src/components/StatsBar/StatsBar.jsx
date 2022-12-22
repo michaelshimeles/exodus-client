@@ -3,8 +3,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import pingPost from "../../utils/pingPost";
+import { useStatsBar } from "../../hooks/useStatsBar";
 const StatsBar = () => {
-  const [statsBar, setStatsBar] = useState(null);
   const [salesStats, setSalesStats] = useState(null);
   const [listingsStats, setListingsStats] = useState(null);
   const [time, setTime] = useState(5);
@@ -15,17 +15,8 @@ const StatsBar = () => {
 
   const { id } = useParams();
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_URL}/info/${id}`)
-      .then((response) => {
-        setStatsBar(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id, time, dropDown]);
-
+  const { data: statsBar } = useStatsBar(id);
+  
   // Floor Price
   useEffect(() => {
     pingPost(
@@ -193,13 +184,13 @@ const StatsBar = () => {
             <div className="stats-bar__item">
               <p className="stats-bar__title">Total Listings</p>
               <p className="stats-bar__text">
-                {statsBar ? statsBar.stats?.tokenListedCount : "n/a"}
+                {statsBar ? statsBar?.data?.stats?.tokenListedCount : "n/a"}
               </p>
             </div>
             <div className="stats-bar__item">
               <p className="stats-bar__title">Total Supply</p>
               <p className="stats-bar__text">
-                {statsBar ? statsBar.stats?.totalSupply : "n/a"}
+                {statsBar ? statsBar?.data?.stats?.totalSupply : "n/a"}
               </p>
             </div>
             <div className="stats-bar__item">
