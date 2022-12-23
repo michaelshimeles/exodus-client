@@ -3,7 +3,7 @@ import eth from "../../assets/images/ethereum.svg";
 import "./CollectionBio.scss";
 import LoadingComp from "../LoadingComp/LoadingComp";
 import verified from "../../assets/images/verified.svg.png";
-import { TiArrowForward } from "react-icons/ti";
+// import { TiArrowForward } from "react-icons/ti";
 import { useBioStats } from "../../hooks/useBioStats";
 
 const CollectionBio = () => {
@@ -34,14 +34,14 @@ const CollectionBio = () => {
               ) : (
                 <></>
               )}
-              <a
+              {/* <a
                 href={bioStats?.data?.socials?.external_url}
                 className="collection__name-cta"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <TiArrowForward />
-              </a>
+              </a> */}
             </div>
           </div>
           <div className="collection__link">
