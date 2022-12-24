@@ -1,8 +1,6 @@
 import "./StatsBar.scss";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
-import pingPost from "../../utils/pingPost";
 import { useStatsBar } from "../../hooks/useStatsBar";
 import { useFloorPrice } from "../../hooks/useFloorPrice";
 import { useSalesStats } from "../../hooks/useSalesStats";
@@ -16,9 +14,9 @@ const StatsBar = () => {
   const { data: statsBar } = useStatsBar(id);
   const { data: floorPrice } = useFloorPrice(id);
   const { data: salesStats } = useSalesStats(id, time);
-  const { data: listingsStats} = useListingsStats(id, time)
+  const { data: listingsStats } = useListingsStats(id, time);
 
-  console.log("listingsStats", listingsStats)
+  console.log("listingsStats", listingsStats);
 
   const momentum = (sales, listings) => {
     if (sales === listings && sales === 0) {
