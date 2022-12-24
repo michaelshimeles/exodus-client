@@ -16,7 +16,6 @@ const StatsBar = () => {
   const { data: salesStats } = useSalesStats(id, time);
   const { data: listingsStats } = useListingsStats(id, time);
 
-  console.log("listingsStats", listingsStats);
 
   const momentum = (sales, listings) => {
     if (sales === listings && sales === 0) {

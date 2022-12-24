@@ -1,28 +1,16 @@
 import HotMintsTitle from "../../components/HotMintsTitle/HotMintsTitle";
 import NavBar from "../../components/NavBar/NavBar";
 import HotMintsCard from "../../components/HotMintsCard/HotMintsCard";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import "./HotMints.scss";
 import Loading from "../../components/Loading/Loading";
 import Footer from "../../components/Footer/Footer";
+import { useHotMints } from "../../hooks/useHotMints";
 
 const HotMints = () => {
-  const [hotMints, setHotMints] = useState(null);
   const [time, setTime] = useState("5m");
 
-  useEffect(() => {
-    axios
-      .post(`${process.env.REACT_APP_URL}/hotmints`, {
-        time: time,
-      })
-      .then((response) => {
-        setHotMints(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [time]);
+  const { data: hotMints, refetch } = useHotMints(time);
 
   const clicked = (event) => {
     setTime(event.target.value);
@@ -34,7 +22,7 @@ const HotMints = () => {
       <div className="hotmints__container">
         <HotMintsTitle />
         <div className="hotmints__cards">
-          <form className="hotmints__form" onChange={clicked}>
+          <form className="hotmints__form" onChange={clicked} onClick={refetch}>
             <select id="time" className="hotmints__select">
               <option id="time" value="5m">
                 5m
@@ -70,18 +58,18 @@ const HotMints = () => {
           </form>
           <div className="hotmints__card">
             {hotMints ? (
-              hotMints.top_mint_collection_items.map((mint, index) => {
+              hotMints?.data?.top_mint_collection_items.map((mint, index) => {
                 return (
                   <HotMintsCard
                     key={index}
-                    name={mint.collection_name}
-                    url={mint.contract_url}
-                    mint_num={mint.mint_num}
-                    volume={mint.mint_volume.value}
-                    minter_num={mint.minter_num}
-                    whale_num={mint.whale_num}
-                    fomo={mint.fomo}
-                    contract_address={mint.contract_address}
+                    name={mint?.collection_name}
+                    url={mint?.contract_url}
+                    mint_num={mint?.mint_num}
+                    volume={mint?.mint_volume?.value}
+                    minter_num={mint?.minter_num}
+                    whale_num={mint?.whale_num}
+                    fomo={mint?.fomo}
+                    contract_address={mint?.contract_address}
                     time={time}
                   />
                 );
