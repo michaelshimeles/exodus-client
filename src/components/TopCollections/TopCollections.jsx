@@ -11,9 +11,9 @@ const TopCollections = () => {
   const [topColClicked, setTopColClicked] = useState(true);
   const [time, setTime] = useState("5m");
 
-  const { data: topCol, isLoading: topColLoading } = useTopCollections();
+  const { data: topCol, isLoading: topColLoading, isFetching } = useTopCollections();
 
-  if (topColLoading) {
+  if (topColLoading && isFetching) {
     <LoadingComp />;
   }
 

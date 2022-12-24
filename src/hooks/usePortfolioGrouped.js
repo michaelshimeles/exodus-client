@@ -7,5 +7,8 @@ const fetchPortfolioGrouped = ({ queryKey }) => {
 };
 
 export const usePortfolioGrouped = (id) => {
-  return useQuery(["portfolio-grouped", id], fetchPortfolioGrouped);
+  return useQuery(["portfolio-grouped", id], fetchPortfolioGrouped, {
+    cacheTime: 8.64e+7,
+    refetchInterval: 60000,
+  });
 };

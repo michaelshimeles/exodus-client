@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 
 const fetchBioStats = ({ queryKey }) => {
@@ -7,5 +7,25 @@ const fetchBioStats = ({ queryKey }) => {
 };
 
 export const useBioStats = (id) => {
-  return useQuery(["bio-stats", id], fetchBioStats);
+  const queryClient = useQueryClient();
+  return useQuery(["bio-stats", id], fetchBioStats, {
+    initialData: () => {
+      const name = queryClient
+        .getQueryData("bio-stats")
+        ?.data.collections.find((collection) => {
+          if (collection.id === id) {
+            return collection.name;
+          }
+          return undefined
+        });
+
+      if (name) {
+        return {
+          data: name, 
+        };
+      } else {
+        return undefined;
+      }
+    },
+  });
 };

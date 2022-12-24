@@ -91,13 +91,12 @@ const NavBar = () => {
         </div>
 
         <div className="navbar__links">
-          {/* <p>Trending</p> */}
           <Link to="/hotmints" className="navbar__portfolio">
-            <p>Hot Mints</p>
+            <p>🔥 Hot Mints</p>
           </Link>
           {addressState ? (
             <Link to={"/portfolio/" + address} className="navbar__portfolio">
-              <p>Portfolio</p>
+              <p>📊 Portfolio</p>
             </Link>
           ) : (
             <></>

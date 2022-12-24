@@ -17,7 +17,6 @@ const UserActivity = ({
   myAddress,
 }) => {
   const [clicked, setClicked] = useState(false);
-  console.log(tokenImage);
 
   const typeFunc = (type, from, to, address) => {
     if (type === "transfer") {

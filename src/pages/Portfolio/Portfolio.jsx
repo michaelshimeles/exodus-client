@@ -3,7 +3,7 @@ import PortfolioProfile from "../../components/PortfolioProfile/PortfolioProfile
 import "./Portfolio.scss";
 import PortfolioStats from "../../components/PortfolioStats/PortfolioStats";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Loading from "../../components/Loading/Loading";
 import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
@@ -18,15 +18,25 @@ import { useTransactionLog } from "../../hooks/useTransactionLog";
 const Portfolio = () => {
   const [clicked, setClicked] = useState(false);
   const [txClicked, setTxClicked] = useState(false);
+  // const [continuation, setContinuation] = useState("");
 
   const { id } = useParams();
 
   const { data: stats } = usePortfolioStats(id);
-  const { data: collections } = usePortfolioCollection(id);
+  const {
+    data: collections,
+    // hasNextPage,
+    // fetchNextPage,
+    // isFetching,
+    // isFetchingNextPage,
+  } = usePortfolioCollection(id);
   const { data: groupPortfolio } = usePortfolioGrouped(id);
   const { data: txLog } = useTransactionLog(id);
 
-  console.log(txLog);
+  console.log("Col", collections);
+
+  // console.log("isFetching", isFetching);
+  // console.log("isFetching Next Page", isFetchingNextPage);
 
   if (!stats) {
     return (
@@ -67,7 +77,6 @@ const Portfolio = () => {
         <button
           onClick={() => {
             setTxClicked(!txClicked);
-            console.log(txLog);
           }}
         >
           {txClicked ? "📊 Portfolio" : "🧾 Tx Log"}
@@ -89,16 +98,25 @@ const Portfolio = () => {
       {!txClicked ? (
         <div className="portfolio__pie">
           {clicked ? (
-            collections ? (
-              collections?.data?.nfts.map((collection, index) => {
+            collections?.pages ? (
+              collections?.pages?.map((collection, index) => {
+                // console.log("In first map", collection);
                 return (
-                  <Card
-                    key={index}
-                    name={collection?.metadata?.name}
-                    image={collection?.cached_file_url}
-                    tokenId={collection?.token_id}
-                    address={collection?.contract_address}
-                  />
+                  <Fragment key={index}>
+                    console.log("In first map", collection)
+                    {collection?.data?.nfts?.map((item, i) => {
+                      // console.log("In second map", item);
+                      return (
+                        <Card
+                          key={i}
+                          name={item?.metadata?.name}
+                          image={item?.cached_file_url}
+                          tokenId={item?.token_id}
+                          address={item?.contract_address}
+                        />
+                      );
+                    })}
+                  </Fragment>
                 );
               })
             ) : (
@@ -131,11 +149,18 @@ const Portfolio = () => {
           ) : (
             <Loading />
           )}
+          {/* {clicked ? (
+            <button onClick={fetchNextPage} disabled={!hasNextPage}>
+              Load More
+            </button>
+          ) : (
+            <></>
+          )}
+          <div>{isFetching && !isFetchingNextPage ? <LoadingComp /> : ""}</div> */}
         </div>
       ) : (
         <div className="portfolio__activity">
           {[...txLog?.data?.activities].reverse().map((info, index) => {
-            console.log(txLog);
             return (
               <UserActivity
                 key={index}

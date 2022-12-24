@@ -29,7 +29,7 @@ const CollectionBio = () => {
           <div className="collection__name">
             <p>{bioStats ? bioStats?.data?.name : ""}</p>
             <div className="collection__name-stats">
-              {bioStats.verified === true ? (
+              {bioStats?.verified === true ? (
                 <img src={verified} alt="Verified badge" />
               ) : (
                 <></>
