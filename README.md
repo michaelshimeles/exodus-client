@@ -4,6 +4,8 @@ Exodus is an NFT analytics platform that allows NFT traders to track, trade and 
 
 The thesis behind this project is "Data is good, Insights are Better, Actionable Insight is the Best" 
 
+You can check Exodus out here: https://exodus-platform.netlify.app/
+
 ## 👾 Tech Stack
 
 **Client:** React, HTML, SASS, Chart.JS, Axios, Ether.js, ConnectKit, WAGMI
