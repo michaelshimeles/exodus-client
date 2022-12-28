@@ -6,33 +6,19 @@ import { Link } from "react-router-dom";
 import { useTopCollections } from "../../hooks/useTopCollections";
 import { useTrending } from "../../hooks/useTrending";
 import LoadingComp from "../LoadingComp/LoadingComp";
+import Loading from "../Loading/Loading";
 
 const TopCollections = () => {
   const [topColClicked, setTopColClicked] = useState(true);
   const [time, setTime] = useState("5m");
 
-  const {
-    data: topCol,
-    isLoading: topColLoading,
-    isFetching: topColFetching,
-  } = useTopCollections();
+  const { data: topCol, isLoading: topColLoading } = useTopCollections();
 
-  console.log("topColLoading", topColLoading);
-  console.log("topColFetching", topColFetching);
-
-  const {
-    data: trending,
-    isLoading: trendingLoading,
-    isFetching: trendingFetching,
-  } = useTrending(time);
-
-  console.log("trendingLoading", trendingLoading);
-  console.log("trendingFetching", trendingFetching);
+  const { data: trending, isLoading: trendingLoading } = useTrending(time);
 
   const handleSelect = (event) => {
     setTime(event.target.value);
   };
-
   return (
     <div className="collections">
       <div className="collections__header">
@@ -133,8 +119,7 @@ const TopCollections = () => {
               </Link>
             );
           })
-        : 
-        trending?.data?.results?.map((collection, index) => {
+        : trending?.data?.results?.map((collection, index) => {
             if (
               collection.name === "BoredApeYachtClub" ||
               collection.name === "MutantApeYachtClub" ||
@@ -154,21 +139,25 @@ const TopCollections = () => {
               return <div key={index}></div>;
             } else {
               // calling useQuery
-              return (
-                <Link
-                  to={"/collection/" + collection.contract_address}
-                  className="collections__table-link"
-                  key={index}
-                >
-                  <CollectionCard
-                    nameTrending={collection.name}
-                    imageTrending={collection.image_url}
-                    addressTrending={collection.contract_address}
-                    totalEthTrending={collection.total_eth_spent}
-                    timeTrending={time}
-                  />
-                </Link>
-              );
+              if (trending?.data?.results.length === 0) {
+                return <Loading />;
+              } else {
+                return (
+                  <Link
+                    to={"/collection/" + collection.contract_address}
+                    className="collections__table-link"
+                    key={index}
+                  >
+                    <CollectionCard
+                      nameTrending={collection.name}
+                      imageTrending={collection.image_url}
+                      addressTrending={collection.contract_address}
+                      totalEthTrending={collection.total_eth_spent}
+                      timeTrending={time}
+                    />
+                  </Link>
+                );
+              }
             }
           })}
     </div>

@@ -32,5 +32,6 @@ export const useFloorPrice = (address) => {
   }
   return useQuery(["floor-price", address], fetchFloorPrice, {
     enabled: result,
+    cacheTime: 1800000,
   });
 };

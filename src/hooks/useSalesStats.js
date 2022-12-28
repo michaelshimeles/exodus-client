@@ -27,5 +27,6 @@ export const useSalesStats = (id, time) => {
   return useQuery(["sales-time-stats", id, time], fetchSalesStats, {
     refetchInterval: 5000,
     enabled: result,
+    cacheTime: 1800000,
   });
 };

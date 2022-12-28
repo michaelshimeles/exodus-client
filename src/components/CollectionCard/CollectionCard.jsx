@@ -4,8 +4,6 @@ import { useFloorPrice } from "../../hooks/useTrending";
 import { useListingsStats } from "../../hooks/useListingsStats";
 import { useSalesStats } from "../../hooks/useSalesStats";
 
-// import LoadingComp from "../LoadingComp/LoadingComp";
-
 const CollectionCard = ({
   name,
   image,
@@ -25,7 +23,9 @@ const CollectionCard = ({
 
   const { data: listingStats } = useListingsStats(
     addressTrending,
-    timeTrending?.split("m")[0]
+    timeTrending.includes("h")
+      ? timeTrending?.split("h")[0]
+      : timeTrending?.split("m")[0]
   );
 
   const { data: salesStats } = useSalesStats(
@@ -40,9 +40,11 @@ const CollectionCard = ({
       return "Bullish";
     } else if (sales === listings && sales > 0) {
       return "Pot. Reversal";
+    } else if (sales < listings) {
+      return "Bearish";
     }
 
-    return "Bearish";
+    return "Calculating..";
   };
 
   return (
