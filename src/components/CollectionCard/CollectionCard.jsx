@@ -23,7 +23,7 @@ const CollectionCard = ({
 
   const { data: listingStats } = useListingsStats(
     addressTrending,
-    timeTrending.includes("h")
+    timeTrending?.includes("h")
       ? timeTrending?.split("h")[0]
       : timeTrending?.split("m")[0]
   );
