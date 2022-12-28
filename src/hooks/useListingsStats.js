@@ -18,8 +18,13 @@ const fetchListingsStats = ({ queryKey }) => {
 };
 
 export const useListingsStats = (id, time) => {
+  let result = true;
+  if (id === undefined) {
+    result = false;
+  }
   return useQuery(["listings-time-stats", id, time], fetchListingsStats, {
     refetchInterval: 5000,
     cacheTime: 1800000,
+    enabled: result,
   });
 };
