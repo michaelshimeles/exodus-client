@@ -1,67 +1,36 @@
 import "./TopCollections.scss";
 import CollectionCard from "../../components/CollectionCard/CollectionCard";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import LoadingComp from "../LoadingComp/LoadingComp";
+// import LoadingComp from "../LoadingComp/LoadingComp";
 import { useTopCollections } from "../../hooks/useTopCollections";
+import { useTrending } from "../../hooks/useTrending";
 
 const TopCollections = () => {
-  const [trending, setTrending] = useState(null);
   const [topColClicked, setTopColClicked] = useState(true);
   const [time, setTime] = useState("5m");
 
-  const { data: topCol, isLoading: topColLoading, isFetching } = useTopCollections();
+  const {
+    data: topCol,
+    isLoading: topColLoading,
+    isFetching: topColFetching,
+  } = useTopCollections();
 
-  if (topColLoading && isFetching) {
-    <LoadingComp />;
-  }
+  console.log("topColLoading", topColLoading);
+  console.log("topColFetching", topColFetching);
 
-  useEffect(() => {
-    axios
-      .post(`${process.env.REACT_APP_URL}/trending`, {
-        time: `${time}`,
-      })
-      .then((response) => {
-        setTrending(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [topColClicked, time]);
+  const {
+    data: trending,
+    isLoading: trendingLoading,
+    isFetching: trendingFetching,
+  } = useTrending(time);
+
+  console.log("trendingLoading", trendingLoading);
+  console.log("trendingFetching", trendingFetching);
 
   const handleSelect = (event) => {
     setTime(event.target.value);
   };
-
-  // const fetchFloorPrice = () => {
-  //   return axios.get(`${process.env.REACT_APP_URL}/info/${id}`);
-  // };
-
-  // const { data: floorPrice } = useQuery("floor-price", fetchFloorPrice);
-
-  // useEffect(() => {
-  //   getFloorPrice(address);
-  // }, [address]);
-
-  // const getFloorPrice = (address) => {
-  //   axios
-  //     .post(`${process.env.REACT_APP_URL}/floorprice`, {
-  //       address: address,
-  //     })
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       let answer = response.data?.sources
-  //         ? response.data?.sources[0]?.floorAskPrice
-  //           ? response.data?.sources[1]?.floorAskPrice
-  //           : response.data?.sources[2]?.floorAskPrice
-  //         : "n/a";
-  //       setFloor(answer);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
 
   return (
     <div className="collections">
@@ -130,9 +99,15 @@ const TopCollections = () => {
         <p className="collections__table-item">
           {topColClicked ? "Total Supply" : "Total ETH Spent"}
         </p>
-        <p className="collections__table-item">Sales (1W)</p>
-        <p className="collections__table-item">Volume (1W)</p>
-        <p className="collections__table-item">Change %</p>
+        <p className="collections__table-item">
+          {topColClicked ? "Sales (1W)" : "Listings"}
+        </p>
+        <p className="collections__table-item">
+          {topColClicked ? "Volume (1W)" : "Sales"}
+        </p>
+        <p className="collections__table-item">
+          {topColClicked ? "Change % " : "Momentum"}
+        </p>
       </div>
       {topColClicked
         ? topCol?.data?.collections.map((collection) => {
@@ -145,7 +120,7 @@ const TopCollections = () => {
                 <CollectionCard
                   image={collection.sampleImages[0]}
                   name={collection.name}
-                  floorPrice={collection.floorAsk.price?.amount.decimal}
+                  floorPrice={collection.floorAsk.price?.amount?.decimal}
                   supply={collection.tokenCount}
                   sales={collection.onSaleCount}
                   volume={collection.volume?.["1day"]}
@@ -155,7 +130,7 @@ const TopCollections = () => {
               </Link>
             );
           })
-        : trending?.results?.map((collection, index) => {
+        : trending?.data?.results?.map((collection, index) => {
             if (
               collection.name === "BoredApeYachtClub" ||
               collection.name === "MutantApeYachtClub" ||
@@ -168,10 +143,13 @@ const TopCollections = () => {
               collection.name === "Otherdeed" ||
               collection.name === "CyberKongz" ||
               collection.name === "Rarible" ||
-              collection.name === "BoredApeKennelClub"
+              collection.name === "BoredApeKennelClub" ||
+              collection.name === "PudgyPenguins" ||
+              collection.name === "Cool Cats"
             ) {
               return <div key={index}></div>;
             } else {
+              // calling useQuery
               return (
                 <Link
                   to={"/collection/" + collection.contract_address}
@@ -181,8 +159,9 @@ const TopCollections = () => {
                   <CollectionCard
                     nameTrending={collection.name}
                     imageTrending={collection.image_url}
-                    address={collection.contract_address}
+                    addressTrending={collection.contract_address}
                     totalEthTrending={collection.total_eth_spent}
+                    timeTrending={time}
                   />
                 </Link>
               );

@@ -18,7 +18,14 @@ const fetchSalesStats = ({ queryKey }) => {
 };
 
 export const useSalesStats = (id, time) => {
+  let result;
+  if (time === undefined) {
+    result = false;
+  } else {
+    result = true;
+  }
   return useQuery(["sales-time-stats", id, time], fetchSalesStats, {
     refetchInterval: 5000,
+    enabled: result,
   });
 };

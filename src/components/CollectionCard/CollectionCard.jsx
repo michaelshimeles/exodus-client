@@ -1,7 +1,10 @@
 import "./CollectionCard.scss";
 import eth from "../../assets/images/ethereum.svg";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useFloorPrice } from "../../hooks/useTrending";
+import { useListingsStats } from "../../hooks/useListingsStats";
+import { useSalesStats } from "../../hooks/useSalesStats";
+
+// import LoadingComp from "../LoadingComp/LoadingComp";
 
 const CollectionCard = ({
   name,
@@ -15,30 +18,31 @@ const CollectionCard = ({
   nameTrending,
   imageTrending,
   totalEthTrending,
-  address,
+  addressTrending,
+  timeTrending,
 }) => {
-  const [floor, setFloor] = useState([]);
+  const { data: floor } = useFloorPrice(addressTrending);
 
-  useEffect(() => {
-    getFloorPrice(address);
-  }, [address]);
+  const { data: listingStats } = useListingsStats(
+    addressTrending,
+    timeTrending?.split("m")[0]
+  );
 
-  const getFloorPrice = (address) => {
-    axios
-      .post(`${process.env.REACT_APP_URL}/floorprice`, {
-        address: address,
-      })
-      .then((response) => {
-        let answer = response.data?.sources
-          ? response.data?.sources[0]?.floorAskPrice
-            ? response.data?.sources[1]?.floorAskPrice
-            : response.data?.sources[2]?.floorAskPrice
-          : "n/a";
-        setFloor(answer);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const { data: salesStats } = useSalesStats(
+    addressTrending,
+    timeTrending?.split("m")[0]
+  );
+
+  const momentum = (sales, listings) => {
+    if (sales === listings && sales === 0) {
+      return "No Volume";
+    } else if (sales > listings) {
+      return "Bullish";
+    } else if (sales === listings && sales > 0) {
+      return "Pot. Reversal";
+    }
+
+    return "Bearish";
   };
 
   return (
@@ -80,19 +84,24 @@ const CollectionCard = ({
             <p className="collection-cards__text">{nameTrending}</p>
           </div>
           <div className="collection-cards__item">
-            <p>{floor}</p>
+            <p>{floor?.data?.sources[0]?.floorAskPrice}</p>
           </div>
           <div className="collection-cards__item">
             <p>{totalEthTrending}</p>
           </div>
           <div className="collection-cards__item">
-            <p>{}</p>
+            <p>{listingStats?.data?.orders.length}</p>
           </div>
           <div className="collection-cards__item">
-            <p></p>
+            <p>{salesStats?.data?.sales.length}</p>
           </div>
           <div className="collection-cards__item">
-            <p></p>
+            <p>
+              {momentum(
+                salesStats?.data?.sales.length,
+                listingStats?.data?.orders.length
+              )}
+            </p>
           </div>
         </div>
       )}

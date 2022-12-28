@@ -1,7 +1,15 @@
 import "./PortfolioProfile.scss";
 import logo from "../../assets/images/ethereum.svg";
+import { useContext } from "react";
+import { ExplainerContext } from "../../context/ExplainerContext";
 
 const PortfolioProfile = ({ ens, totalValue, scores, labels }) => {
+  const [explainerHover, setExplainerHover] = useContext(ExplainerContext);
+
+  const handleExplainer = (event) => {
+    setExplainerHover({ show: !explainerHover.show, info: event.target.textContent });
+    console.log("explainerHover", explainerHover);
+  };
 
   return (
     <div className="profile">
@@ -16,7 +24,7 @@ const PortfolioProfile = ({ ens, totalValue, scores, labels }) => {
           </div>
         </div>
         <div className="profile__stats">
-          <p>
+          <p onMouseOver={handleExplainer} onMouseLeave={handleExplainer}>
             {scores
               ? scores.hands === "normie"
                 ? "👋 Normie Hands"
@@ -37,7 +45,7 @@ const PortfolioProfile = ({ ens, totalValue, scores, labels }) => {
                 : ""
               : ""}
           </p>
-          <p>
+          <p onMouseOver={handleExplainer} onMouseLeave={handleExplainer}>
             {scores
               ? scores.whaleness === 1
                 ? "🦐 Shrimp"
@@ -54,7 +62,11 @@ const PortfolioProfile = ({ ens, totalValue, scores, labels }) => {
           </p>
           {labels.map((label, index) => {
             return (
-              <p key={index}>
+              <p
+                key={index}
+                onMouseOver={handleExplainer}
+                onMouseLeave={handleExplainer}
+              >
                 {label.name
                   ? label.name === "diamond"
                     ? "💎 Diamond Hands"

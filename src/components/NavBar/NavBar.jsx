@@ -58,7 +58,6 @@ const NavBar = () => {
             <div className="navbar__results">
               {result !== "" ? (
                 result.collections.map((search, index) => {
-                  console.log(search?.collectionId);
                   return (
                     <Link
                       key={search?.collectionId}
