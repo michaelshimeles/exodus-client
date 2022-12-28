@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 // import LoadingComp from "../LoadingComp/LoadingComp";
 import { useTopCollections } from "../../hooks/useTopCollections";
 import { useTrending } from "../../hooks/useTrending";
+import LoadingComp from "../LoadingComp/LoadingComp";
 
 const TopCollections = () => {
   const [topColClicked, setTopColClicked] = useState(true);
@@ -109,6 +110,8 @@ const TopCollections = () => {
           {topColClicked ? "Change % " : "Momentum"}
         </p>
       </div>
+      {topColLoading ? <LoadingComp /> : <></>}
+      {trendingLoading ? <LoadingComp /> : <></>}
       {topColClicked
         ? topCol?.data?.collections.map((collection) => {
             return (
@@ -130,7 +133,8 @@ const TopCollections = () => {
               </Link>
             );
           })
-        : trending?.data?.results?.map((collection, index) => {
+        : 
+        trending?.data?.results?.map((collection, index) => {
             if (
               collection.name === "BoredApeYachtClub" ||
               collection.name === "MutantApeYachtClub" ||
