@@ -11,7 +11,6 @@ const pingPost = (URL, body, setResult, freq) => {
       });
     return;
   }
-  // clearInterval()
 
   const intervalId = setInterval(() => {
     axios

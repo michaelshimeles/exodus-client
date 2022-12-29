@@ -1,42 +1,14 @@
 import "./SalesChart.scss";
 import { Scatter } from "react-chartjs-2";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import pingPost from "../../utils/pingPost";
+import { useState } from "react";
+import { useSalesChart } from "../../hooks/useSalesChart";
 
 const SalesChart = () => {
-  const [salesChart, setSalesChart] = useState(null);
   const [time, setTime] = useState(60);
 
   const { id } = useParams();
-
-  const URL = `${process.env.REACT_APP_URL}/sales/${id}`;
-
-  useEffect(() => {
-    let end = Math.round(new Date() / 1000);
-    let start = Math.round(
-      (new Date().getTime() - Number(time) * 60 * 1000) / 1000
-    );
-    pingPost(
-      `${URL}`,
-      {
-        start: start,
-        end: end,
-      },
-      setSalesChart
-    );
-    clearInterval(
-      pingPost(
-        `${URL}`,
-        {
-          start: start,
-          end: end,
-        },
-        setSalesChart,
-        10000
-      )
-    );
-  }, [URL, id, time]);
+  const { data: salesChart } = useSalesChart(id, time)
 
   const clicked = (event) => {
     setTime(event.target.value);
@@ -74,7 +46,7 @@ const SalesChart = () => {
     datasets: [
       {
         label: "Sales Chart",
-        data: salesChart?.map((sales) => {
+        data: salesChart?.data?.map((sales) => {
           return {
             x: sales?.timestamp,
             y: sales?.priceInEth,

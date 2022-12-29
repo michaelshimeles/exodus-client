@@ -8,7 +8,7 @@ You can check Exodus out here: (https://exodus-platform.netlify.app/)
 
 ## 👾 Tech Stack
 
-**Client:** React, HTML, SASS, Chart.JS, Axios, Ether.js, ConnectKit, WAGMI
+**Client:** React, React Query, HTML, SASS, Chart.JS, Axios, Ether.js, ConnectKit, WAGMI
 
 **Server:** Node, Express, Axios
 

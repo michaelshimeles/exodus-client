@@ -1,12 +1,14 @@
 @use "/src/styles/partials/fonts" as *;
+@use "src/styles/partials/mixins" as *;
+@use "src/styles//partials/variables" as *;
 
 * {
-    box-sizing: border-box;
-    margin:0%;
-    font-family: 'Consola Bold';
-    scroll-behavior: smooth;
+  box-sizing: border-box;
+  margin: 0%;
+  font-family: "Montserrat", sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: black;
+  background-color: black;
 }

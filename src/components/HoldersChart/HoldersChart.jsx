@@ -61,7 +61,6 @@ const HoldersChart = () => {
     },
     onClick: (event, elements) => {
       let walletIndex = elements[0].index;
-      console.log(labels[walletIndex])
       navigate("/portfolio/" + labels[walletIndex]);
     },
   };

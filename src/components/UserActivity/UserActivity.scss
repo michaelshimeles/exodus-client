@@ -1,0 +1,117 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles//partials/variables" as *;
+
+.user-activity {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+
+  > p {
+    color: white;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #131313;
+    width: 100%;
+    padding: 1rem;
+    gap: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  &__img-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    > img {
+      width: 1.5rem;
+      border-radius: 100%;
+    }
+
+    > p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  &__time {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 0.7rem;
+    width: 100%;
+  }
+
+  &__txhash {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #181818;
+    padding: 0.3rem;
+    color: white;
+    text-decoration: none;
+
+    > p {
+      font-size: 0.7rem;
+    }
+    &-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 20ch;
+      font-size: 0.9rem;
+      color: #909090;
+    }
+  }
+
+  &__contract {
+    font-size: 0.7rem;
+    color: #909090;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 30ch;
+  }
+
+  &__from {
+    font-size: 0.7rem;
+    color: #909090;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 30ch;
+  }
+
+  &__to {
+    font-size: 0.7rem;
+
+    color: #909090;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 30ch;
+  }
+}

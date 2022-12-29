@@ -9,23 +9,65 @@
   background-color: $primary-color;
   color: white;
   width: 100%;
-  padding-bottom: 5rem;  
+  padding-bottom: 5rem;
   &__header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding-bottom: 2rem;
     font-size: 1rem;
-    width: 100%;
+    width: 80%;
 
     > h1 {
-      background-image: linear-gradient(45deg, rgba(105, 234, 203, 1), rgba(234, 204, 248, 1), rgba(102, 84, 241, 1));
+      background-image: linear-gradient(
+        45deg,
+        rgba(105, 234, 203, 1),
+        rgba(234, 204, 248, 1),
+        rgba(102, 84, 241, 1)
+      );
       background-size: 100%;
       -webkit-background-clip: text;
       -moz-background-clip: text;
       -webkit-text-fill-color: transparent;
       -moz-text-fill-color: transparent;
     }
+  }
+
+  &__selection {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 70%;
+    gap: 1rem;
+  }
+
+  &__switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151515;
+    width: 15%;
+    border-radius: 0.2rem;
+    cursor: pointer;
+  }
+
+  &__topcol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+    font-size: 0.7rem;
+    width: 100%;
+  }
+
+  &__topprofit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.4rem 0;
+    font-size: 0.7rem;
+    width: 100%;
   }
 
   &__table {
@@ -36,12 +78,12 @@
     width: 80%;
     padding-bottom: 1rem;
     color: #90cdf4;
-    font-size: .875rem;
+    font-size: 0.875rem;
 
     &-item {
-        width: 20%;
-        text-align: center;
-        font-size: .875rem;
+      width: 20%;
+      text-align: center;
+      font-size: 0.875rem;
     }
 
     &-link {
@@ -59,5 +101,19 @@
     align-items: center;
     padding-bottom: 1.5rem;
     width: 100%;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  &__select {
+    background-color: #202020;
+    color: white;
+    border-color: #131313;
+    padding: 0.3rem 0.5rem;
   }
 }

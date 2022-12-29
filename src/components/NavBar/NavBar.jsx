@@ -1,6 +1,6 @@
 import "./NavBar.scss";
 import logo from "../../assets/logo/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ConnectKitButton } from "connectkit";
 import { useAccount } from "wagmi";
 import { useEffect, useState } from "react";
@@ -15,11 +15,9 @@ const NavBar = () => {
 
   const URL = process.env.REACT_APP_URL;
 
-  const redirect = useNavigate()
-
   const searchRef = useOnclickOutside(() => {
-    setResult("")
-  })
+    setResult("");
+  });
 
   useEffect(() => {
     setAddressState(address);
@@ -61,14 +59,14 @@ const NavBar = () => {
               {result !== "" ? (
                 result.collections.map((search, index) => {
                   return (
-                    <div
-                      key={index}
+                    <Link
+                      key={search?.collectionId}
                       className="navbar__link"
                       onClick={() => {
-                        setResult("")
-                        setSearch("")
-                        redirect("/collection/" + search?.contract)
+                        setResult("");
+                        setSearch("");
                       }}
+                      to={"/collection/" + search?.contract}
                     >
                       <div className="navbar__image">
                         <img src={search?.image} alt="Search result" />
@@ -81,7 +79,7 @@ const NavBar = () => {
                           <p>🔵</p>
                         )}
                       </div>
-                    </div>
+                    </Link>
                   );
                 })
               ) : (
@@ -92,13 +90,12 @@ const NavBar = () => {
         </div>
 
         <div className="navbar__links">
-          {/* <p>Trending</p> */}
           <Link to="/hotmints" className="navbar__portfolio">
-            <p>Hot Mints</p>
+            <p>🔥 Hot Mints</p>
           </Link>
           {addressState ? (
             <Link to={"/portfolio/" + address} className="navbar__portfolio">
-              <p>Portfolio</p>
+              <p>📊 Portfolio</p>
             </Link>
           ) : (
             <></>
