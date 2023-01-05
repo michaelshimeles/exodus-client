@@ -8,6 +8,8 @@ import { Link as ReactLink } from "react-router-dom";
 import { useAccount } from "wagmi";
 import logo from "../../assets/logo/logo.png";
 import "./NavBar.scss";
+import { ColorModeSwitcher } from "../../ColorModeSwitcher";
+import theme from "../../theme";
 
 const NavBar = () => {
   const { address } = useAccount();
@@ -67,7 +69,7 @@ const NavBar = () => {
             />
           </Hide>
         </Flex>
-        <Flex gap="2rem">
+        <Flex justifyContent="center" alignItems="center" gap="2rem">
           <Hide below="lg">
             <Flex
               height="4rem"
@@ -98,6 +100,7 @@ const NavBar = () => {
             <Search2Icon boxSize={6} />
             <HamburgerIcon boxSize={6} />
           </Show>
+          <ColorModeSwitcher theme={theme} />
         </Flex>
       </Flex>
     </Flex>

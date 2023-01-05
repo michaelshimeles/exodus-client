@@ -13,9 +13,7 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import "./Footer.scss";
-import theme from "../../theme";
 const Footer = () => {
   const [hover, setHover] = useState(false);
 
@@ -41,7 +39,12 @@ const Footer = () => {
       position="fixed"
       top="93vh"
     >
-      <Flex w="95%" justifyContent="space-between" alignItems="center" py="1rem">
+      <Flex
+        w="95%"
+        justifyContent="space-between"
+        alignItems="center"
+        py="1rem"
+      >
         <Text fontWeight="bold">🚀 meet Exodus</Text>
         <Flex
           onMouseEnter={() => {
@@ -103,7 +106,6 @@ const Footer = () => {
             </Text>
           </Show>
           <Text fontSize="sm">${price?.data?.data?.priceUSD}</Text>
-          <ColorModeSwitcher justifySelf="flex-end" theme={theme} />
         </Flex>
       </Flex>
     </Flex>
