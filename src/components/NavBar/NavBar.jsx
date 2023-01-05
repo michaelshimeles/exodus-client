@@ -11,6 +11,7 @@ import "./NavBar.scss";
 
 const NavBar = () => {
   const { address } = useAccount();
+  /*eslint-disable no-unused-vars*/
   const [addressState, setAddressState] = useState(address);
   const [search, setSearch] = useState("");
   const [result, setResult] = useState("");
