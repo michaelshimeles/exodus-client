@@ -42,61 +42,62 @@ const NavBar = () => {
   return (
     <Flex
       w="100%"
-      bgColor="blackAlpha.100"
-      justifyContent="space-between"
+      // bgColor="blackAlpha.100"
+      justifyContent="center"
       alignItems="center"
-      px="3rem"
       py="0.5rem"
     >
-      <Flex
-        height="4rem"
-        gap="1rem"
-        justifyContent="flex-start"
-        alignItems="center"
-      >
-        <Link to="/" as={ReactLink}>
-          <Image src={logo} alt="Exodus logo" w="2.75rem" />
-        </Link>
-        <Hide below="lg">
-          <Input
-            placeholder="Search..."
-            w="100%"
-            onChange={handleSearch}
-            onClick={handleSearch}
-          />
-        </Hide>
-      </Flex>
-      <Flex gap="2rem">
-        <Hide below="lg">
-          <Flex
-            height="4rem"
-            gap="3rem"
-            justifyContent="flex-start"
-            alignItems="center"
-          >
-            <Link
-              as={ReactLink}
-              to="/hotmints"
-              fontWeight="bold"
-              _hover={{ textDecoration: "none" }}
+      <Flex justifyContent="space-between" alignItems="center" w="90%">
+        <Flex
+          height="4rem"
+          gap="1rem"
+          justifyContent="flex-start"
+          alignItems="center"
+        >
+          <Link to="/" as={ReactLink}>
+            <Image src={logo} alt="Exodus logo" w="2.5rem" />
+          </Link>
+          <Hide below="lg">
+            <Input
+              placeholder="Search..."
+              w="100%"
+              onChange={handleSearch}
+              onClick={handleSearch}
+            />
+          </Hide>
+        </Flex>
+        <Flex gap="2rem">
+          <Hide below="lg">
+            <Flex
+              height="4rem"
+              gap="3rem"
+              justifyContent="flex-start"
+              alignItems="center"
             >
-              🔥 Hot Mints
-            </Link>
-            <Link
-              as={ReactLink}
-              to={`/portfolio/${address}`}
-              fontWeight="bold"
-              _hover={{ textDecoration: "none" }}
-            >
-              📊 Portfolio
-            </Link>
-            <ConnectKitButton />
-          </Flex>
-        </Hide>
-        <Show below="lg">
-          <Search2Icon boxSize={6} />
-          <HamburgerIcon boxSize={6} />
-        </Show>
+              <Link
+                as={ReactLink}
+                to="/hotmints"
+                fontWeight="bold"
+                _hover={{ textDecoration: "none" }}
+              >
+                🔥 Hot Mints
+              </Link>
+              <Link
+                as={ReactLink}
+                to={`/portfolio/${address}`}
+                fontWeight="bold"
+                _hover={{ textDecoration: "none" }}
+              >
+                📊 Portfolio
+              </Link>
+              <ConnectKitButton />
+            </Flex>
+          </Hide>
+          <Show below="md">
+            <Search2Icon boxSize={6} />
+            <HamburgerIcon boxSize={6} />
+          </Show>
+        </Flex>
       </Flex>
     </Flex>
 

@@ -13,8 +13,9 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
-
+import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import "./Footer.scss";
+import theme from "../../theme";
 const Footer = () => {
   const [hover, setHover] = useState(false);
 
@@ -32,15 +33,15 @@ const Footer = () => {
   return (
     <Flex
       w="full"
-      bgColor="black"
-      justifyContent="space-evenly"
+      justifyContent="center"
       alignItems="center"
       px="3rem"
-      h="4rem"
       borderTop="2px"
       borderColor="blue.700"
+      position="fixed"
+      top="93vh"
     >
-      <Flex w="95%" justifyContent="space-between" alignItems="center">
+      <Flex w="95%" justifyContent="space-between" alignItems="center" py="1rem">
         <Text fontWeight="bold">🚀 meet Exodus</Text>
         <Flex
           onMouseEnter={() => {
@@ -63,7 +64,7 @@ const Footer = () => {
                     size="sm"
                   />
                 </PopoverTrigger>
-                <PopoverContent>
+                <PopoverContent bgColor="black">
                   <PopoverArrow />
                   <PopoverBody>
                     <Text>
@@ -71,6 +72,7 @@ const Footer = () => {
                       100 which indicates the amount of interest the market has
                       for NFTs.
                     </Text>
+                    <br />
                     <Text>❄️ (between 1 and 40)</Text>
                     <Text>🌫️ (between 40 and 60)</Text>
                     <Text>🔥 (between 60 and 100)</Text>
@@ -100,59 +102,11 @@ const Footer = () => {
               {sentiment ? sentiment?.data?.market_sentiment?.score : ""}
             </Text>
           </Show>
-          <Text>${price?.data?.data?.priceUSD}</Text>
+          <Text fontSize="sm">${price?.data?.data?.priceUSD}</Text>
+          <ColorModeSwitcher justifySelf="flex-end" theme={theme} />
         </Flex>
       </Flex>
     </Flex>
-    // <div className="footer">
-    //   <div className="footer__container">
-    //     <p>🚀 meet Exodus</p>
-    //     <div
-    //       className="footer__price"
-    // onMouseEnter={() => {
-    //   setHover(!hover);
-    // }}
-    // onMouseLeave={() => {
-    //   setHover(!hover);
-    // }}
-    //     >
-    //       <p>
-    //         {hover ? (
-    //           <div className="footer__popup">
-    //             <p>
-    //               The Market Sentiment Index is a number ranging from 1 to 100,
-    //               <br />
-    //               which indicates the amount of interest the market has for
-    //               NFTs.
-    //               <br />
-    //               <br />
-    //               ❄️ (between 1 and 40)
-    //               <br />
-    //               🌫️ (between 40 and 60)
-    //               <br />
-    //               🔥 (between 60 and 100)
-    //             </p>
-    //           </div>
-    //         ) : (
-    //           <></>
-    //         )}
-    //         <span className="footer__market">Market Sentiment: </span>{" "}
-    //         {sentiment?.market_sentiment?.score > 60
-    //           ? "🔥"
-    //           : sentiment?.data?.market_sentiment?.score < 60 &&
-    //             sentiment?.data?.market_sentiment?.score > 40
-    //           ? "🌫️"
-    //           : "❄️"}{" "}
-    //         {sentiment ? sentiment?.data?.market_sentiment?.score : ""}
-    //       </p>
-    //       <p className="footer__price-text">
-    //         ${price?.data?.data?.priceUSD}{" "}
-    //         <span className="footer__price-currency">USD/ETH</span>
-    //       </p>
-    //       <span className="blink_me"></span>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

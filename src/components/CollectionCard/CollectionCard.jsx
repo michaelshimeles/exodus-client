@@ -1,4 +1,12 @@
-import { Box, HStack, Image, Show, SimpleGrid, Text, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  HStack,
+  Image,
+  Show,
+  SimpleGrid,
+  Text,
+  useBreakpointValue
+} from "@chakra-ui/react";
 import eth from "../../assets/images/ethereum.svg";
 import { useListingsStats } from "../../hooks/useListingsStats";
 import { useSalesStats } from "../../hooks/useSalesStats";
@@ -65,11 +73,11 @@ const CollectionCard = ({
           bgColor="whiteAlpha.100"
           pl="1.25rem"
           border="1px"
-          borderColor={"whiteAlpha.100"}
+          borderColor="whiteAlpha.100"
           mb="0.25rem"
         >
           <HStack>
-            <Image src={image} rounded="full" w="1rem" />
+            <Image src={image} rounded="full" w="2rem" />
             <Text
               maxW="22ch"
               textOverflow="ellipsis"

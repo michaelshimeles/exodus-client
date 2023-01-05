@@ -1,4 +1,14 @@
-import { Box, Flex, Select, Show, Tab, TabList, Tabs, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Select,
+  Show,
+  Tab,
+  TabList,
+  Tabs,
+  Text,
+  Progress,
+} from "@chakra-ui/react";
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
@@ -19,8 +29,8 @@ const TopCollections = () => {
     setTime(event.target.value);
   };
   return (
-    <div className="collections">
-      <div className="collections__header">
+    <Flex flexDirection="column" justifyContent="center" alignItems="center" gap="1.5rem" paddingBottom="5rem">
+      <Flex justifyContent="space-between" alignItems="center" w="90%" >
         <Text
           size="4xl"
           bgGradient="linear-gradient(45deg, rgba(105, 234, 203, 1), rgba(234, 204, 248, 1), rgba(102, 84, 241, 1))"
@@ -33,40 +43,38 @@ const TopCollections = () => {
         </Text>
         <Flex>
           {!topColClicked ? (
-            <form className="collections__form">
-              <Select
-                id="time"
-                placeholder=""
-                variant="outline"
-                onChange={handleSelect}
-                size="sm"
-              >
-                <option id="time" value="5m">
-                  5m
-                </option>
-                <option id="time" value="10m">
-                  10m
-                </option>
-                <option id="time" value="15m">
-                  15m
-                </option>
-                <option id="time" value="30m">
-                  30m
-                </option>
-                <option id="time" value="1h">
-                  1h
-                </option>
-                <option id="time" value="6h">
-                  6h
-                </option>
-                <option id="time" value="12h">
-                  12h
-                </option>
-                <option id="time" value="24h">
-                  24h
-                </option>
-              </Select>
-            </form>
+            <Select
+              id="time"
+              placeholder=""
+              variant="outline"
+              onChange={handleSelect}
+              size="sm"
+            >
+              <option id="time" value="5m">
+                5m
+              </option>
+              <option id="time" value="10m">
+                10m
+              </option>
+              <option id="time" value="15m">
+                15m
+              </option>
+              <option id="time" value="30m">
+                30m
+              </option>
+              <option id="time" value="1h">
+                1h
+              </option>
+              <option id="time" value="6h">
+                6h
+              </option>
+              <option id="time" value="12h">
+                12h
+              </option>
+              <option id="time" value="24h">
+                24h
+              </option>
+            </Select>
           ) : (
             <></>
           )}
@@ -94,8 +102,13 @@ const TopCollections = () => {
             </TabList>
           </Tabs>
         </Flex>
-      </div>
-      <Box w="90%">
+      </Flex>
+      <Flex
+        w="90%"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+      >
         <div className="collections__table">
           <p className="collections__table-item">Name</p>
           <p className="collections__table-item">{"Floor Price"}</p>
@@ -116,8 +129,8 @@ const TopCollections = () => {
             {topColClicked ? "Change % " : "Momentum"}
           </p>
         </div>
-        {topColLoading ? <LoadingComp /> : <></>}
-        {trendingLoading ? <LoadingComp /> : <></>}
+        {topColLoading ? <Progress size="xs" isIndeterminate /> : <></>}
+        {trendingLoading ? <Progress size="xs" isIndeterminate /> : <></>}
         {topColClicked ? (
           topCol?.data?.collections.map((collection) => {
             return (
@@ -180,8 +193,8 @@ const TopCollections = () => {
         ) : (
           <p>No Trending Found</p>
         )}
-      </Box>
-    </div>
+      </Flex>
+    </Flex>
   );
 };
 

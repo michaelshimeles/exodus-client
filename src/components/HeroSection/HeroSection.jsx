@@ -15,9 +15,10 @@ const HeroSection = () => {
         size="4xl"
         bgGradient="linear-gradient(45deg, rgba(105, 234, 203, 1), rgba(234, 204, 248, 1), rgba(102, 84, 241, 1))"
         bgClip="text"
-        fontSize="7xl"
+        fontSize={["5xl","7xl"]}
         fontWeight="extrabold"
         bgSize="100%"
+
       >
         meet Exodus
       </Heading>
