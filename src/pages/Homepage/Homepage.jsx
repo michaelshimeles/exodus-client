@@ -8,9 +8,11 @@ const Homepage = () => {
   window.scrollTo(0, 0);
   return (
     <div className="homepage">
-      <NavBar />
-      <HeroSection />
-      <TopCollections />
+      <div className="homepage__container">
+        <NavBar />
+        <HeroSection />
+        <TopCollections />
+      </div>
       <Footer />
     </div>
   );

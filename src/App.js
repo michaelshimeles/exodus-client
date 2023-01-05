@@ -10,6 +10,8 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { useState } from "react";
 import { ExplainerContext } from "./context/ExplainerContext";
+import { ChakraProvider } from "@chakra-ui/react";
+import theme from "./theme";
 
 const queryClient = new QueryClient();
 
@@ -37,19 +39,21 @@ function App() {
             "--ck-font-family": '"Open Sans", sans-serif',
           }}
         >
-          <ExplainerContext.Provider
-            value={[explainerHover, setExplainerHover]}
-          >
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/collection/:id" element={<Terminal />} />
-                <Route path="/portfolio/:id" element={<Portfolio />} />
-                <Route path="/hotmints" element={<HotMints />} />
-                <Route path="*" element={<Homepage />} />
-              </Routes>
-            </BrowserRouter>
-          </ExplainerContext.Provider>
+          <ChakraProvider theme={theme}>
+            <ExplainerContext.Provider
+              value={[explainerHover, setExplainerHover]}
+            >
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<Homepage />} />
+                  <Route path="/collection/:id" element={<Terminal />} />
+                  <Route path="/portfolio/:id" element={<Portfolio />} />
+                  <Route path="/hotmints" element={<HotMints />} />
+                  <Route path="*" element={<Homepage />} />
+                </Routes>
+              </BrowserRouter>
+            </ExplainerContext.Provider>
+          </ChakraProvider>
         </ConnectKitProvider>
       </WagmiConfig>
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />

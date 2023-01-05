@@ -1,9 +1,9 @@
-import "./CollectionCard.scss";
+import { Box, HStack, Image, Show, SimpleGrid, Text, useBreakpointValue } from "@chakra-ui/react";
 import eth from "../../assets/images/ethereum.svg";
-import { useFloorPrice } from "../../hooks/useTrending";
 import { useListingsStats } from "../../hooks/useListingsStats";
 import { useSalesStats } from "../../hooks/useSalesStats";
-
+import { useFloorPrice } from "../../hooks/useTrending";
+import "./CollectionCard.scss";
 const CollectionCard = ({
   name,
   image,
@@ -47,67 +47,92 @@ const CollectionCard = ({
     return "Calculating..";
   };
 
+  const variant = useBreakpointValue({
+    sm: "sm",
+    md: "md",
+    lg: "lg",
+    xl: "xl",
+  });
+
   return (
-    <div className="collection-cards">
+    <Box w="full">
       {topColClicked ? (
-        <div className="collection-cards__container">
-          <div className="collection-cards__item collection-cards__item-name">
-            <img
-              className="collection-cards__img"
-              src={image}
-              alt="Collection profile"
-            />
-            <p className="collection-cards__text">{name}</p>
-          </div>
-          <div className="collection-cards__item">
-            <p>{floorPrice}</p>
-          </div>
-          <div className="collection-cards__item">
-            <p>{supply}</p>
-          </div>
-          <div className="collection-cards__item">
-            <p>{sales}</p>
-          </div>
-          <div className="collection-cards__item">
-            <p>{volume}</p>
-          </div>
-          <div className="collection-cards__item">
-            <p>{Math.round(change * 100)}%</p>
-          </div>
-        </div>
+        <SimpleGrid
+          columns={variant === "lg" || variant === "xl" ? 6 : 4}
+          fontSize={["xs", "xs", "xs", "sm"]}
+          h="3.5rem"
+          w="full"
+          bgColor="whiteAlpha.100"
+          pl="1.25rem"
+          border="1px"
+          borderColor={"whiteAlpha.100"}
+          mb="0.25rem"
+        >
+          <HStack>
+            <Image src={image} rounded="full" w="1rem" />
+            <Text
+              maxW="22ch"
+              textOverflow="ellipsis"
+              overflow="hidden"
+              whiteSpace="nowrap"
+            >
+              {name}
+            </Text>
+          </HStack>
+          <Text m="auto">{floorPrice}</Text>
+          <Show above="lg">
+            <Text m="auto">{supply}</Text>
+          </Show>
+          <Text m="auto">{sales}</Text>
+          <Show above="lg">
+            <Text m="auto">{volume}</Text>
+          </Show>
+          <Text m="auto">{Math.round(change * 100)}%</Text>
+        </SimpleGrid>
       ) : (
-        <div className="collection-cards__container">
-          <div className="collection-cards__item collection-cards__item-name">
-            <img
-              className="collection-cards__img"
+        <SimpleGrid
+          columns={variant === "lg" || variant === "xl" ? 6 : 4}
+          fontSize={["xs", "xs", "xs", "sm"]}
+          h="3.5rem"
+          w="full"
+          bgColor="whiteAlpha.100"
+          pl="1.25rem"
+          border="1px"
+          borderColor={"whiteAlpha.100"}
+          mb="0.25rem"
+        >
+          <HStack>
+            <Image
               src={imageTrending ? imageTrending : eth}
-              alt="Collection profile"
+              rounded="full"
+              w="1rem"
             />
-            <p className="collection-cards__text">{nameTrending}</p>
-          </div>
-          <div className="collection-cards__item">
-            <p>{floor?.data?.sources[0]?.floorAskPrice}</p>
-          </div>
-          <div className="collection-cards__item">
-            <p>{totalEthTrending}</p>
-          </div>
-          <div className="collection-cards__item">
-            <p>{listingStats?.data?.orders.length}</p>
-          </div>
-          <div className="collection-cards__item">
-            <p>{salesStats?.data?.sales.length}</p>
-          </div>
-          <div className="collection-cards__item">
-            <p>
-              {momentum(
-                salesStats?.data?.sales.length,
-                listingStats?.data?.orders.length
-              )}
-            </p>
-          </div>
-        </div>
+            <Text
+              maxW="22ch"
+              textOverflow="ellipsis"
+              overflow="hidden"
+              whiteSpace="nowrap"
+            >
+              {nameTrending}
+            </Text>
+          </HStack>
+          <Text m="auto">{floor?.data?.sources[0]?.floorAskPrice}</Text>
+          <Show above="lg">
+            <Text m="auto">{totalEthTrending}</Text>
+          </Show>
+          <Text m="auto">{listingStats?.data?.orders.length}</Text>
+          <Show above="lg">
+            <Text m="auto">{salesStats?.data?.sales.length}</Text>
+          </Show>
+          <Text m="auto">
+            {momentum(
+              salesStats?.data?.sales.length,
+              listingStats?.data?.orders.length
+            )}
+          </Text>
+        </SimpleGrid>
       )}
-    </div>
+    </Box>
   );
 };
 

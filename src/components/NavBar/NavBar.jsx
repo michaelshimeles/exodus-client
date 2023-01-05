@@ -1,11 +1,13 @@
-import "./NavBar.scss";
-import logo from "../../assets/logo/logo.png";
-import { Link } from "react-router-dom";
-import { ConnectKitButton } from "connectkit";
-import { useAccount } from "wagmi";
-import { useEffect, useState } from "react";
+import { HamburgerIcon, Search2Icon } from "@chakra-ui/icons";
+import { Flex, Hide, Image, Input, Link, Show } from "@chakra-ui/react";
 import axios from "axios";
+import { ConnectKitButton } from "connectkit";
+import { useEffect, useState } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
+import { Link as ReactLink } from "react-router-dom";
+import { useAccount } from "wagmi";
+import logo from "../../assets/logo/logo.png";
+import "./NavBar.scss";
 
 const NavBar = () => {
   const { address } = useAccount();
@@ -38,74 +40,97 @@ const NavBar = () => {
   };
 
   return (
-    <div className="navbar">
-      <div className="navbar-container">
-        <div className="navbar__left">
-          <Link to="/">
-            <img className="navbar__img" src={logo} alt="Exodus logo" />
-          </Link>
-          <form className="navbar__form" ref={searchRef}>
-            <input
-              id="search"
-              name="search"
-              value={search}
-              className="navbar__input"
-              placeholder="Search Collection..."
-              onChange={handleSearch}
-              onClick={handleSearch}
-              autoComplete="off"
-            ></input>
-            <div className="navbar__results">
-              {result !== "" ? (
-                result.collections.map((search, index) => {
-                  return (
-                    <Link
-                      key={search?.collectionId}
-                      className="navbar__link"
-                      onClick={() => {
-                        setResult("");
-                        setSearch("");
-                      }}
-                      to={"/collection/" + search?.contract}
-                    >
-                      <div className="navbar__image">
-                        <img src={search?.image} alt="Search result" />
-                        <p className="navbar__result">{search?.name}</p>
-                      </div>
-                      <div>
-                        {search?.openseaVerificationStatus === "verified" ? (
-                          <p>✅</p>
-                        ) : (
-                          <p>🔵</p>
-                        )}
-                      </div>
-                    </Link>
-                  );
-                })
-              ) : (
-                <></>
-              )}
-            </div>
-          </form>
-        </div>
-
-        <div className="navbar__links">
-          <Link to="/hotmints" className="navbar__portfolio">
-            <p>🔥 Hot Mints</p>
-          </Link>
-          {addressState ? (
-            <Link to={"/portfolio/" + address} className="navbar__portfolio">
-              <p>📊 Portfolio</p>
+    <Flex
+      w="100%"
+      bgColor="blackAlpha.100"
+      justifyContent="space-between"
+      alignItems="center"
+      px="3rem"
+      py="0.5rem"
+    >
+      <Flex
+        height="4rem"
+        gap="1rem"
+        justifyContent="flex-start"
+        alignItems="center"
+      >
+        <Link to="/" as={ReactLink}>
+          <Image src={logo} alt="Exodus logo" w="2.75rem" />
+        </Link>
+        <Hide below="lg">
+          <Input
+            placeholder="Search..."
+            w="100%"
+            onChange={handleSearch}
+            onClick={handleSearch}
+          />
+        </Hide>
+      </Flex>
+      <Flex gap="2rem">
+        <Hide below="lg">
+          <Flex
+            height="4rem"
+            gap="3rem"
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <Link
+              as={ReactLink}
+              to="/hotmints"
+              fontWeight="bold"
+              _hover={{ textDecoration: "none" }}
+            >
+              🔥 Hot Mints
             </Link>
-          ) : (
-            <></>
-          )}
-          <div className="navbar__button">
+            <Link
+              as={ReactLink}
+              to={`/portfolio/${address}`}
+              fontWeight="bold"
+              _hover={{ textDecoration: "none" }}
+            >
+              📊 Portfolio
+            </Link>
             <ConnectKitButton />
-          </div>
-        </div>
-      </div>
-    </div>
+          </Flex>
+        </Hide>
+        <Show below="lg">
+          <Search2Icon boxSize={6} />
+          <HamburgerIcon boxSize={6} />
+        </Show>
+      </Flex>
+    </Flex>
+
+    //         <div className="navbar__results">
+    //           {result !== "" ? (
+    //             result.collections.map((search, index) => {
+    //               return (
+    //                 <Link
+    //                   key={search?.collectionId}
+    //                   className="navbar__link"
+    //                   onClick={() => {
+    //                     setResult("");
+    //                     setSearch("");
+    //                   }}
+    //                   to={"/collection/" + search?.contract}
+    //                 >
+    //                   <div className="navbar__image">
+    //                     <img src={search?.image} alt="Search result" />
+    //                     <p className="navbar__result">{search?.name}</p>
+    //                   </div>
+    //                   <div>
+    //                     {search?.openseaVerificationStatus === "verified" ? (
+    //                       <p>✅</p>
+    //                     ) : (
+    //                       <p>🔵</p>
+    //                     )}
+    //                   </div>
+    //                 </Link>
+    //               );
+    //             })
+    //           ) : (
+    //             <></>
+    //           )}
+    //         </div>
   );
 };
 
