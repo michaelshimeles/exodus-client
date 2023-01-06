@@ -1,5 +1,4 @@
 import { Flex, Heading, Text, useColorMode } from "@chakra-ui/react";
-import "./HeroSection.scss";
 
 const HeroSection = () => {
   const { colorMode } = useColorMode();
