@@ -63,7 +63,8 @@ const CollectionCard = ({
     xl: "xl",
   });
 
-  const bgColor = useColorModeValue('', 'whiteAlpha.100')
+  const borderColor = useColorModeValue('', 'whiteAlpha.100')
+  const bgColor = useColorModeValue('white', 'whiteAlpha.100')
 
   return (
     <Box w="full">
@@ -75,8 +76,9 @@ const CollectionCard = ({
           w="full"
           pl="1.25rem"
           border="1px"
-          borderColor={bgColor}
+          borderColor={borderColor}
           mb="0.25rem"
+          bgColor={bgColor}
         >
           <HStack>
             <Image src={image} rounded="full" w="2rem" />
@@ -107,8 +109,9 @@ const CollectionCard = ({
           w="full"
           pl="1.25rem"
           border="1px"
-          borderColor={bgColor}
+          borderColor={borderColor}
           mb="0.25rem"
+          bgColor={bgColor}
         >
           <HStack>
             <Image

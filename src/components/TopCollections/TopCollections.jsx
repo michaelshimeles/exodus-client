@@ -29,8 +29,7 @@ const TopCollections = () => {
     setTime(event.target.value);
   };
 
-  let color;
-  colorMode === "light" ? (color = "black") : (color = "#90cdf4");
+  let color = colorMode === "light" ? "black" : "#90cdf4";
 
   return (
     <Flex
@@ -119,7 +118,14 @@ const TopCollections = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Flex justify="space-between" align="center" pb="1rem" w="100%" textColor={color} fontWeight="bold">
+        <Flex
+          justify="space-between"
+          align="center"
+          pb="1rem"
+          w="100%"
+          textColor={color}
+          fontWeight="bold"
+        >
           <Text w="20%" align="center">
             Name
           </Text>

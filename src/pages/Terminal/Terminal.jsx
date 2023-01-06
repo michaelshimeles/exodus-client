@@ -5,7 +5,7 @@ import ListingsTable from "../../components/ListingsTable/ListingsTable";
 import SalesTable from "../../components/SalesTable/SalesTable";
 import "./Terminal.scss";
 import SalesChart from "../../components/SalesChart/SalesChart";
-import ListingsChart from "../../components/ListingsChart/ListingsChart";
+import  ListingsChart from "../../components/ListingsChart/ListingsChart";
 import HoldersChart from "../../components/HoldersChart/HoldersChart";
 import { useState } from "react";
 import FloorChart from "../../components/FloorChart/FloorChart";

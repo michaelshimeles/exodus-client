@@ -4,11 +4,9 @@ import "./Portfolio.scss";
 import PortfolioStats from "../../components/PortfolioStats/PortfolioStats";
 import { useParams } from "react-router-dom";
 import { Fragment, useState, useContext } from "react";
-import Loading from "../../components/Loading/Loading";
 import Card from "../../components/Card/Card";
 // import Footer from "../../components/Footer/Footer";
 import eth from "../../assets/images/ethereum.svg";
-import LoadingComp from "../../components/LoadingComp/LoadingComp";
 import UserActivity from "../../components/UserActivity/UserActivity";
 import { usePortfolioStats } from "../../hooks/usePortfolioStats";
 import { usePortfolioCollection } from "../../hooks/usePortfolioCollection";
@@ -17,6 +15,7 @@ import { useTransactionLog } from "../../hooks/useTransactionLog";
 import { ExplainerContext } from "../../context/ExplainerContext";
 import { ExplainerModal } from "../../components/ExplainerModal/ExplainerModal";
 import { Layout } from "../../components/Layout/Layout";
+import { Progress } from "@chakra-ui/react";
 
 const Portfolio = () => {
   const [clicked, setClicked] = useState(false);
@@ -36,10 +35,8 @@ const Portfolio = () => {
   if (!stats) {
     return (
       <Layout>
-        <div className="portfolio">
-          <NavBar />
-          <LoadingComp />
-        </div>
+        <Progress size="xs" isIndeterminate />
+        <NavBar />
       </Layout>
     );
   }
@@ -48,6 +45,7 @@ const Portfolio = () => {
     return (
       <Layout>
         <div className="portfolio">
+          <Progress size="xs" isIndeterminate />
           <NavBar />
           <PortfolioProfile
             ens={
@@ -58,7 +56,6 @@ const Portfolio = () => {
             labels={stats?.data?.labels}
           />
           <PortfolioStats stats={stats?.data.transferCounts} />
-          <LoadingComp />
         </div>
       </Layout>
     );
@@ -125,7 +122,7 @@ const Portfolio = () => {
                 })
               ) : (
                 <div className="portfolio__pie-loading">
-                  <Loading />
+                  <Progress size="xs" isIndeterminate />
                 </div>
               )
             ) : groupPortfolio ? (
@@ -151,7 +148,7 @@ const Portfolio = () => {
                 );
               })
             ) : (
-              <Loading />
+              <Progress size="xs" isIndeterminate />
             )}
             {/* {clicked ? (
             <button onClick={fetchNextPage} disabled={!hasNextPage}>
