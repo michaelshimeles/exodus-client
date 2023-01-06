@@ -9,62 +9,65 @@ import ListingsChart from "../../components/ListingsChart/ListingsChart";
 import HoldersChart from "../../components/HoldersChart/HoldersChart";
 import { useState } from "react";
 import FloorChart from "../../components/FloorChart/FloorChart";
+import { Layout } from "../../components/Layout/Layout";
 
 const Terminal = () => {
   const [clicked, setClicked] = useState(true);
   window.scrollTo(0, 0);
 
   return (
-    <div className="terminal">
-      <NavBar />
-      <CollectionBio />
-      <StatsBar />
-      <div className="terminal__button">
-        <button
-          onClick={() => {
-            setClicked(!clicked);
-          }}
-        >
-          More
-        </button>
-      </div>
+    <Layout>
+      <div className="terminal">
+        <NavBar />
+        <CollectionBio />
+        <StatsBar />
+        <div className="terminal__button">
+          <button
+            onClick={() => {
+              setClicked(!clicked);
+            }}
+          >
+            More
+          </button>
+        </div>
 
-      {clicked ? (
-        <div className="terminal__tx">
-          <div className="terminal__charts">
-            <p>Sales Chart</p>
-            <SalesChart />
-            <p>Listings Distribution</p>
-            <ListingsChart />
-          </div>
-          <div className="terminal__cards">
-            <div className="terminal__card">
-              <div className="terminal__card-title">
-                <p>Listings</p>
-                <div className="terminal__card-sort">
+        {clicked ? (
+          <div className="terminal__tx">
+            <div className="terminal__charts">
+              <p>Sales Chart</p>
+              <SalesChart />
+              <p>Listings Distribution</p>
+              <ListingsChart />
+            </div>
+            <div className="terminal__cards">
+              <div className="terminal__card">
+                <div className="terminal__card-title">
+                  <p>Listings</p>
+                  <div className="terminal__card-sort">
+                    <span className="blink_me"></span>
+                  </div>
+                </div>
+                <ListingsTable />
+              </div>
+              <div className="terminal__card">
+                <div className="terminal__card-title">
+                  <p>Sales</p>
                   <span className="blink_me"></span>
                 </div>
+                <SalesTable />
               </div>
-              <ListingsTable />
-            </div>
-            <div className="terminal__card">
-              <div className="terminal__card-title">
-                <p>Sales</p>
-                <span className="blink_me"></span>
-              </div>
-              <SalesTable />
             </div>
           </div>
-        </div>
-      ) : (
-        <div className="terminal__other">
-          <div className="terminal__holders">
-            <HoldersChart />
-            <FloorChart />
+        ) : (
+          <div className="terminal__other">
+            <div className="terminal__holders">
+              <HoldersChart />
+              <FloorChart />
+            </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </Layout>
   );
 };
 

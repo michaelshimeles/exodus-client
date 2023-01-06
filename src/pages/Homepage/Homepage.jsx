@@ -3,18 +3,21 @@ import HeroSection from "../../components/HeroSection/HeroSection";
 import TopCollections from "../../components/TopCollections/TopCollections";
 import "./Homepage.scss";
 import Footer from "../../components/Footer/Footer";
+import { Layout } from "../../components/Layout/Layout";
 
 const Homepage = () => {
   window.scrollTo(0, 0);
   return (
-    <div className="homepage">
-      <div className="homepage__container">
-        <NavBar />
-        <HeroSection />
-        <TopCollections />
+    <Layout>
+      <div className="homepage">
+        <div className="homepage__container">
+          <NavBar />
+          <HeroSection />
+          <TopCollections />
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 
