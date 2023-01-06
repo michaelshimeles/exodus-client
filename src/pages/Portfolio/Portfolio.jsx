@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { Fragment, useState, useContext } from "react";
 import Loading from "../../components/Loading/Loading";
 import Card from "../../components/Card/Card";
-import Footer from "../../components/Footer/Footer";
+// import Footer from "../../components/Footer/Footer";
 import eth from "../../assets/images/ethereum.svg";
 import LoadingComp from "../../components/LoadingComp/LoadingComp";
 import UserActivity from "../../components/UserActivity/UserActivity";
@@ -185,7 +185,7 @@ const Portfolio = () => {
             })}
           </div>
         )}
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Layout>
   );

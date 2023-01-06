@@ -1,4 +1,5 @@
 // 1. Import the extendTheme function
+// eslint-disable-next-line
 import { extendTheme, ThemeConfig } from "@chakra-ui/react";
 
 // 2. Extend the theme to include custom colors, fonts, etc
