@@ -1,5 +1,5 @@
-import theme from '../../theme';
-import { useColorMode } from '@chakra-ui/color-mode';
+import theme from "../../theme";
+import { useColorMode } from "@chakra-ui/color-mode";
 
 export const Layout = ({ children }) => {
   const { colorMode } = useColorMode();
@@ -8,10 +8,10 @@ export const Layout = ({ children }) => {
     <div
       style={{
         backgroundColor:
-          colorMode === 'light'
+          colorMode === "light"
             ? theme.config.colors.white
             : theme.config.colors.black,
-        minHeight: '100vh',
+        minHeight: "100vh",
       }}
     >
       {children}

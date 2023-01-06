@@ -1,8 +1,21 @@
+import {
+  Center,
+  Heading,
+  Image,
+  Stack,
+  Text,
+  useColorModeValue,
+  Box,
+  Badge,
+  Link,
+  Button,
+  ButtonGroup,
+} from "@chakra-ui/react";
 import axios from "axios";
+import { Link as ReachLink } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import ethImage from "../../assets/images/ethereum.svg";
-import "./HotMintsCard.scss";
+import ethImage from "../../assets/images/eth.svg";
+
 const HotMintsCard = ({
   name,
   url,
@@ -25,60 +38,111 @@ const HotMintsCard = ({
   }, [time, contract_address]);
 
   return (
-    <div className="mints-card">
-      <div className="mints-card__container">
-        <div className="mints-card__img">
+    <Center py={12}>
+      <Box
+        role={"group"}
+        p={6}
+        maxW={"330px"}
+        w={"full"}
+        bg={useColorModeValue("white", "gray.800")}
+        boxShadow={"2xl"}
+        rounded={"lg"}
+        pos={"relative"}
+        zIndex={1}
+      >
+        <Box
+          rounded={"lg"}
+          mt={-12}
+          pos={"relative"}
+          height={"230px"}
+          _after={{
+            transition: "all .3s ease",
+            content: '""',
+            w: "full",
+            h: "full",
+            pos: "absolute",
+            top: 5,
+            left: 0,
+            backgroundImage: `url(${mintDetails?.image})`,
+            filter: "blur(15px)",
+            zIndex: -1,
+          }}
+          _groupHover={{
+            _after: {
+              filter: "blur(20px)",
+            },
+          }}
+        >
           {mintDetails?.image ? (
-            <img src={mintDetails?.image} alt="NFT profile" />
+            <Image
+              rounded={"lg"}
+              height={230}
+              width={282}
+              objectFit={"cover"}
+              src={mintDetails?.image}
+            />
           ) : (
-            <img src={ethImage} alt="NFT placeholder" />
+            <Image
+              rounded={"lg"}
+              height={230}
+              width={282}
+              objectFit={"cover"}
+              src={ethImage}
+            />
           )}
-        </div>
-        <div className="mints-card__stats">
-          <div className="mints-card__text ">
-            <p>{name}</p>
-          </div>
-          <div className="mints-card__text mints-card__subtext">
-            <p>Total Mints: {mint_num}</p>
-          </div>
-          <div className="mints-card__text mints-card__subtext">
-            <p>Mint Volume: {volume} ETH</p>
-          </div>
-          <div className="mints-card__text mints-card__subtext">
-            <p>Minter Number: {minter_num}</p>
-          </div>
-          <div className="mints-card__text mints-card__subtext">
-            <p>Whales: {whale_num}</p>
-          </div>
-          <div className="mints-card__text mints-card__subtext">
-            <p>
-              Fomo Level:
-              {fomo === "HIGH"
-                ? "🔥"
-                : fomo === "MEDIUM"
-                ? "👌"
-                : fomo === "LOW"
-                ? "💩"
-                : fomo === "NONE"
-                ? "👎"
-                : fomo}
-            </p>
-          </div>
-          <div className="mints-card__buttons">
-            <a href={url} target="_blank" rel="noopener noreferrer">
-              <div className="mints-card__btn">
-                <button type="button">Mint</button>
-              </div>
-            </a>
-            <Link to={"/collection/" + contract_address}>
-              <div className="mints-card__btn">
-                <button type="button">Data</button>
-              </div>
+        </Box>
+        <Stack pt={10} align={"center"}>
+          <Text color={"gray.500"} fontSize={"sm"} textTransform={"uppercase"}>
+            {name ? name : "Name can't be found"}
+          </Text>
+          <Heading
+            fontSize={"2xl"}
+            fontFamily={"body"}
+            fontWeight={500}
+            maxW="15ch"
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+          >
+            Mint Volume: {volume} ETH
+          </Heading>
+          <Stack direction={"row"} align={"center"}>
+            <Text fontWeight={800} fontSize={"xl"}>
+              Minter Number: {minter_num}
+            </Text>
+          </Stack>
+          <Text pb="0.5rem" textDecoration={"line-through"} color={"gray.600"}>
+            {fomo === "HIGH" ? (
+              <Badge colorScheme="green">HIGH</Badge>
+            ) : fomo === "MEDIUM" ? (
+              <Badge colorScheme="yellow">MEDIUM</Badge>
+            ) : fomo === "LOW" ? (
+              <Badge colorScheme="red">LOW</Badge>
+            ) : fomo === "NONE" ? (
+              <Badge colorScheme="red">DEAD</Badge>
+            ) : (
+              fomo
+            )}
+          </Text>
+          <ButtonGroup spacing="2">
+            <Link href={url} _hover={{ textDecoration: "none" }}>
+              <Button varianst="solid" colorScheme="blue">
+                Mint
+              </Button>
             </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+            <Link
+              as={ReachLink}
+              to={"/collection/" + contract_address}
+              _hover={{ textDecoration: "none" }}
+            >
+              <Button variant="ghost" colorScheme="blue">
+                Data
+              </Button>
+            </Link>
+          </ButtonGroup>
+        </Stack>
+      </Box>
+    </Center>
   );
 };
 

@@ -36,8 +36,8 @@ const Footer = () => {
       px="3rem"
       borderTop="2px"
       borderColor="blue.700"
-      position="fixed"
       top="93vh"
+      position="fixed"
     >
       <Flex
         w="95%"

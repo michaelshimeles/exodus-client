@@ -1,14 +1,12 @@
+import { Flex, Heading, Text } from "@chakra-ui/react";
 const HotMintsTitle = () => {
   return (
-    <div className="hero">
-      <div className="hero__text">
-        <h1 className="hero__text-header">🔥 hot Mints</h1>
-        <p className="hero__text-paragraph">
-          Catch them while they're hot off the blockchain
-        </p>
-      </div>
-    </div>
+    <Flex direction="column" justify="center" align="center" gap="1rem" py="1rem">
+      <Heading fontSize="7xl">🔥 hot Mints</Heading>
+      <Text>Catch them while they're hot off the blockchain</Text>
+    </Flex>
   );
 };
 
-export default HotMintsTitle
+export default HotMintsTitle;
+

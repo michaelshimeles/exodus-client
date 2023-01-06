@@ -12,7 +12,7 @@ const theme = extendTheme({
     ...config,
     colors: {
       black: "#000000", // "#131416",
-      white: "#F5F5F5",
+      white: "#F8F8FF",
     },
   },
 });

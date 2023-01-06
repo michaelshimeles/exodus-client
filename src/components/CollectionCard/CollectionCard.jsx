@@ -5,7 +5,8 @@ import {
   Show,
   SimpleGrid,
   Text,
-  useBreakpointValue
+  useBreakpointValue,
+  useColorModeValue
 } from "@chakra-ui/react";
 import eth from "../../assets/images/ethereum.svg";
 import { useListingsStats } from "../../hooks/useListingsStats";
@@ -27,6 +28,8 @@ const CollectionCard = ({
   addressTrending,
   timeTrending,
 }) => {
+  const bgColor = useColorModeValue('', 'whiteAlpha.100')
+
   const { data: floor } = useFloorPrice(addressTrending);
 
   const { data: listingStats } = useListingsStats(
@@ -70,10 +73,10 @@ const CollectionCard = ({
           fontSize={["xs", "xs", "xs", "sm"]}
           h="3.5rem"
           w="full"
-          bgColor="whiteAlpha.100"
+          // bgColor="whiteAlpha.100"
           pl="1.25rem"
           border="1px"
-          borderColor="whiteAlpha.100"
+          borderColor={bgColor}
           mb="0.25rem"
         >
           <HStack>
@@ -103,10 +106,10 @@ const CollectionCard = ({
           fontSize={["xs", "xs", "xs", "sm"]}
           h="3.5rem"
           w="full"
-          bgColor="whiteAlpha.100"
+          // bgColor="whiteAlpha.100"
           pl="1.25rem"
           border="1px"
-          borderColor={"whiteAlpha.100"}
+          // borderColor={"whiteAlpha.100"}
           mb="0.25rem"
         >
           <HStack>

@@ -14,8 +14,8 @@ const Homepage = () => {
           <NavBar />
           <HeroSection />
           <TopCollections />
+          {/* <Footer /> */}
         </div>
-        <Footer />
       </div>
     </Layout>
   );

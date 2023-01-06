@@ -7,6 +7,7 @@ import Loading from "../../components/Loading/Loading";
 import Footer from "../../components/Footer/Footer";
 import { useHotMints } from "../../hooks/useHotMints";
 import { Layout } from "../../components/Layout/Layout";
+import { Select } from "@chakra-ui/react";
 
 const HotMints = () => {
   const [time, setTime] = useState("5m");
@@ -29,7 +30,7 @@ const HotMints = () => {
               onChange={clicked}
               onClick={refetch}
             >
-              <select id="time" className="hotmints__select">
+              <Select id="time">
                 <option id="time" value="5m">
                   5m
                 </option>
@@ -60,7 +61,7 @@ const HotMints = () => {
                 <option id="time" value="30d">
                   30d
                 </option>
-              </select>
+              </Select>
             </form>
             <div className="hotmints__card">
               {hotMints ? (

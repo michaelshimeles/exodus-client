@@ -1,10 +1,13 @@
 import {
-  Flex, Progress, Select,
+  Flex,
+  Progress,
+  Select,
   Show,
   Tab,
   TabList,
   Tabs,
-  Text
+  Text,
+  useColorMode,
 } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -16,6 +19,7 @@ import "./TopCollections.scss";
 const TopCollections = () => {
   const [topColClicked, setTopColClicked] = useState(true);
   const [time, setTime] = useState("5m");
+  const { colorMode } = useColorMode();
 
   const { data: topCol, isLoading: topColLoading } = useTopCollections();
 
@@ -24,9 +28,18 @@ const TopCollections = () => {
   const handleSelect = (event) => {
     setTime(event.target.value);
   };
+
+  let color;
+  colorMode === "light" ? (color = "black") : (color = "#90cdf4");
+
   return (
-    <Flex flexDirection="column" justifyContent="center" alignItems="center" gap="1.5rem" paddingBottom="5rem">
-      <Flex justifyContent="space-between" alignItems="center" w="90%" >
+    <Flex
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      gap="1.5rem"
+    >
+      <Flex justifyContent="space-between" alignItems="center" w="90%">
         <Text
           size="4xl"
           bgGradient="linear-gradient(45deg, rgba(105, 234, 203, 1), rgba(234, 204, 248, 1), rgba(102, 84, 241, 1))"
@@ -34,6 +47,7 @@ const TopCollections = () => {
           fontWeight="extrabold"
           bgSize="100%"
           fontSize="2xl"
+          textColor={color}
         >
           {topColClicked ? "Top Collections" : "Trending"}
         </Text>
@@ -105,26 +119,30 @@ const TopCollections = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <div className="collections__table">
-          <p className="collections__table-item">Name</p>
-          <p className="collections__table-item">{"Floor Price"}</p>
+        <Flex justify="space-between" align="center" pb="1rem" w="100%" textColor={color} fontWeight="bold">
+          <Text w="20%" align="center">
+            Name
+          </Text>
+          <Text w="20%" align="center">
+            Floor Price
+          </Text>
           <Show above="lg">
-            <p className="collections__table-item">
+            <Text w="20%" align="center">
               {topColClicked ? "Total Supply" : "Total ETH Spent"}
-            </p>
+            </Text>
           </Show>
-          <p className="collections__table-item">
+          <Text w="20%" align="center">
             {topColClicked ? "Sales (1W)" : "Listings"}
-          </p>
+          </Text>
           <Show above="lg">
-            <p className="collections__table-item">
+            <Text w="20%" align="center">
               {topColClicked ? "Volume (1W)" : "Sales"}
-            </p>
+            </Text>
           </Show>
-          <p className="collections__table-item">
+          <Text w="20%" align="center">
             {topColClicked ? "Change % " : "Momentum"}
-          </p>
-        </div>
+          </Text>
+        </Flex>
         {topColLoading ? <Progress size="xs" isIndeterminate /> : <></>}
         {trendingLoading ? <Progress size="xs" isIndeterminate /> : <></>}
         {topColClicked ? (
