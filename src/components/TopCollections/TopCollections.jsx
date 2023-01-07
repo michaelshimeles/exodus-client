@@ -8,6 +8,7 @@ import {
   Tabs,
   Text,
   useColorMode,
+  Box,
 } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -151,68 +152,70 @@ const TopCollections = () => {
         </Flex>
         {topColLoading ? <Progress size="xs" isIndeterminate /> : <></>}
         {trendingLoading ? <Progress size="xs" isIndeterminate /> : <></>}
-        {topColClicked ? (
-          topCol?.data?.collections.map((collection) => {
-            return (
-              <Link
-                to={"/collection/" + collection.id}
-                className="collections__table-link"
-                key={collection?.id}
-              >
-                <CollectionCard
-                  image={collection.sampleImages[0]}
-                  name={collection.name}
-                  floorPrice={collection.floorAsk.price?.amount?.decimal}
-                  supply={collection.tokenCount}
-                  sales={collection.onSaleCount}
-                  volume={collection.volume?.["1day"]}
-                  change={collection.volumeChange?.["1day"]}
-                  topColClicked={topColClicked}
-                />
-              </Link>
-            );
-          })
-        ) : trending?.data?.results.length !== 0 ? (
-          trending?.data?.results?.map((collection, index) => {
-            if (
-              collection.name === "BoredApeYachtClub" ||
-              collection.name === "MutantApeYachtClub" ||
-              collection.name === "Moonbirds" ||
-              collection.name === "OpenSea Shared Storefront" ||
-              collection.name === "Doodles" ||
-              collection.name === "Azuki" ||
-              collection.name === "ENS" ||
-              collection.name === "CloneX" ||
-              collection.name === "Otherdeed" ||
-              collection.name === "CyberKongz" ||
-              collection.name === "Rarible" ||
-              collection.name === "BoredApeKennelClub" ||
-              collection.name === "PudgyPenguins" ||
-              collection.name === "Cool Cats"
-            ) {
-              return <div key={index}></div>;
-            } else {
-              // calling useQuery
+        <Box w="100%">
+          {topColClicked ? (
+            topCol?.data?.collections.map((collection) => {
               return (
                 <Link
-                  to={"/collection/" + collection.contract_address}
+                  to={"/collection/" + collection.id}
                   className="collections__table-link"
-                  key={index}
+                  key={collection?.id}
                 >
                   <CollectionCard
-                    nameTrending={collection.name}
-                    imageTrending={collection.image_url}
-                    addressTrending={collection.contract_address}
-                    totalEthTrending={collection.total_eth_spent}
-                    timeTrending={time}
+                    image={collection.sampleImages[0]}
+                    name={collection.name}
+                    floorPrice={collection.floorAsk.price?.amount?.decimal}
+                    supply={collection.tokenCount}
+                    sales={collection.onSaleCount}
+                    volume={collection.volume?.["1day"]}
+                    change={collection.volumeChange?.["1day"]}
+                    topColClicked={topColClicked}
                   />
                 </Link>
               );
-            }
-          })
-        ) : (
-          <p>No Trending Found</p>
-        )}
+            })
+          ) : trending?.data?.results.length !== 0 ? (
+            trending?.data?.results?.map((collection, index) => {
+              if (
+                collection.name === "BoredApeYachtClub" ||
+                collection.name === "MutantApeYachtClub" ||
+                collection.name === "Moonbirds" ||
+                collection.name === "OpenSea Shared Storefront" ||
+                collection.name === "Doodles" ||
+                collection.name === "Azuki" ||
+                collection.name === "ENS" ||
+                collection.name === "CloneX" ||
+                collection.name === "Otherdeed" ||
+                collection.name === "CyberKongz" ||
+                collection.name === "Rarible" ||
+                collection.name === "BoredApeKennelClub" ||
+                collection.name === "PudgyPenguins" ||
+                collection.name === "Cool Cats"
+              ) {
+                return <div key={index}></div>;
+              } else {
+                // calling useQuery
+                return (
+                  <Link
+                    to={"/collection/" + collection.contract_address}
+                    className="collections__table-link"
+                    key={index}
+                  >
+                    <CollectionCard
+                      nameTrending={collection.name}
+                      imageTrending={collection.image_url}
+                      addressTrending={collection.contract_address}
+                      totalEthTrending={collection.total_eth_spent}
+                      timeTrending={time}
+                    />
+                  </Link>
+                );
+              }
+            })
+          ) : (
+            <p>No Trending Found</p>
+          )}
+        </Box>
       </Flex>
     </Flex>
   );

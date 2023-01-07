@@ -9,6 +9,7 @@ import {
   PopoverTrigger,
   Show,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
@@ -28,6 +29,8 @@ const Footer = () => {
   const { data: price } = useQuery("gas", fetchGas);
   const { data: sentiment } = useQuery("metrics", fetchMetrics);
 
+  const bgColor = useColorModeValue("white", "black");
+
   return (
     <Flex
       w="full"
@@ -36,8 +39,10 @@ const Footer = () => {
       px="3rem"
       borderTop="2px"
       borderColor="blue.700"
-      top="93vh"
+      top="94vh"
       position="fixed"
+      bgColor={bgColor}
+      zIndex="5"
     >
       <Flex
         w="95%"

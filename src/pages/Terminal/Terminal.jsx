@@ -3,34 +3,33 @@ import CollectionBio from "../../components/CollectionBio/CollectionBio";
 import StatsBar from "../../components/StatsBar/StatsBar";
 import ListingsTable from "../../components/ListingsTable/ListingsTable";
 import SalesTable from "../../components/SalesTable/SalesTable";
-import "./Terminal.scss";
 import SalesChart from "../../components/SalesChart/SalesChart";
-import  ListingsChart from "../../components/ListingsChart/ListingsChart";
+import ListingsChart from "../../components/ListingsChart/ListingsChart";
 import HoldersChart from "../../components/HoldersChart/HoldersChart";
-import { useState } from "react";
 import FloorChart from "../../components/FloorChart/FloorChart";
+import "./Terminal.scss";
+import { useState } from "react";
 import { Layout } from "../../components/Layout/Layout";
-
+import { Flex, Button } from "@chakra-ui/react";
 const Terminal = () => {
   const [clicked, setClicked] = useState(true);
   window.scrollTo(0, 0);
 
   return (
     <Layout>
-      <div className="terminal">
+      <Flex direction="column" justify="center" align="center">
         <NavBar />
         <CollectionBio />
         <StatsBar />
-        <div className="terminal__button">
-          <button
+        <Flex justify="flex-end" align-items="center" w="85%" h="auto">
+          <Button
             onClick={() => {
               setClicked(!clicked);
             }}
           >
             More
-          </button>
-        </div>
-
+          </Button>
+        </Flex>
         {clicked ? (
           <div className="terminal__tx">
             <div className="terminal__charts">
@@ -66,7 +65,7 @@ const Terminal = () => {
             </div>
           </div>
         )}
-      </div>
+      </Flex>
     </Layout>
   );
 };

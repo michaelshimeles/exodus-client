@@ -5,7 +5,7 @@ import PortfolioStats from "../../components/PortfolioStats/PortfolioStats";
 import { useParams } from "react-router-dom";
 import { Fragment, useState, useContext } from "react";
 import Card from "../../components/Card/Card";
-// import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 import eth from "../../assets/images/ethereum.svg";
 import UserActivity from "../../components/UserActivity/UserActivity";
 import { usePortfolioStats } from "../../hooks/usePortfolioStats";
@@ -182,7 +182,7 @@ const Portfolio = () => {
             })}
           </div>
         )}
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Layout>
   );
