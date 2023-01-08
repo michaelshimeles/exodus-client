@@ -39,7 +39,7 @@ const Footer = () => {
       px="3rem"
       borderTop="2px"
       borderColor="blue.700"
-      top="94vh"
+      top="93.5vh"
       position="fixed"
       bgColor={bgColor}
       zIndex="5"
@@ -72,7 +72,7 @@ const Footer = () => {
                     size="sm"
                   />
                 </PopoverTrigger>
-                <PopoverContent bgColor="black">
+                <PopoverContent>
                   <PopoverArrow />
                   <PopoverBody>
                     <Text>

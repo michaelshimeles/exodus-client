@@ -7,7 +7,7 @@ import Loading from "../../components/Loading/Loading";
 import Footer from "../../components/Footer/Footer";
 import { useHotMints } from "../../hooks/useHotMints";
 import { Layout } from "../../components/Layout/Layout";
-import { Select } from "@chakra-ui/react";
+import { Select, Flex } from "@chakra-ui/react";
 
 const HotMints = () => {
   const [time, setTime] = useState("5m");
@@ -63,28 +63,32 @@ const HotMints = () => {
                 </option>
               </Select>
             </form>
-            <div className="hotmints__card">
-              {hotMints ? (
-                hotMints?.data?.top_mint_collection_items.map((mint, index) => {
-                  return (
-                    <HotMintsCard
-                      key={index}
-                      name={mint?.collection_name}
-                      url={mint?.contract_url}
-                      mint_num={mint?.mint_num}
-                      volume={mint?.mint_volume?.value}
-                      minter_num={mint?.minter_num}
-                      whale_num={mint?.whale_num}
-                      fomo={mint?.fomo}
-                      contract_address={mint?.contract_address}
-                      time={time}
-                    />
-                  );
-                })
-              ) : (
-                <Loading />
-              )}
-            </div>
+            <Flex justify="center" align="center" flexWrap="wrap">
+              <div className="hotmints__card">
+                {hotMints ? (
+                  hotMints?.data?.top_mint_collection_items.map(
+                    (mint, index) => {
+                      return (
+                        <HotMintsCard
+                          key={index}
+                          name={mint?.collection_name}
+                          url={mint?.contract_url}
+                          mint_num={mint?.mint_num}
+                          volume={mint?.mint_volume?.value}
+                          minter_num={mint?.minter_num}
+                          whale_num={mint?.whale_num}
+                          fomo={mint?.fomo}
+                          contract_address={mint?.contract_address}
+                          time={time}
+                        />
+                      );
+                    }
+                  )
+                ) : (
+                  <Loading />
+                )}
+              </div>
+            </Flex>
           </div>
         </div>
         <Footer />

@@ -1,19 +1,17 @@
 import {
-  Center,
-  Heading,
-  Image,
-  Stack,
-  Text,
-  useColorModeValue,
-  Box,
   Badge,
-  Link,
+  Box,
   Button,
   ButtonGroup,
+  Center, Image,
+  Link,
+  Stack,
+  Text,
+  useColorModeValue
 } from "@chakra-ui/react";
 import axios from "axios";
-import { Link as ReachLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link as ReachLink } from "react-router-dom";
 import ethImage from "../../assets/images/eth.svg";
 
 const HotMintsCard = ({
@@ -37,6 +35,8 @@ const HotMintsCard = ({
       });
   }, [time, contract_address]);
 
+  const bgColor = useColorModeValue("white", "#141821");
+
   return (
     <Center py={12}>
       <Box
@@ -44,11 +44,11 @@ const HotMintsCard = ({
         p={6}
         maxW={"330px"}
         w={"full"}
-        bg={useColorModeValue("white", "gray.800")}
         boxShadow={"2xl"}
         rounded={"lg"}
         pos={"relative"}
         zIndex={1}
+        bgColor={bgColor}
       >
         <Box
           rounded={"lg"}
@@ -95,22 +95,6 @@ const HotMintsCard = ({
           <Text color={"gray.500"} fontSize={"sm"} textTransform={"uppercase"}>
             {name ? name : "Name can't be found"}
           </Text>
-          <Heading
-            fontSize={"2xl"}
-            fontFamily={"body"}
-            fontWeight={500}
-            maxW="15ch"
-            textOverflow="ellipsis"
-            overflow="hidden"
-            whiteSpace="nowrap"
-          >
-            Mint Volume: {volume} ETH
-          </Heading>
-          <Stack direction={"row"} align={"center"}>
-            <Text fontWeight={800} fontSize={"xl"}>
-              Minter Number: {minter_num}
-            </Text>
-          </Stack>
           <Text pb="0.5rem" textDecoration={"line-through"} color={"gray.600"}>
             {fomo === "HIGH" ? (
               <Badge colorScheme="green">HIGH</Badge>

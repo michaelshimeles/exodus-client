@@ -1,20 +1,24 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
-  Button,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
   Flex,
   Hide,
   Image,
   Input,
   Link,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Show
+  Show,
+  useDisclosure,
+  Text,
+  HStack,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { ConnectKitButton } from "connectkit";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { Link as ReactLink } from "react-router-dom";
 import { useAccount } from "wagmi";
@@ -22,6 +26,7 @@ import logo from "../../assets/logo/logo.png";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import theme from "../../theme";
 import "./NavBar.scss";
+import verified from "../../assets/images/verified.svg.png";
 
 const NavBar = () => {
   const { address } = useAccount();
@@ -29,6 +34,9 @@ const NavBar = () => {
   const [addressState, setAddressState] = useState(address);
   const [search, setSearch] = useState("");
   const [result, setResult] = useState("");
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
 
   const URL = process.env.REACT_APP_URL;
 
@@ -62,7 +70,7 @@ const NavBar = () => {
       alignItems="center"
       py="0.5rem"
     >
-      <Flex justifyContent="space-between" alignItems="center" w="90%">
+      <Flex justify="space-between" align="center" w="90%">
         <Flex
           height="4rem"
           gap="1rem"
@@ -73,44 +81,14 @@ const NavBar = () => {
             <Image src={logo} alt="Exodus logo" w="2.5rem" />
           </Link>
           <Hide below="lg">
-            <Flex
-              justify="center"
-              align="center"
-            >
+            <Flex direction="column" justify="center" align="center">
               <Input
                 placeholder="Search..."
                 w="100%"
                 onChange={handleSearch}
                 onClick={handleSearch}
+                ref={searchRef}
               />
-              <Flex
-                direction="column"
-                justify="center"
-                align="center"
-                position="fixed"
-                w="5rem"
-                pt="18rem"
-              >
-                {result !== "" ? (
-                  result.collections.map((search, index) => {
-                    console.log("search", search);
-                    return (
-                      <Link
-                        onClick={() => {
-                          setResult("");
-                          setSearch("");
-                        }}
-                        as={ReactLink}
-                        to={"/collection/" + search?.contract}
-                      >
-                        <></>
-                      </Link>
-                    );
-                  })
-                ) : (
-                  <></>
-                )}
-              </Flex>
             </Flex>
           </Hide>
         </Flex>
@@ -154,46 +132,123 @@ const NavBar = () => {
             </Flex>
           </Hide>
           <Show below="lg">
-            <ConnectKitButton />
-            <Menu>
-              <MenuButton as={Button}>
-                <HamburgerIcon boxSize={6} />
-              </MenuButton>
-              <MenuList>
-                <MenuItem>
-                  <Link
-                    as={ReactLink}
-                    to="/hotmints"
-                    fontWeight="bold"
-                    _hover={{ textDecoration: "none" }}
-                  >
-                    🔥 Hot Mints
-                  </Link>
-                </MenuItem>
-                <MenuItem>
-                  {addressState ? (
+            <HamburgerIcon
+              boxSize={6}
+              ref={btnRef}
+              colorScheme="teal"
+              onClick={onOpen}
+            />
+            <Drawer
+              isOpen={isOpen}
+              placement="right"
+              onClose={onClose}
+              finalFocusRef={btnRef}
+            >
+              <DrawerOverlay />
+              <DrawerContent>
+                <DrawerCloseButton />
+                <DrawerHeader>
+                  <ConnectKitButton />
+                </DrawerHeader>
+                <DrawerBody>
+                  <Flex direction="column" gap="1rem">
+                    <Input
+                      placeholder="Search..."
+                      w="100%"
+                      onChange={handleSearch}
+                      onClick={handleSearch}
+                      ref={searchRef}
+                    />
                     <Link
                       as={ReactLink}
-                      to={`/portfolio/${address}`}
+                      to="/hotmints"
                       fontWeight="bold"
                       _hover={{ textDecoration: "none" }}
                     >
-                      📊 Portfolio
+                      🔥 Hot Mints
                     </Link>
+
+                    {addressState ? (
+                      <Link
+                        as={ReactLink}
+                        to={`/portfolio/${address}`}
+                        fontWeight="bold"
+                        _hover={{ textDecoration: "none" }}
+                        ref={searchRef}
+                      >
+                        📊 Portfolio
+                      </Link>
+                    ) : (
+                      <Link
+                        as={ReactLink}
+                        to={`/portfolio/${address}`}
+                        fontWeight="bold"
+                        _hover={{ textDecoration: "none" }}
+                        hidden={true}
+                      >
+                        📊 Portfolio
+                      </Link>
+                    )}
+                  </Flex>
+                  {result ? (
+                    <Flex
+                      direction="column"
+                      justify="center"
+                      align="flex-start"
+                      w="100%"
+                      gap="0.5rem"
+                      mt="1rem"
+                      py="1rem"
+                      px="0.75rem"
+                      bgColor="black"
+                      rounded="2xl"
+                    >
+                      {result !== "" ? (
+                        result.collections.map((search, index) => {
+                          console.log("Result", search);
+                          return (
+                            <Link
+                              onClick={() => {
+                                setResult("");
+                                setSearch("");
+                              }}
+                              as={ReactLink}
+                              to={"/collection/" + search?.contract}
+                              key={index}
+                              ref={searchRef}
+                            >
+                              <HStack justify="flex-start" w="100%">
+                                <Image
+                                  w="2rem"
+                                  rounded="full"
+                                  src={search?.image}
+                                  alt="Search result"
+                                />
+                                <Text>{search?.name}</Text>
+                                {search?.openseaVerificationStatus ===
+                                "verified" ? (
+                                  <Image
+                                    w="1rem"
+                                    src={verified}
+                                    alt="verified"
+                                  />
+                                ) : (
+                                  <></>
+                                )}
+                              </HStack>
+                            </Link>
+                          );
+                        })
+                      ) : (
+                        <></>
+                      )}
+                    </Flex>
                   ) : (
-                    <Link
-                      as={ReactLink}
-                      to={`/portfolio/${address}`}
-                      fontWeight="bold"
-                      _hover={{ textDecoration: "none" }}
-                      hidden={true}
-                    >
-                      📊 Portfolio
-                    </Link>
+                    <></>
                   )}
-                </MenuItem>
-              </MenuList>
-            </Menu>
+                </DrawerBody>
+              </DrawerContent>
+            </Drawer>
           </Show>
           <ColorModeSwitcher theme={theme} />
         </Flex>

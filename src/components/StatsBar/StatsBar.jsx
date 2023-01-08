@@ -4,13 +4,7 @@ import { useStatsBar } from "../../hooks/useStatsBar";
 import { useFloorPrice } from "../../hooks/useFloorPrice";
 import { useSalesStats } from "../../hooks/useSalesStats";
 import { useListingsStats } from "../../hooks/useListingsStats";
-import {
-  Select,
-  Flex,
-  Text,
-  useColorModeValue,
-  Show,
-} from "@chakra-ui/react";
+import { Select, Flex, Text, useColorModeValue, Show } from "@chakra-ui/react";
 const StatsBar = () => {
   const [time, setTime] = useState(5);
   const [dropDown, setDropDown] = useState(false);
@@ -136,10 +130,14 @@ const StatsBar = () => {
               gap="0.3rem"
             >
               <Show above="md">
-                <Text fontSize="0.75rem">Total Listings</Text>
+                <Text fontSize="0.75rem" fontWeight="bold">
+                  Total Listings
+                </Text>
               </Show>
               <Show below="md">
-                <Text fontSize="0.75rem">T Listings</Text>
+                <Text fontSize="0.75rem" fontWeight="bold">
+                  T Listings
+                </Text>
               </Show>
               <Text
                 whiteSpace="nowrap"
@@ -159,7 +157,9 @@ const StatsBar = () => {
                 w="20%"
                 gap="0.3rem"
               >
-                <Text fontSize="0.75rem" fontWeight="bold">Total Supply</Text>
+                <Text fontSize="0.75rem" fontWeight="bold">
+                  Total Supply
+                </Text>
                 <Text
                   whiteSpace="nowrap"
                   overflow="hidden"
@@ -178,7 +178,9 @@ const StatsBar = () => {
               w="20%"
               gap="0.3rem"
             >
-              <Text fontSize="0.75rem" fontWeight="bold">Listings</Text>
+              <Text fontSize="0.75rem" fontWeight="bold">
+                Listings
+              </Text>
               <Text
                 whiteSpace="nowrap"
                 overflow="hidden"
@@ -196,7 +198,9 @@ const StatsBar = () => {
               w="20%"
               gap="0.3rem"
             >
-              <Text fontSize="0.75rem" fontWeight="bold">Sales</Text>
+              <Text fontSize="0.75rem" fontWeight="bold">
+                Sales
+              </Text>
               <Text
                 whiteSpace="nowrap"
                 overflow="hidden"
@@ -215,7 +219,9 @@ const StatsBar = () => {
               gap="0.3rem"
             >
               <Show above="md">
-                <Text fontSize="0.75rem" fontWeight="bold">Indicator ({time}m)</Text>
+                <Text fontSize="0.75rem" fontWeight="bold">
+                  Indicator ({time}m)
+                </Text>
                 <Text fontSize="0.8rem">
                   {momentum(
                     salesStats?.data?.sales.length,
