@@ -1,4 +1,4 @@
-import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Text, useColorModeValue, Hide } from "@chakra-ui/react";
 const PortfolioStats = ({ stats }) => {
   const borderColor = useColorModeValue("", "whiteAlpha.100");
   const bgColor = useColorModeValue("white", "whiteAlpha.50");
@@ -64,26 +64,28 @@ const PortfolioStats = ({ stats }) => {
             </Flex>
           </Flex>
         </Flex>
-        <Flex direction="column" justify="center" align="center" gap="0.3rem">
-          <Flex direction="column" justify="center" align="center">
-            <Flex justify="center" align="center">
-              <Text fontSize="0.75rem">Transfer In</Text>
-            </Flex>
-            <Flex justify="center" align="center">
-              <Text fontSize="0.75rem">{stats && stats.transfersIn}</Text>
-            </Flex>
-          </Flex>
-        </Flex>
-        <Flex direction="column" justify="center" align="center" gap="0.3rem">
-          <Flex direction="column" justify="center" align="center">
-            <Flex justify="center" align="center">
-              <Text fontSize="0.75rem">Transfer Out</Text>
-            </Flex>
-            <Flex justify="center" align="center">
-              <Text fontSize="0.75rem">{stats && stats.transfersOut}</Text>
+        <Hide below="lg">
+          <Flex direction="column" justify="center" align="center" gap="0.3rem">
+            <Flex direction="column" justify="center" align="center">
+              <Flex justify="center" align="center">
+                <Text fontSize="0.75rem">Transfer In</Text>
+              </Flex>
+              <Flex justify="center" align="center">
+                <Text fontSize="0.75rem">{stats && stats.transfersIn}</Text>
+              </Flex>
             </Flex>
           </Flex>
-        </Flex>
+          <Flex direction="column" justify="center" align="center" gap="0.3rem">
+            <Flex direction="column" justify="center" align="center">
+              <Flex justify="center" align="center">
+                <Text fontSize="0.75rem">Transfer Out</Text>
+              </Flex>
+              <Flex justify="center" align="center">
+                <Text fontSize="0.75rem">{stats && stats.transfersOut}</Text>
+              </Flex>
+            </Flex>
+          </Flex>
+        </Hide>
       </Flex>
     </Flex>
   );
