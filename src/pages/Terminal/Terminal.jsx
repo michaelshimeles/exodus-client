@@ -8,7 +8,7 @@ import ListingsChart from "../../components/ListingsChart/ListingsChart";
 import HoldersChart from "../../components/HoldersChart/HoldersChart";
 import FloorChart from "../../components/FloorChart/FloorChart";
 import "./Terminal.scss";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Layout } from "../../components/Layout/Layout";
 import {
   Flex,
@@ -18,6 +18,7 @@ import {
   VStack,
   Show,
   Box,
+  Text,
 } from "@chakra-ui/react";
 
 const Terminal = () => {
@@ -54,9 +55,27 @@ const Terminal = () => {
                   <SalesChart />
                 </GridItem>
                 <GridItem rowSpan={2} colSpan={3}>
+                  <Text
+                    textAlign="left"
+                    fontSize="l"
+                    fontWeight="bold"
+                    w="full"
+                    pb="0.4rem"
+                  >
+                    Listings
+                  </Text>
                   <ListingsTable />
                 </GridItem>
                 <GridItem rowSpan={2} colSpan={3}>
+                  <Text
+                    textAlign="left"
+                    fontSize="l"
+                    fontWeight="bold"
+                    w="full"
+                    pb="0.4rem"
+                  >
+                    Sales
+                  </Text>
                   <SalesTable />
                 </GridItem>
                 <GridItem rowSpan={1} colSpan={5}>
