@@ -1,22 +1,19 @@
 import { Progress } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import eth from "../../assets/images/ethereum.svg";
 import Card from "../../components/Card/Card";
-import { ExplainerModal } from "../../components/ExplainerModal/ExplainerModal";
 import Footer from "../../components/Footer/Footer";
 import { Layout } from "../../components/Layout/Layout";
 import NavBar from "../../components/NavBar/NavBar";
 import PortfolioProfile from "../../components/PortfolioProfile/PortfolioProfile";
 import PortfolioStats from "../../components/PortfolioStats/PortfolioStats";
-import { ExplainerContext } from "../../context/ExplainerContext";
 import { usePortfolioGrouped } from "../../hooks/usePortfolioGrouped";
 import { usePortfolioStats } from "../../hooks/usePortfolioStats";
 import "./Portfolio.scss";
 
 const Portfolio = () => {
   const [clicked, setClicked] = useState(false);
-  const [explainerHover] = useContext(ExplainerContext);
 
   const { id } = useParams();
 
@@ -63,7 +60,6 @@ const Portfolio = () => {
           labels={stats?.data?.labels}
         />
         <PortfolioStats stats={stats?.data.transferCounts} />
-        {explainerHover.show && <ExplainerModal info={explainerHover.info} />}
         {
           <div className="portfolio__pie">
             {groupPortfolio ? (

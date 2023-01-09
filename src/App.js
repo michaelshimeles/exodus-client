@@ -8,8 +8,6 @@ import { WagmiConfig, createClient } from "wagmi";
 import { ConnectKitProvider, getDefaultClient } from "connectkit";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { useState } from "react";
-import { ExplainerContext } from "./context/ExplainerContext";
 
 const queryClient = new QueryClient();
 
@@ -23,11 +21,6 @@ const client = createClient(
 );
 
 function App() {
-  const [explainerHover, setExplainerHover] = useState({
-    show: false,
-    info: "",
-  });
-
   return (
     <QueryClientProvider client={queryClient}>
       <WagmiConfig client={client}>
@@ -37,19 +30,15 @@ function App() {
             "--ck-font-family": '"Open Sans", sans-serif',
           }}
         >
-            <ExplainerContext.Provider
-              value={[explainerHover, setExplainerHover]}
-            >
-              <BrowserRouter>
-                <Routes>
-                  <Route path="/" element={<Homepage />} />
-                  <Route path="/collection/:id" element={<Terminal />} />
-                  <Route path="/portfolio/:id" element={<Portfolio />} />
-                  <Route path="/hotmints" element={<HotMints />} />
-                  <Route path="*" element={<Homepage />} />
-                </Routes>
-              </BrowserRouter>
-            </ExplainerContext.Provider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/collection/:id" element={<Terminal />} />
+              <Route path="/portfolio/:id" element={<Portfolio />} />
+              <Route path="/hotmints" element={<HotMints />} />
+              <Route path="*" element={<Homepage />} />
+            </Routes>
+          </BrowserRouter>
         </ConnectKitProvider>
       </WagmiConfig>
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
