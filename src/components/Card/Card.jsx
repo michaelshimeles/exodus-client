@@ -10,7 +10,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { Link as ReachLink } from "react-router-dom";
-import ethImage from "../../assets/images/eth.svg"; 
+import ethImage from "../../assets/images/eth.svg";
 
 const Card = ({
   name,
@@ -36,7 +36,7 @@ const Card = ({
           p={6}
           maxW={"330px"}
           w={"full"}
-          bg={useColorModeValue("white", "gray.800")}
+          bg={useColorModeValue("white", "#141821")}
           boxShadow={"2xl"}
           rounded={"lg"}
           pos={"relative"}
