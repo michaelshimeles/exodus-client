@@ -42,7 +42,7 @@ const HotMintsCard = ({
       <Box
         role={"group"}
         p={6}
-        maxW={"330px"}
+        maxW={"295px"}
         w={"full"}
         boxShadow={"2xl"}
         rounded={"lg"}

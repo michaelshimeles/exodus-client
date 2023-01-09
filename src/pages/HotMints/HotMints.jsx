@@ -63,7 +63,7 @@ const HotMints = () => {
                 </option>
               </Select>
             </form>
-            <Flex justify="center" align="center" flexWrap="wrap">
+            <Flex justify="center" align="center" flexWrap="wrap" pb="3rem">
               <div className="hotmints__card">
                 {hotMints ? (
                   hotMints?.data?.top_mint_collection_items.map(

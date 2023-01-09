@@ -8,7 +8,7 @@ const PortfolioStats = ({ stats }) => {
       <Flex
         justify="space-around"
         align="center"
-        w="80%"
+        w="90%"
         py="0.8rem"
         border="1px"
         borderColor={borderColor}
