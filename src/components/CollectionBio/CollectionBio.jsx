@@ -22,7 +22,7 @@ const CollectionBio = () => {
   }
 
   return (
-    <Flex w="85%">
+    <Flex w="90%" pt="1rem">
       <HStack>
         <Image
           w="5rem"

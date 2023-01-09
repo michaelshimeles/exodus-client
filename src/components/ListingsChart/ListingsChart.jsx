@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import ping from "../../utils/ping";
 // eslint-disable-next-line
 import Chart from "chart.js/auto";
+import { Flex, Text } from "@chakra-ui/react";
 
 const ListingsChart = () => {
   const [lineChart, setLineChart] = useState(null);
@@ -18,7 +19,6 @@ const ListingsChart = () => {
     ping(`${URL}`, setLineChart, 10000);
   }, [URL]);
 
-  
   const options = {
     responsive: true,
     plugins: {
@@ -66,7 +66,15 @@ const ListingsChart = () => {
 
   return (
     <div className="listings-section">
-      <Line className="listings-section__chart" options={options} data={data} />
+      
+      <Flex direction="column" w="full" gap="1rem">
+        <Text fontSize="xl" fontWeight="bold">Listings Chart</Text>
+        <Line
+          className="listings-section__chart"
+          options={options}
+          data={data}
+        />
+      </Flex>
     </div>
   );
 };

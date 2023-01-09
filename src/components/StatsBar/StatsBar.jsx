@@ -42,7 +42,7 @@ const StatsBar = () => {
 
   return (
     <Flex direction="column" justify="center" align="center" w="100%">
-      <Flex justify="flex-end" align="center" w="85%">
+      <Flex justify="flex-end" align="center" w="90%">
         <Select id="time" onChange={clicked} w="86px">
           <option id="time" value="5">
             5m
@@ -59,9 +59,6 @@ const StatsBar = () => {
           <option id="time" value="60">
             1h
           </option>
-          <option id="time" value="1440">
-            24hr
-          </option>
         </Select>
       </Flex>
       <Flex direction="column" justify="center" align="center" w="100%">
@@ -75,7 +72,7 @@ const StatsBar = () => {
           <Flex
             justify="center"
             align="center"
-            w="86%"
+            w="91%"
             p="0.6rem"
             bgColor={bgColor}
             border="1px"

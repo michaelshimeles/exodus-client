@@ -17,7 +17,9 @@ const PortfolioStats = ({ stats }) => {
         <Flex direction="column" justify="center" align="center" gap="0.3rem">
           <Flex direction="column" justify="center" align="center">
             <Flex justify="center" align="center">
-              <Text fontSize="0.75rem">Flips</Text>
+              <Text fontWeight="bold" fontSize="0.75rem">
+                Flips
+              </Text>
             </Flex>
             <Flex justify="center" align="center">
               <Text fontSize="0.75rem">{stats && stats.flips}</Text>
@@ -27,7 +29,9 @@ const PortfolioStats = ({ stats }) => {
         <Flex direction="column" justify="center" align="center" gap="0.3rem">
           <Flex direction="column" justify="center" align="center">
             <Flex justify="center" align="center">
-              <Text fontSize="0.75rem">Mint</Text>
+              <Text fontWeight="bold" fontSize="0.75rem">
+                Mint
+              </Text>
             </Flex>
             <Flex justify="center" align="center">
               <Text fontSize="0.75rem">{stats && stats.mints}</Text>
@@ -37,7 +41,9 @@ const PortfolioStats = ({ stats }) => {
         <Flex direction="column" justify="center" align="center" gap="0.3rem">
           <Flex direction="column" justify="center" align="center">
             <Flex justify="center" align="center">
-              <Text fontSize="0.75rem">Profitable Flips</Text>
+              <Text fontWeight="bold" fontSize="0.75rem">
+                Profitable Flips
+              </Text>
             </Flex>
             <Flex justify="center" align="center">
               <Text fontSize="0.75rem">{stats && stats.profitableFlips}</Text>
@@ -47,7 +53,9 @@ const PortfolioStats = ({ stats }) => {
         <Flex direction="column" justify="center" align="center" gap="0.3rem">
           <Flex direction="column" justify="center" align="center">
             <Flex justify="center" align="center">
-              <Text fontSize="0.75rem">Buy</Text>
+              <Text fontWeight="bold" fontSize="0.75rem">
+                Buy
+              </Text>
             </Flex>
             <Flex justify="center" align="center">
               <Text fontSize="0.75rem">{stats && stats.purchases}</Text>
@@ -57,7 +65,9 @@ const PortfolioStats = ({ stats }) => {
         <Flex direction="column" justify="center" align="center" gap="0.3rem">
           <Flex direction="column" justify="center" align="center">
             <Flex justify="center" align="center">
-              <Text fontSize="0.75rem">Sales</Text>
+              <Text fontWeight="bold" fontSize="0.75rem">
+                Sales
+              </Text>
             </Flex>
             <Flex justify="center" align="center">
               <Text fontSize="0.75rem">{stats && stats.sales}</Text>
@@ -68,7 +78,9 @@ const PortfolioStats = ({ stats }) => {
           <Flex direction="column" justify="center" align="center" gap="0.3rem">
             <Flex direction="column" justify="center" align="center">
               <Flex justify="center" align="center">
-                <Text fontSize="0.75rem">Transfer In</Text>
+                <Text fontWeight="bold" fontSize="0.75rem">
+                  Transfer In
+                </Text>
               </Flex>
               <Flex justify="center" align="center">
                 <Text fontSize="0.75rem">{stats && stats.transfersIn}</Text>
@@ -78,7 +90,9 @@ const PortfolioStats = ({ stats }) => {
           <Flex direction="column" justify="center" align="center" gap="0.3rem">
             <Flex direction="column" justify="center" align="center">
               <Flex justify="center" align="center">
-                <Text fontSize="0.75rem">Transfer Out</Text>
+                <Text fontWeight="bold" fontSize="0.75rem">
+                  Transfer Out
+                </Text>
               </Flex>
               <Flex justify="center" align="center">
                 <Text fontSize="0.75rem">{stats && stats.transfersOut}</Text>

@@ -8,9 +8,18 @@ import ListingsChart from "../../components/ListingsChart/ListingsChart";
 import HoldersChart from "../../components/HoldersChart/HoldersChart";
 import FloorChart from "../../components/FloorChart/FloorChart";
 import "./Terminal.scss";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Layout } from "../../components/Layout/Layout";
-import { Flex, Button } from "@chakra-ui/react";
+import {
+  Flex,
+  Button,
+  Grid,
+  GridItem,
+  VStack,
+  Show,
+  Box,
+} from "@chakra-ui/react";
+
 const Terminal = () => {
   const [clicked, setClicked] = useState(true);
   window.scrollTo(0, 0);
@@ -21,7 +30,7 @@ const Terminal = () => {
         <NavBar />
         <CollectionBio />
         <StatsBar />
-        <Flex justify="flex-end" align-items="center" w="85%" h="auto">
+        <Flex justify="flex-end" align-items="center" w="90%" h="auto">
           <Button
             onClick={() => {
               setClicked(!clicked);
@@ -31,32 +40,41 @@ const Terminal = () => {
           </Button>
         </Flex>
         {clicked ? (
-          <div className="terminal__tx">
-            <div className="terminal__charts">
-              <p>Sales Chart</p>
-              <SalesChart />
-              <p>Listings Distribution</p>
-              <ListingsChart />
-            </div>
-            <div className="terminal__cards">
-              <div className="terminal__card">
-                <div className="terminal__card-title">
-                  <p>Listings</p>
-                  <div className="terminal__card-sort">
-                    <span className="blink_me"></span>
-                  </div>
-                </div>
+          <>
+            <Show above="lg">
+              <Grid
+                templateRows="repeat(2, 1fr)"
+                templateColumns="repeat(11, 1fr)"
+                gap={4}
+                w="90%"
+                mt="1rem"
+              >
+                <GridItem rowSpan={1} colSpan={5}>
+                  <SalesChart />
+                </GridItem>
+                <GridItem rowSpan={2} colSpan={3}>
+                  <ListingsTable />
+                </GridItem>
+                <GridItem rowSpan={2} colSpan={3}>
+                  <SalesTable />
+                </GridItem>
+                <GridItem rowSpan={1} colSpan={5}>
+                  <ListingsChart />
+                </GridItem>
+              </Grid>
+            </Show>
+            <Show below="lg">
+              <VStack w="90%">
+                <Box pt="1rem" w="full">
+                  <SalesChart />
+                </Box>
+
+                <ListingsChart />
                 <ListingsTable />
-              </div>
-              <div className="terminal__card">
-                <div className="terminal__card-title">
-                  <p>Sales</p>
-                  <span className="blink_me"></span>
-                </div>
                 <SalesTable />
-              </div>
-            </div>
-          </div>
+              </VStack>
+            </Show>
+          </>
         ) : (
           <div className="terminal__other">
             <div className="terminal__holders">
