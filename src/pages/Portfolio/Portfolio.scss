@@ -10,11 +10,16 @@
 
   &__pie {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     width: 80%;
     padding: 2rem 0rem;
+
+    @include tablet {
+      justify-content: space-between;
+      gap:0.5rem;
+    }
 
     &-loading {
       display: flex;

@@ -2,12 +2,16 @@ import "./PortfolioProfile.scss";
 import logo from "../../assets/images/ethereum.svg";
 import { useContext } from "react";
 import { ExplainerContext } from "../../context/ExplainerContext";
+import { Badge } from "@chakra-ui/react";
 
 const PortfolioProfile = ({ ens, totalValue, scores, labels }) => {
   const [explainerHover, setExplainerHover] = useContext(ExplainerContext);
 
   const handleExplainer = (event) => {
-    setExplainerHover({ show: !explainerHover.show, info: event.target.textContent });
+    setExplainerHover({
+      show: !explainerHover.show,
+      info: event.target.textContent,
+    });
     console.log("explainerHover", explainerHover);
   };
 
@@ -20,7 +24,7 @@ const PortfolioProfile = ({ ens, totalValue, scores, labels }) => {
           </div>
           <div className="profile__value">
             <p className="profile__address">{ens ? ens : ""}</p>
-            <p className="profile__eth">Ξ{totalValue}</p>
+            <p className="profile__eth">Ξ{Math.round(totalValue * 100) / 100}</p>
           </div>
         </div>
         <div className="profile__stats">
@@ -62,7 +66,7 @@ const PortfolioProfile = ({ ens, totalValue, scores, labels }) => {
           </p>
           {labels.map((label, index) => {
             return (
-              <p
+              <Badge
                 key={index}
                 onMouseOver={handleExplainer}
                 onMouseLeave={handleExplainer}
@@ -86,7 +90,7 @@ const PortfolioProfile = ({ ens, totalValue, scores, labels }) => {
                     ? "📈 Top Trader"
                     : ""
                   : ""}
-              </p>
+              </Badge>
             );
           })}
         </div>
