@@ -8,16 +8,21 @@ import { WagmiConfig, createClient } from "wagmi";
 import { ConnectKitProvider, getDefaultClient } from "connectkit";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { mainnet, polygon, optimism, arbitrum, goerli } from "wagmi/chains";
 
 const queryClient = new QueryClient();
 
 const alchemyId = process.env.REACT_APP_ALCHEMY_ID;
 
+// Choose which chains you'd like to show
+const chains = [mainnet, polygon, optimism, arbitrum, goerli];
+
 const client = createClient(
   getDefaultClient({
     appName: "Exodus",
     alchemyId,
-  })
+    chains,
+  }),
 );
 
 function App() {

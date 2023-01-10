@@ -2,13 +2,22 @@ import ListingsCard from "../ListingsCard/ListingsCard";
 import "./ListingsTable.scss";
 import { useParams } from "react-router-dom";
 import eth from "../../assets/images/ethereum.svg";
-import Loading from "../Loading/Loading";
 import { useListingsTable } from "../../hooks/useListingsTable";
+import { Progress, Skeleton } from "@chakra-ui/react";
 
 const ListingsTable = () => {
   const { id } = useParams();
 
-  const { data: listingsCard } = useListingsTable(id);
+  const { data: listingsCard, isLoading } = useListingsTable(id);
+
+  if (isLoading) {
+    return (
+      <Skeleton boxShadow='lg' fadeDuration={5}>
+        <div className="listings-table">
+        </div>
+      </Skeleton>
+    );
+  }
 
   return (
     <div className="listings-table">
@@ -29,7 +38,7 @@ const ListingsTable = () => {
           );
         })
       ) : (
-        <Loading />
+        <Progress size="xs" isIndeterminate />
       )}
     </div>
   );

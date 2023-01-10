@@ -36,7 +36,6 @@ const Terminal = () => {
             onClick={() => {
               setClicked(!clicked);
             }}
-            bgColor="#101010"
           >
             More
           </Button>

@@ -3,11 +3,10 @@ import NavBar from "../../components/NavBar/NavBar";
 import HotMintsCard from "../../components/HotMintsCard/HotMintsCard";
 import { useState } from "react";
 import "./HotMints.scss";
-import Loading from "../../components/Loading/Loading";
 import Footer from "../../components/Footer/Footer";
 import { useHotMints } from "../../hooks/useHotMints";
 import { Layout } from "../../components/Layout/Layout";
-import { Select, Flex } from "@chakra-ui/react";
+import { Select, Flex, Progress } from "@chakra-ui/react";
 
 const HotMints = () => {
   const [time, setTime] = useState("5m");
@@ -85,7 +84,7 @@ const HotMints = () => {
                     }
                   )
                 ) : (
-                  <Loading />
+                  <Progress size="xs" isIndeterminate />
                 )}
               </div>
             </Flex>

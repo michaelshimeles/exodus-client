@@ -2,12 +2,20 @@ import SalesCard from "../../components/SalesCard/SalesCard";
 import "./SalesTable.scss";
 import { useParams } from "react-router-dom";
 import eth from "../../assets/images/ethereum.svg";
-import Loading from "../Loading/Loading";
 import { useSalesTable } from "../../hooks/useSalesTable";
+import { Progress, Skeleton } from "@chakra-ui/react";
 const SalesTable = () => {
   const { id } = useParams();
 
-  const { data: salesCards } = useSalesTable(id);
+  const { data: salesCards, isLoading } = useSalesTable(id);
+
+  if (isLoading) {
+    return (
+      <Skeleton boxShadow="lg" fadeDuration={5}>
+        <div className="listings-table"></div>
+      </Skeleton>
+    );
+  }
 
   return (
     <div className="sales-table">
@@ -25,7 +33,7 @@ const SalesTable = () => {
           );
         })
       ) : (
-        <Loading />
+        <Progress size="xs" isIndeterminate />
       )}
     </div>
   );

@@ -9,6 +9,9 @@ import { Flex, Text } from "@chakra-ui/react";
 
 const ListingsChart = () => {
   const [lineChart, setLineChart] = useState(null);
+  
+  // const borderColor = useColorModeValue("", "whiteAlpha.100");
+  // const bgColor = useColorModeValue("white", "whiteAlpha.50");
 
   const { id } = useParams();
 

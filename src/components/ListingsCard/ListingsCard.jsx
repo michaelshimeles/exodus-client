@@ -1,5 +1,5 @@
 import { Flex, Image, Text, Button,useColorModeValue } from "@chakra-ui/react";
-const ListingsCard = ({ image, tokenName, price, status, createdTime }) => {
+const ListingsCard = ({ image, tokenName, price, status, createdTime}) => {
   let currentTime = new Date().toUTCString().split(" ")[4].split(":");
   let newCreatedTime = createdTime.split("T")[1].split(".")[0].split(":");
   let minute = Number(currentTime[1]) - Number(newCreatedTime[1]);
