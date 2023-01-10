@@ -13,5 +13,6 @@ const fetchFloorPrice = ({ queryKey }) => {
 export const useFloorPrice = (id) => {
   return useQuery(["floor-price", id], fetchFloorPrice, {
     refetchInterval: 5000,
+    cacheTime: 1800000,
   });
 };

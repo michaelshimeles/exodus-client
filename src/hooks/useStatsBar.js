@@ -7,5 +7,10 @@ const fetchStatsBar = ({ queryKey }) => {
 };
 
 export const useStatsBar = (id) => {
-  return (useQuery(["stats-bar", id], fetchStatsBar));
+  return (
+    useQuery(["stats-bar", id], fetchStatsBar),
+    {
+      cacheTime: 1800000,
+    }
+  );
 };

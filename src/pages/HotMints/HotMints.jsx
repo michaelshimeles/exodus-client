@@ -38,9 +38,6 @@ const HotMints = () => {
                 <option id="time" value="10m">
                   10m
                 </option>
-                <option id="time" value="15m">
-                  15m
-                </option>
                 <option id="time" value="30m">
                   30m
                 </option>
@@ -58,9 +55,6 @@ const HotMints = () => {
                 </option>
                 <option id="time" value="7d">
                   7d
-                </option>
-                <option id="time" value="30d">
-                  30d
                 </option>
               </Select>
             </form>
