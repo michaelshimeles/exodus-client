@@ -31,7 +31,7 @@ const Terminal = () => {
         <>
           <Show above="lg">
             <Grid
-              templateRows="repeat(2, 1fr)"
+              templateRows="repeat(1, 1fr)"
               templateColumns="repeat(11, 1fr)"
               gap={4}
               w="90%"
@@ -67,9 +67,9 @@ const Terminal = () => {
                 </Text>
                 <SalesTable />
               </GridItem>
-              {/* <GridItem rowSpan={1} colSpan={5}>
-                <ListingsChart />
-              </GridItem> */}
+              <GridItem rowSpan={1} colSpan={5}>
+                {/* <ListingsChart /> */}
+              </GridItem>
             </Grid>
           </Show>
           <Show below="lg">
