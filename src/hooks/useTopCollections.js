@@ -6,5 +6,8 @@ const fetchTopCollections = () => {
 };
 
 export const useTopCollections = () => {
-  return useQuery("top-collections", fetchTopCollections);
+  return useQuery("top-collections", fetchTopCollections, {
+    cacheTime: 86400000,
+    staleTime: 86400000,
+  });
 };
