@@ -1,42 +1,31 @@
-import axios from "axios";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import "./HoldersChart.scss";
-import { useEffect } from "react";
-
+import { Text } from "@chakra-ui/react";
 import { Doughnut, getDatasetAtEvent } from "react-chartjs-2";
 import { useNavigate, useParams } from "react-router-dom";
+import { useWhales } from "../../hooks/useWhales";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const HoldersChart = () => {
-  const [whales, setWhales] = useState(null);
   const { id } = useParams();
   const chartRef = useRef();
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_URL}/whales/${id}`)
-      .then((response) => {
-        setWhales(response.data.owner);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
+  const { data: whales } = useWhales(id)
 
   const onClick = (event) => {
     console.log(getDatasetAtEvent(chartRef.current, event));
   };
 
-  const labels = whales?.map((whale) => {
-    return whale.address;
+  const labels = whales?.data?.results?.map((whale) => {
+    return whale.owner_address;
   });
 
-  const holderData = whales?.map((whale) => {
-    return whale.ownedCount;
+  const holderData = whales?.data?.results?.map((whale) => {
+    return whale.count;
   });
 
   const data = {
@@ -51,6 +40,8 @@ const HoldersChart = () => {
   };
 
   const options = {
+    scaleBeginAtZero: false,
+    responsive: true,
     plugins: {
       legend: {
         display: false,
@@ -67,7 +58,7 @@ const HoldersChart = () => {
 
   return (
     <div className="doughnut">
-      <h1 className="doughnut__title">Whales Distribution 🐳</h1>
+      <Text fontWeight="bold" fontSize="xl" className="doughnut__title">Whales Distribution 🐳</Text>
       <Doughnut
         data={data}
         options={options}

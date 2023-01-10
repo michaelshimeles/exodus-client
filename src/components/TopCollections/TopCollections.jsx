@@ -1,6 +1,5 @@
 import {
   Flex,
-  Progress,
   Select,
   Show,
   Tab,
@@ -9,9 +8,11 @@ import {
   Text,
   useColorMode,
   Box,
+  Heading,
 } from "@chakra-ui/react";
 import { useState } from "react";
-
+import Lottie from "lottie-react";
+import loading from "../../assets/animations/loading.json";
 import { Link } from "react-router-dom";
 import CollectionCard from "../../components/CollectionCard/CollectionCard";
 import { useTopCollections } from "../../hooks/useTopCollections";
@@ -150,8 +151,8 @@ const TopCollections = () => {
             {topColClicked ? "Change % " : "Momentum"}
           </Text>
         </Flex>
-        {topColLoading ? <Progress size="xs" isIndeterminate /> : <></>}
-        {trendingLoading ? <Progress size="xs" isIndeterminate /> : <></>}
+        {topColLoading ? <Lottie animationData={loading} /> : <></>}
+        {trendingLoading ? <Lottie animationData={loading} /> : <></>}
         <Box w="100%">
           {topColClicked ? (
             topCol?.data?.collections.map((collection) => {
@@ -213,7 +214,7 @@ const TopCollections = () => {
               }
             })
           ) : (
-            <p>No Trending Found</p>
+            <Heading>No Trending Found</Heading>
           )}
         </Box>
       </Flex>

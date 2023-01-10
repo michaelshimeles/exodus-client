@@ -6,7 +6,9 @@ import "./HotMints.scss";
 import Footer from "../../components/Footer/Footer";
 import { useHotMints } from "../../hooks/useHotMints";
 import { Layout } from "../../components/Layout/Layout";
-import { Select, Flex, Progress } from "@chakra-ui/react";
+import { Select, Flex } from "@chakra-ui/react";
+import Lottie from "lottie-react";
+import loading from "../../assets/animations/loading.json";
 
 const HotMints = () => {
   const [time, setTime] = useState("5m");
@@ -84,7 +86,7 @@ const HotMints = () => {
                     }
                   )
                 ) : (
-                  <Progress size="xs" isIndeterminate />
+                  <Lottie animationData={loading} />
                 )}
               </div>
             </Flex>

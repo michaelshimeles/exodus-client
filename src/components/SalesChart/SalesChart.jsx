@@ -30,7 +30,14 @@ const SalesChart = () => {
       x: {
         ticks: {
           callback: function (dataLabel, index) {
-            return new Date(Number(dataLabel) * 1000).toLocaleTimeString();
+            if (time <= 1440) {
+              return new Date(Number(dataLabel) * 1000).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              });
+            } else {
+              return new Date(Number(dataLabel) * 1000).toLocaleDateString();
+            }
           },
           fontSize: 16,
           autoSkip: false,
@@ -59,13 +66,11 @@ const SalesChart = () => {
   return (
     <div className="sales-section">
       <Flex justify="space-between" w="full">
-      <Text fontSize="xl" fontWeight="bold">Sales Chart</Text>
+        <Text fontSize="xl" fontWeight="bold">
+          Sales Chart
+        </Text>
         <form>
-          <Select
-            id="time"
-            value={time}
-            onChange={clicked}
-          >
+          <Select id="time" value={time} onChange={clicked}>
             <option id="time" value="5">
               5m
             </option>

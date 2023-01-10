@@ -3,7 +3,9 @@ import "./ListingsTable.scss";
 import { useParams } from "react-router-dom";
 import eth from "../../assets/images/ethereum.svg";
 import { useListingsTable } from "../../hooks/useListingsTable";
-import { Progress, Skeleton } from "@chakra-ui/react";
+import { Progress } from "@chakra-ui/react";
+import Lottie from "lottie-react";
+import loading from "../../assets/animations/loading.json";
 
 const ListingsTable = () => {
   const { id } = useParams();
@@ -11,12 +13,7 @@ const ListingsTable = () => {
   const { data: listingsCard, isLoading } = useListingsTable(id);
 
   if (isLoading) {
-    return (
-      <Skeleton boxShadow='lg' fadeDuration={5}>
-        <div className="listings-table">
-        </div>
-      </Skeleton>
-    );
+    return <Lottie animationData={loading} />;
   }
 
   return (

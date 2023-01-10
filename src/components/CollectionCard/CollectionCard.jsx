@@ -81,7 +81,7 @@ const CollectionCard = ({
           bgColor={bgColor}
         >
           <HStack>
-            <Image src={image} rounded="full" w="2rem" />
+            <Image src={image} rounded="full" w="2rem" h="2rem"/>
             <Text
               maxW="22ch"
               textOverflow="ellipsis"

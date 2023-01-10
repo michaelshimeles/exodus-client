@@ -11,6 +11,8 @@ import PortfolioStats from "../../components/PortfolioStats/PortfolioStats";
 import { usePortfolioGrouped } from "../../hooks/usePortfolioGrouped";
 import { usePortfolioStats } from "../../hooks/usePortfolioStats";
 import "./Portfolio.scss";
+import Lottie from "lottie-react";
+import loading from "../../assets/animations/loading.json";
 
 const Portfolio = () => {
   const [clicked, setClicked] = useState(false);
@@ -44,6 +46,8 @@ const Portfolio = () => {
             labels={stats?.data?.labels}
           />
           <PortfolioStats stats={stats?.data.transferCounts} />
+          <Lottie animationData={loading} />
+
         </div>
       </Layout>
     );
@@ -85,7 +89,7 @@ const Portfolio = () => {
                 );
               })
             ) : (
-              <Progress size="xs" isIndeterminate />
+              <Lottie animationData={loading} />
             )}
           </div>
         }
