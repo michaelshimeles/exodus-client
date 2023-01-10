@@ -1,4 +1,4 @@
-import { Flex, Select, Skeleton, Text } from "@chakra-ui/react";
+import { Flex, Select, Text } from "@chakra-ui/react";
 import { Chart, registerables } from "chart.js";
 import { useState } from "react";
 import { Scatter } from "react-chartjs-2";
@@ -66,7 +66,6 @@ const SalesChart = () => {
     ],
   };
   return (
-    <Skeleton isLoaded={salesChart} fadeDuration={2} w="100%" >
       <div className="sales-section">
         <Flex justify="space-between" w="100%">
           <Text fontSize="xl" fontWeight="bold">
@@ -117,7 +116,6 @@ const SalesChart = () => {
           data={data}
         />
       </div>
-    </Skeleton>
   );
 };
 
