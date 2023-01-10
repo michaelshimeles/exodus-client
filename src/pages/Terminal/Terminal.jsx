@@ -17,8 +17,6 @@ import SalesTable from "../../components/SalesTable/SalesTable";
 import StatsBar from "../../components/StatsBar/StatsBar";
 // import ListingsChart from "../../components/ListingsChart/ListingsChart";
 
-import "./Terminal.scss";
-
 const Terminal = () => {
   window.scrollTo(0, 0);
 

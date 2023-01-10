@@ -14,7 +14,6 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
-import "./Footer.scss";
 const Footer = () => {
   const [hover, setHover] = useState(false);
 

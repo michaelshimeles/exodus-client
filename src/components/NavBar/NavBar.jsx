@@ -25,7 +25,6 @@ import { useAccount } from "wagmi";
 import logo from "../../assets/logo/logo.png";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import theme from "../../theme";
-import "./NavBar.scss";
 import verified from "../../assets/images/verified.svg.png";
 
 const NavBar = () => {

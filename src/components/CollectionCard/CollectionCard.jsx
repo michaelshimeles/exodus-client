@@ -12,7 +12,6 @@ import eth from "../../assets/images/ethereum.svg";
 import { useListingsStats } from "../../hooks/useListingsStats";
 import { useSalesStats } from "../../hooks/useSalesStats";
 import { useFloorPrice } from "../../hooks/useTrending";
-import "./CollectionCard.scss";
 const CollectionCard = ({
   name,
   image,

@@ -17,7 +17,6 @@ import { Link } from "react-router-dom";
 import CollectionCard from "../../components/CollectionCard/CollectionCard";
 import { useTopCollections } from "../../hooks/useTopCollections";
 import { useTrending } from "../../hooks/useTrending";
-import "./TopCollections.scss";
 const TopCollections = () => {
   const [topColClicked, setTopColClicked] = useState(true);
   const [time, setTime] = useState("5m");

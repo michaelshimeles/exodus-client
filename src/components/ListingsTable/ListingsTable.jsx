@@ -1,9 +1,8 @@
 import ListingsCard from "../ListingsCard/ListingsCard";
-import "./ListingsTable.scss";
 import { useParams } from "react-router-dom";
 import eth from "../../assets/images/ethereum.svg";
 import { useListingsTable } from "../../hooks/useListingsTable";
-import { Progress } from "@chakra-ui/react";
+import { Flex, Progress } from "@chakra-ui/react";
 import Lottie from "lottie-react";
 import loading from "../../assets/animations/loading.json";
 
@@ -17,7 +16,15 @@ const ListingsTable = () => {
   }
 
   return (
-    <div className="listings-table">
+    <Flex
+      direction="column"
+      justify="flex-start"
+      align="center"
+      w="100%"
+      gap="0.3rem"
+      overflow="scroll"
+      height="71rem"
+    >
       {listingsCard ? (
         listingsCard?.data?.data?.orders.map((listing, index) => {
           return (
@@ -37,7 +44,7 @@ const ListingsTable = () => {
       ) : (
         <Progress size="xs" isIndeterminate />
       )}
-    </div>
+    </Flex>
   );
 };
 
