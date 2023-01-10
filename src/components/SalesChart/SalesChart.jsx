@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useSalesChart } from "../../hooks/useSalesChart";
 import { Flex, Select, Text } from "@chakra-ui/react";
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
+
 
 const SalesChart = () => {
   const [time, setTime] = useState(60);
