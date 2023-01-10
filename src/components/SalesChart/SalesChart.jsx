@@ -1,12 +1,11 @@
-import "./SalesChart.scss";
+import { Flex, Select, Skeleton, Text } from "@chakra-ui/react";
+import { Chart, registerables } from "chart.js";
+import { useState } from "react";
 import { Scatter } from "react-chartjs-2";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import { useSalesChart } from "../../hooks/useSalesChart";
-import { Flex, Select, Text } from "@chakra-ui/react";
-import { Chart, registerables } from 'chart.js';
+import "./SalesChart.scss";
 Chart.register(...registerables);
-
 
 const SalesChart = () => {
   const [time, setTime] = useState(60);
@@ -67,52 +66,58 @@ const SalesChart = () => {
     ],
   };
   return (
-    <div className="sales-section">
-      <Flex justify="space-between" w="full">
-        <Text fontSize="xl" fontWeight="bold">
-          Sales Chart
-        </Text>
-        <form>
-          <Select id="time" value={time} onChange={clicked}>
-            <option id="time" value="5">
-              5m
-            </option>
-            <option id="time" value="10">
-              10m
-            </option>
-            <option id="time" value="15">
-              15m
-            </option>
-            <option id="time" value="30">
-              30m
-            </option>
-            <option id="time" value="60">
-              1h
-            </option>
-            <option id="time" value="240">
-              4h
-            </option>
-            <option id="time" value="720">
-              12h
-            </option>
-            <option id="time" value="1440">
-              24h
-            </option>
-            <option id="time" value="10080">
-              1w
-            </option>
-            <option id="time" value="40320">
-              1m
-            </option>
-            <option id="time" value="483840">
-              1y
-            </option>
-          </Select>
-        </form>
-      </Flex>
+    <Skeleton isLoaded={salesChart} fadeDuration={2} w="100%" >
+      <div className="sales-section">
+        <Flex justify="space-between" w="100%">
+          <Text fontSize="xl" fontWeight="bold">
+            Sales Chart
+          </Text>
+          <form>
+            <Select id="time" value={time} onChange={clicked}>
+              <option id="time" value="5">
+                5m
+              </option>
+              <option id="time" value="10">
+                10m
+              </option>
+              <option id="time" value="15">
+                15m
+              </option>
+              <option id="time" value="30">
+                30m
+              </option>
+              <option id="time" value="60">
+                1h
+              </option>
+              <option id="time" value="240">
+                4h
+              </option>
+              <option id="time" value="720">
+                12h
+              </option>
+              <option id="time" value="1440">
+                24h
+              </option>
+              <option id="time" value="10080">
+                1w
+              </option>
+              <option id="time" value="40320">
+                1m
+              </option>
+              <option id="time" value="483840">
+                1y
+              </option>
+            </Select>
+          </form>
+        </Flex>
 
-      <Scatter className="sales-section__chart" options={options} data={data} />
-    </div>
+        <Scatter
+          className="sales-section__chart"
+          options={options}
+          data={data}
+        />
+      </div>
+    </Skeleton>
   );
 };
 

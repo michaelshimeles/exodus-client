@@ -5,14 +5,10 @@ import { useState, useEffect } from "react";
 import ping from "../../utils/ping";
 // eslint-disable-next-line
 import Chart from "chart.js/auto";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, Skeleton } from "@chakra-ui/react";
 
 const ListingsChart = () => {
   const [lineChart, setLineChart] = useState(null);
-  
-  // const borderColor = useColorModeValue("", "whiteAlpha.100");
-  // const bgColor = useColorModeValue("white", "whiteAlpha.50");
-
   const { id } = useParams();
 
   const URL = `${process.env.REACT_APP_URL}/listings/chart/${id}`;
@@ -68,17 +64,20 @@ const ListingsChart = () => {
   };
 
   return (
-    <div className="listings-section">
-      
-      <Flex direction="column" w="full" gap="1rem">
-        <Text fontSize="xl" fontWeight="bold">Listings Chart</Text>
-        <Line
-          className="listings-section__chart"
-          options={options}
-          data={data}
-        />
-      </Flex>
-    </div>
+    <Skeleton isLoaded={salesChart} fadeDuration={2} w="100%">
+      <div className="listings-section">
+        <Flex direction="column" w="100%" gap="1rem">
+          <Text fontSize="xl" fontWeight="bold">
+            Listings Chart
+          </Text>
+          <Line
+            className="listings-section__chart"
+            options={options}
+            data={data}
+          />
+        </Flex>
+      </div>
+    </Skeleton>
   );
 };
 

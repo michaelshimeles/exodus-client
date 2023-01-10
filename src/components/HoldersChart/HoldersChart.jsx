@@ -1,7 +1,7 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { useRef } from "react";
 import "./HoldersChart.scss";
-import { Text } from "@chakra-ui/react";
+import { Text, Skeleton } from "@chakra-ui/react";
 import { Doughnut, getDatasetAtEvent } from "react-chartjs-2";
 import { useNavigate, useParams } from "react-router-dom";
 import { useWhales } from "../../hooks/useWhales";
@@ -14,7 +14,7 @@ const HoldersChart = () => {
 
   const navigate = useNavigate();
 
-  const { data: whales } = useWhales(id)
+  const { data: whales } = useWhales(id);
 
   const onClick = (event) => {
     console.log(getDatasetAtEvent(chartRef.current, event));
@@ -57,15 +57,19 @@ const HoldersChart = () => {
   };
 
   return (
-    <div className="doughnut">
-      <Text fontWeight="bold" fontSize="xl" className="doughnut__title">Whales Distribution 🐳</Text>
-      <Doughnut
-        data={data}
-        options={options}
-        onClick={onClick}
-        ref={chartRef}
-      ></Doughnut>
-    </div>
+    <Skeleton isLoaded={whales} fadeDuration={2} w="100%">
+      <div className="doughnut">
+        <Text fontWeight="bold" fontSize="xl" className="doughnut__title">
+          Whales Distribution 🐳
+        </Text>
+        <Doughnut
+          data={data}
+          options={options}
+          onClick={onClick}
+          ref={chartRef}
+        ></Doughnut>
+      </div>
+    </Skeleton>
   );
 };
 
