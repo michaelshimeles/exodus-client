@@ -11,7 +11,7 @@ export const Layout = ({ children }) => {
           colorMode === "light"
             ? theme.config.colors.white
             : theme.config.colors.black,
-        minHeight: "115vh",
+        minHeight: "120vh",
       }}
     >
       {children}

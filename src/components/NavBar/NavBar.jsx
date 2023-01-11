@@ -1,5 +1,6 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
+  Collapse,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -8,13 +9,13 @@ import {
   DrawerOverlay,
   Flex,
   Hide,
+  HStack,
   Image,
   Input,
   Link,
   Show,
-  useDisclosure,
   Text,
-  HStack,
+  useDisclosure,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { ConnectKitButton } from "connectkit";
@@ -22,10 +23,10 @@ import React, { useEffect, useState } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { Link as ReactLink } from "react-router-dom";
 import { useAccount } from "wagmi";
+import verified from "../../assets/images/verified.svg.png";
 import logo from "../../assets/logo/logo.png";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import theme from "../../theme";
-import verified from "../../assets/images/verified.svg.png";
 
 const NavBar = () => {
   const { address } = useAccount();
@@ -68,6 +69,7 @@ const NavBar = () => {
       justifyContent="center"
       alignItems="center"
       py="0.5rem"
+      direction="column"
     >
       <Flex justify="space-between" align="center" w="90%">
         <Flex
@@ -251,6 +253,67 @@ const NavBar = () => {
           </Show>
           <ColorModeSwitcher theme={theme} />
         </Flex>
+      </Flex>
+      <Flex justify="flex-start">
+        <Collapse in={result} animateOpacity>
+          {result ? (
+            <Flex
+              justify="center"
+              align="center"
+              w="100%"
+              gap="5rem"
+              mt="1rem"
+              py="1rem"
+              px="0.75rem"
+              bgColor="black"
+              rounded="2xl"
+            >
+              {result !== "" ? (
+                result.collections.map((search, index) => {
+                  console.log("Result", search);
+                  return (
+                    <Link
+                      onClick={() => {
+                        setResult("");
+                        setSearch("");
+                      }}
+                      as={ReactLink}
+                      to={"/collection/" + search?.contract}
+                      key={index}
+                      ref={searchRef}
+                      _hover={{ textDecoration: "none" }}
+                    >
+                      <HStack
+                        justify="flex-start"
+                        w="100%"
+                        bgColor="whiteAlpha.200"
+                        p="1rem"
+                        rounded="full"
+                      >
+                        <Image
+                          w="2rem"
+                          rounded="full"
+                          src={search?.image}
+                          alt="Search result"
+                        />
+                        <Text>{search?.name}</Text>
+                        {search?.openseaVerificationStatus === "verified" ? (
+                          <Image w="1rem" src={verified} alt="verified" />
+                        ) : (
+                          <></>
+                        )}
+                      </HStack>
+                    </Link>
+                  );
+                })
+              ) : (
+                <></>
+              )}
+            </Flex>
+          ) : (
+            <></>
+          )}
+        </Collapse>
       </Flex>
     </Flex>
   );
