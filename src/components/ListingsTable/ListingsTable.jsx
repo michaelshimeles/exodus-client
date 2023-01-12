@@ -22,7 +22,6 @@ const ListingsTable = () => {
       >
         {listingsCard ? (
           listingsCard?.data?.data?.orders.map((listing, index) => {
-            console.log(listing?.tokenSetId?.split(":")[2]);
             return (
               <ListingsCard
                 address={listing.contract}

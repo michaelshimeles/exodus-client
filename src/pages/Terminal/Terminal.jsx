@@ -70,14 +70,34 @@ const Terminal = () => {
             </Grid>
           </Show>
           <Show below="lg">
-            <VStack w="90%">
+            <Flex direction="column" justify="center" align="center" w="100%">
               <Box pt="1rem" w="full">
                 <SalesChart />
               </Box>
               <HoldersChart />
-              <ListingsTable />
-              <SalesTable />
-            </VStack>
+              <Flex direction="column" justify="center" align="center" w="100%">
+                <Text
+                  textAlign="center"
+                  fontSize="lg"
+                  fontWeight="bold"
+                  w="100%"
+                  py="1rem"
+                >
+                  Listings
+                </Text>
+                <ListingsTable />
+                <Text
+                  textAlign="center"
+                  fontSize="lg"
+                  fontWeight="bold"
+                  w="100%"
+                  py="1rem"
+                >
+                  Sales
+                </Text>
+                <SalesTable />
+              </Flex>
+            </Flex>
           </Show>
         </>
       </Flex>
