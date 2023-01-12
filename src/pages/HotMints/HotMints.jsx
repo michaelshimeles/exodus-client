@@ -18,6 +18,7 @@ const HotMints = () => {
   const clicked = (event) => {
     setTime(event.target.value);
   };
+  window.scrollTo(0, 0);
 
   return (
     <Layout>
