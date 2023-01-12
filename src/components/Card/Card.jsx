@@ -1,12 +1,9 @@
 import {
-  Center,
+  Box, Center,
   Heading,
-  Image,
-  Stack,
+  Image, Link, Stack,
   Text,
-  useColorModeValue,
-  Box,
-  Link,
+  useColorModeValue
 } from "@chakra-ui/react";
 import { Link as ReachLink } from "react-router-dom";
 import ethImage from "../../assets/images/eth.svg";

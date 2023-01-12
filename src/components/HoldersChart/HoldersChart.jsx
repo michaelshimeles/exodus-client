@@ -1,10 +1,10 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Skeleton, Text } from "@chakra-ui/react";
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from "chart.js";
 import { useRef } from "react";
-import "./HoldersChart.scss";
-import { Text, Skeleton } from "@chakra-ui/react";
 import { Doughnut, getDatasetAtEvent } from "react-chartjs-2";
 import { useNavigate, useParams } from "react-router-dom";
 import { useWhales } from "../../hooks/useWhales";
+import "./HoldersChart.scss";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

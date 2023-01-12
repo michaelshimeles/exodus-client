@@ -1,14 +1,14 @@
-import HotMintsTitle from "../../components/HotMintsTitle/HotMintsTitle";
-import NavBar from "../../components/NavBar/NavBar";
-import HotMintsCard from "../../components/HotMintsCard/HotMintsCard";
-import { useState } from "react";
-import "./HotMints.scss";
-import Footer from "../../components/Footer/Footer";
-import { useHotMints } from "../../hooks/useHotMints";
-import { Layout } from "../../components/Layout/Layout";
-import { Select, Flex } from "@chakra-ui/react";
+import { Flex, Select } from "@chakra-ui/react";
 import Lottie from "lottie-react";
+import { useState } from "react";
 import loading from "../../assets/animations/loading.json";
+import Footer from "../../components/Footer/Footer";
+import HotMintsCard from "../../components/HotMintsCard/HotMintsCard";
+import HotMintsTitle from "../../components/HotMintsTitle/HotMintsTitle";
+import { Layout } from "../../components/Layout/Layout";
+import NavBar from "../../components/NavBar/NavBar";
+import { useHotMints } from "../../hooks/useHotMints";
+import "./HotMints.scss";
 
 const HotMints = () => {
   const [time, setTime] = useState("5m");

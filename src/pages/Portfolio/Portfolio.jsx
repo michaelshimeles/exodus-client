@@ -1,6 +1,8 @@
 import { Progress } from "@chakra-ui/react";
+import Lottie from "lottie-react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import loading from "../../assets/animations/loading.json";
 import eth from "../../assets/images/ethereum.svg";
 import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
@@ -11,8 +13,6 @@ import PortfolioStats from "../../components/PortfolioStats/PortfolioStats";
 import { usePortfolioGrouped } from "../../hooks/usePortfolioGrouped";
 import { usePortfolioStats } from "../../hooks/usePortfolioStats";
 import "./Portfolio.scss";
-import Lottie from "lottie-react";
-import loading from "../../assets/animations/loading.json";
 
 const Portfolio = () => {
   const [clicked, setClicked] = useState(false);
