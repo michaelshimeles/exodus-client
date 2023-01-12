@@ -1,11 +1,45 @@
 import { Flex, Image, Text, Button, useColorModeValue } from "@chakra-ui/react";
-const ListingsCard = ({ image, tokenName, price, status, createdTime }) => {
+// import { NftSwapV4 } from "@traderxyz/nft-swap-sdk";
+// import { createClient, configureChains, mainnet, useSigner } from "wagmi";
+// import { alchemyProvider } from "wagmi/providers/alchemy";
+
+const ListingsCard = ({
+  image,
+  tokenName,
+  price,
+  status,
+  createdTime,
+  tokenId,
+  address,
+}) => {
   let currentTime = new Date().toUTCString().split(" ")[4].split(":");
   let newCreatedTime = createdTime.split("T")[1].split(".")[0].split(":");
   let minute = Number(currentTime[1]) - Number(newCreatedTime[1]);
 
   const borderColor = useColorModeValue("", "whiteAlpha.100");
   const bgColor = useColorModeValue("white", "whiteAlpha.50");
+
+  // const alchemyId = process.env.REACT_APP_ALCHEMY_ID;
+
+  // const { chains, provider } = configureChains(
+  //   [mainnet],
+  //   [alchemyProvider({ apiKey: alchemyId })]
+  // );
+
+  // const nftSwapSdk = new NftSwapV4(provider, signer, chains);
+
+  // const { data: signer, isError, isLoading } = useSigner();
+
+  // const getOrders = async () => {
+  //   const orders = await nftSwapSdk.getOrders({
+  //     nftToken: address,
+  //     nftTokenId: tokenId,
+  //     chainId: "1",
+  //   });
+  //   const foundOrder = orders[0];
+
+  //   await nftSwapSdk.fillSignedOrder(foundOrder.order);
+  // };
 
   return (
     <Flex
@@ -62,6 +96,7 @@ const ListingsCard = ({ image, tokenName, price, status, createdTime }) => {
                 borderRadius="7px"
                 border="2px"
                 borderColor="lightblue"
+                // onClick={() => getOrders}
               >
                 Buy
               </Button>

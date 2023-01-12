@@ -15,7 +15,6 @@ import NavBar from "../../components/NavBar/NavBar";
 import SalesChart from "../../components/SalesChart/SalesChart";
 import SalesTable from "../../components/SalesTable/SalesTable";
 import StatsBar from "../../components/StatsBar/StatsBar";
-// import ListingsChart from "../../components/ListingsChart/ListingsChart";
 
 const Terminal = () => {
   window.scrollTo(0, 0);

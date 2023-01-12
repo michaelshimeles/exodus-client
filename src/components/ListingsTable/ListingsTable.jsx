@@ -22,11 +22,14 @@ const ListingsTable = () => {
       >
         {listingsCard ? (
           listingsCard?.data?.data?.orders.map((listing, index) => {
+            console.log(listing?.tokenSetId?.split(":")[2]);
             return (
               <ListingsCard
+                address={listing.contract}
                 className="listings-table__card"
                 createdTime={listing.createdAt}
                 status={listing.status}
+                tokenId={listing?.tokenSetId?.split(":")[2]}
                 orderKind={listing.kind}
                 updatedTime={listing.updatedTime}
                 image={listing.metadata.data.image || eth}
