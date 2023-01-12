@@ -7,6 +7,7 @@ import { Layout } from "../../components/Layout/Layout";
 
 const Homepage = () => {
   window.scrollTo(0, 0);
+
   return (
     <Layout>
       <div className="homepage">

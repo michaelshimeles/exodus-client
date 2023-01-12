@@ -23,7 +23,6 @@ const TopCollections = () => {
   const { colorMode } = useColorMode();
 
   const { data: topCol, isLoading: topColLoading } = useTopCollections();
-
   const { data: trending, isLoading: trendingLoading } = useTrending(time);
 
   const handleSelect = (event) => {

@@ -16,7 +16,9 @@ import {
   Show,
   Text,
   useDisclosure,
+  useColorModeValue
 } from "@chakra-ui/react";
+
 import axios from "axios";
 import { ConnectKitButton } from "connectkit";
 import React, { useEffect, useState } from "react";
@@ -27,6 +29,7 @@ import verified from "../../assets/images/verified.svg.png";
 import logo from "../../assets/logo/logo.png";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import theme from "../../theme";
+import eth from "../../assets/images/ethereum.svg";
 
 const NavBar = () => {
   const { address } = useAccount();
@@ -39,6 +42,9 @@ const NavBar = () => {
   const btnRef = React.useRef();
 
   const URL = process.env.REACT_APP_URL;
+
+  const borderColor = useColorModeValue('', 'whiteAlpha.100')
+  const bgColor = useColorModeValue('white', 'whiteAlpha.100')
 
   const searchRef = useOnclickOutside(() => {
     setResult("");
@@ -206,7 +212,6 @@ const NavBar = () => {
                     >
                       {result !== "" ? (
                         result.collections.map((search, index) => {
-                          console.log("Result", search);
                           return (
                             <Link
                               onClick={() => {
@@ -254,19 +259,19 @@ const NavBar = () => {
           <ColorModeSwitcher theme={theme} />
         </Flex>
       </Flex>
-      <Flex justify="flex-start">
+      <Flex justify="center">
         <Collapse in={result} animateOpacity>
           {result ? (
             <Flex
               justify="center"
               align="center"
-              w="100%"
               gap="5rem"
               mt="1rem"
               py="1rem"
               px="0.75rem"
-              bgColor="black"
+              bgColor={bgColor}
               rounded="2xl"
+              wrap="wrap"
             >
               {result !== "" ? (
                 result.collections.map((search, index) => {
@@ -293,7 +298,7 @@ const NavBar = () => {
                         <Image
                           w="2rem"
                           rounded="full"
-                          src={search?.image}
+                          src={search?.image ? search?.image : eth}
                           alt="Search result"
                         />
                         <Text>{search?.name}</Text>
