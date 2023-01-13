@@ -1,8 +1,12 @@
-import ListingsCard from "../ListingsCard/ListingsCard";
+import {
+  Flex,
+  Progress,
+  Skeleton
+} from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import eth from "../../assets/images/ethereum.svg";
 import { useListingsTable } from "../../hooks/useListingsTable";
-import { Flex, Progress, Skeleton } from "@chakra-ui/react";
+import ListingsCard from "../ListingsCard/ListingsCard";
 
 const ListingsTable = () => {
   const { id } = useParams();

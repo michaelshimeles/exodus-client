@@ -1,7 +1,18 @@
-import { Flex, Image, Text, Button, useColorModeValue } from "@chakra-ui/react";
-// import { NftSwapV4 } from "@traderxyz/nft-swap-sdk";
-// import { createClient, configureChains, mainnet, useSigner } from "wagmi";
-// import { alchemyProvider } from "wagmi/providers/alchemy";
+import {
+  Button,
+  Flex,
+  Image,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useColorModeValue,
+  useDisclosure,
+} from "@chakra-ui/react";
 
 const ListingsCard = ({
   image,
@@ -19,27 +30,7 @@ const ListingsCard = ({
   const borderColor = useColorModeValue("", "whiteAlpha.100");
   const bgColor = useColorModeValue("white", "whiteAlpha.50");
 
-  // const alchemyId = process.env.REACT_APP_ALCHEMY_ID;
-
-  // const { chains, provider } = configureChains(
-  //   [mainnet],
-  //   [alchemyProvider({ apiKey: alchemyId })]
-  // );
-
-  // const nftSwapSdk = new NftSwapV4(provider, signer, chains);
-
-  // const { data: signer, isError, isLoading } = useSigner();
-
-  // const getOrders = async () => {
-  //   const orders = await nftSwapSdk.getOrders({
-  //     nftToken: address,
-  //     nftTokenId: tokenId,
-  //     chainId: "1",
-  //   });
-  //   const foundOrder = orders[0];
-
-  //   await nftSwapSdk.fillSignedOrder(foundOrder.order);
-  // };
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Flex
@@ -51,6 +42,8 @@ const ListingsCard = ({
       borderColor={borderColor}
       borderRadius="7px"
       bgColor={bgColor}
+      onClick={onOpen}
+      cursor="pointer"
     >
       <Flex
         justify="flex-start"
@@ -96,11 +89,26 @@ const ListingsCard = ({
                 borderRadius="7px"
                 border="2px"
                 borderColor="lightblue"
-                // onClick={() => getOrders}
               >
-                Buy
+                Info
               </Button>
             </Flex>
+            <Modal isOpen={isOpen} onClose={onClose} bgColor={bgColor}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>Token ID: {tokenId}</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  <Image w="50%" src={image} rounded="md" />
+                </ModalBody>
+                <ModalFooter>
+                  <Flex fontWeight="bold" justify="space-between" align="center" w="100%">
+                    <Text>Status: {status}</Text>
+                    <Text fontWeight="bold">{price} ETH</Text>
+                  </Flex>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
           </Flex>
         </Flex>
       </Flex>

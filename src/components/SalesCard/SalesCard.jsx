@@ -1,7 +1,21 @@
-import { Flex, Text, Image, useColorModeValue } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useColorModeValue,
+  useDisclosure
+} from "@chakra-ui/react";
 const SalesCard = ({ image, price, orderSource, tokenId }) => {
   const borderColor = useColorModeValue("", "whiteAlpha.100");
   const bgColor = useColorModeValue("white", "whiteAlpha.50");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Flex
@@ -13,6 +27,8 @@ const SalesCard = ({ image, price, orderSource, tokenId }) => {
       borderColor={borderColor}
       borderRadius="7px"
       bgColor={bgColor}
+      onClick={onOpen}
+      cursor="pointer"
     >
       <Flex
         justify="flex-start"
@@ -51,6 +67,27 @@ const SalesCard = ({ image, price, orderSource, tokenId }) => {
           </Flex>
         </Flex>
       </Flex>
+      <Modal isOpen={isOpen} onClose={onClose} bgColor={bgColor}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Token ID: {tokenId}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Image w="50%" src={image} rounded="md" />
+          </ModalBody>
+          <ModalFooter>
+            <Flex
+              fontWeight="bold"
+              justify="space-between"
+              align="center"
+              w="100%"
+            >
+              <Text>{orderSource}</Text>
+              <Text fontWeight="bold">Sold: {price} ETH</Text>
+            </Flex>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Flex>
   );
 };
