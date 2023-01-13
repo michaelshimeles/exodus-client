@@ -5,7 +5,7 @@ import {
   GridItem,
   Show,
   Text,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import CollectionBio from "../../components/CollectionBio/CollectionBio";
 import HoldersChart from "../../components/HoldersChart/HoldersChart";
@@ -70,7 +70,7 @@ const Terminal = () => {
             </Grid>
           </Show>
           <Show below="lg">
-            <Flex direction="column" justify="center" align="center" w="100%">
+            <Flex direction="column" justify="center" align="center" w="90%">
               <Box pt="1rem" w="full">
                 <SalesChart />
               </Box>

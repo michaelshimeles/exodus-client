@@ -93,7 +93,14 @@ const ListingsCard = ({
                 Info
               </Button>
             </Flex>
-            <Modal isOpen={isOpen} onClose={onClose} bgColor={bgColor}>
+          </Flex>
+        </Flex>
+      </Flex>
+                  <Modal
+              isOpen={isOpen}
+              onClose={onClose}
+              motionPreset="scale"
+            >
               <ModalOverlay />
               <ModalContent>
                 <ModalHeader>Token ID: {tokenId}</ModalHeader>
@@ -102,16 +109,18 @@ const ListingsCard = ({
                   <Image w="50%" src={image} rounded="md" />
                 </ModalBody>
                 <ModalFooter>
-                  <Flex fontWeight="bold" justify="space-between" align="center" w="100%">
+                  <Flex
+                    fontWeight="bold"
+                    justify="space-between"
+                    align="center"
+                    w="100%"
+                  >
                     <Text>Status: {status}</Text>
                     <Text fontWeight="bold">{price} ETH</Text>
                   </Flex>
                 </ModalFooter>
               </ModalContent>
             </Modal>
-          </Flex>
-        </Flex>
-      </Flex>
     </Flex>
   );
 };

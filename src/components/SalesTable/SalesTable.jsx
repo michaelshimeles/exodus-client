@@ -21,7 +21,7 @@ const SalesTable = () => {
         height="71rem"
       >
         {salesCards?.data ? (
-          salesCards?.data?.map((sales, index) => {
+          salesCards?.data?.map((sales) => {
             return (
               <SalesCard
                 image={sales?.image || eth}
