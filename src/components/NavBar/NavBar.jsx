@@ -1,6 +1,7 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
-  Button, Collapse,
+  Button,
+  Collapse,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -14,7 +15,9 @@ import {
   Input,
   Link,
   Show,
-  Text, useColorModeValue, useDisclosure
+  Text,
+  useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 
 import axios from "axios";
@@ -111,8 +114,14 @@ const NavBar = () => {
                 fontWeight="bold"
                 _hover={{ textDecoration: "none" }}
               >
-                <Button variant='ghost' rounded="none" h="2.75rem" w="9rem">
-                  Collections
+                <Button
+                  variant="ghost"
+                  rounded="none"
+                  h="2.75rem"
+                  w="9rem"
+                  _hover={{ textDecoration: "none" }}
+                >
+                  🖼️ Collections
                 </Button>
               </Link>
               <Link
@@ -121,7 +130,7 @@ const NavBar = () => {
                 fontWeight="bold"
                 _hover={{ textDecoration: "none" }}
               >
-                <Button variant='ghost' rounded="none" h="2.75rem" w="9rem">
+                <Button variant="ghost" rounded="none" h="2.75rem" w="9rem">
                   🔥 Hot Mints
                 </Button>
               </Link>
@@ -132,7 +141,7 @@ const NavBar = () => {
                   fontWeight="bold"
                   _hover={{ textDecoration: "none" }}
                 >
-                  <Button variant='ghost' rounded="none" h="2.75rem" w="9rem">
+                  <Button variant="ghost" rounded="none" h="2.75rem" w="9rem">
                     📊 Portfolio
                   </Button>
                 </Link>

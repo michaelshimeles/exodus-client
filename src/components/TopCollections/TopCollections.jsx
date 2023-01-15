@@ -38,7 +38,7 @@ const TopCollections = () => {
       alignItems="center"
       gap="1.5rem"
     >
-      <Flex justifyContent="space-between" alignItems="center" w="80%">
+      <Flex justifyContent="space-between" alignItems="center" w="100%">
         <Text
           size="4xl"
           bgGradient="linear-gradient(45deg, rgba(105, 234, 203, 1), rgba(234, 204, 248, 1), rgba(102, 84, 241, 1))"
@@ -113,7 +113,7 @@ const TopCollections = () => {
         </Flex>
       </Flex>
       <Flex
-        w="90%"
+        w="100%"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
@@ -151,7 +151,7 @@ const TopCollections = () => {
         </Flex>
         {topColLoading ? <Lottie animationData={loading} /> : <></>}
         {trendingLoading ? <Lottie animationData={loading} /> : <></>}
-        <Box w="90%">
+        <Box w="100%">
           {topColClicked ? (
             topCol?.data?.collections.map((collection) => {
               return (
