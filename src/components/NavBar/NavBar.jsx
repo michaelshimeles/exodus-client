@@ -1,6 +1,6 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
-  Collapse,
+  Button, Collapse,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -14,9 +14,7 @@ import {
   Input,
   Link,
   Show,
-  Text,
-  useDisclosure,
-  useColorModeValue
+  Text, useColorModeValue, useDisclosure
 } from "@chakra-ui/react";
 
 import axios from "axios";
@@ -25,11 +23,11 @@ import React, { useEffect, useState } from "react";
 import useOnclickOutside from "react-cool-onclickoutside";
 import { Link as ReactLink } from "react-router-dom";
 import { useAccount } from "wagmi";
+import eth from "../../assets/images/ethereum.svg";
 import verified from "../../assets/images/verified.svg.png";
 import logo from "../../assets/logo/logo.png";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import theme from "../../theme";
-import eth from "../../assets/images/ethereum.svg";
 
 const NavBar = () => {
   const { address } = useAccount();
@@ -43,8 +41,8 @@ const NavBar = () => {
 
   const URL = process.env.REACT_APP_URL;
 
-  const borderColor = useColorModeValue('', 'whiteAlpha.100')
-  const bgColor = useColorModeValue('white', 'whiteAlpha.100')
+  const borderColor = useColorModeValue("", "whiteAlpha.100");
+  const bgColor = useColorModeValue("white", "whiteAlpha.100");
 
   const searchRef = useOnclickOutside(() => {
     setResult("");
@@ -109,11 +107,23 @@ const NavBar = () => {
             >
               <Link
                 as={ReactLink}
+                to="/collections"
+                fontWeight="bold"
+                _hover={{ textDecoration: "none" }}
+              >
+                <Button variant='ghost' rounded="none" h="2.75rem" w="9rem">
+                  Collections
+                </Button>
+              </Link>
+              <Link
+                as={ReactLink}
                 to="/hotmints"
                 fontWeight="bold"
                 _hover={{ textDecoration: "none" }}
               >
-                🔥 Hot Mints
+                <Button variant='ghost' rounded="none" h="2.75rem" w="9rem">
+                  🔥 Hot Mints
+                </Button>
               </Link>
               {addressState ? (
                 <Link
@@ -122,7 +132,9 @@ const NavBar = () => {
                   fontWeight="bold"
                   _hover={{ textDecoration: "none" }}
                 >
-                  📊 Portfolio
+                  <Button variant='ghost' rounded="none" h="2.75rem" w="9rem">
+                    📊 Portfolio
+                  </Button>
                 </Link>
               ) : (
                 <Link

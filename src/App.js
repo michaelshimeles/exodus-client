@@ -9,6 +9,7 @@ import { ConnectKitProvider, getDefaultClient } from "connectkit";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { mainnet, polygon, optimism, arbitrum, goerli } from "wagmi/chains";
+import { Collections } from "./pages/Collections/Collections";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +23,7 @@ const client = createClient(
     appName: "Exodus",
     alchemyId,
     chains,
-  }),
+  })
 );
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
               <Route path="/portfolio/:id" element={<Portfolio />} />
               <Route path="/hotmints" element={<HotMints />} />
               <Route path="*" element={<Homepage />} />
+              <Route path="/collections" element={<Collections />} />
             </Routes>
           </BrowserRouter>
         </ConnectKitProvider>

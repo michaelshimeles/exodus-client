@@ -11,7 +11,6 @@ import CollectionBio from "../../components/CollectionBio/CollectionBio";
 import HoldersChart from "../../components/HoldersChart/HoldersChart";
 import { Layout } from "../../components/Layout/Layout";
 import ListingsTable from "../../components/ListingsTable/ListingsTable";
-import NavBar from "../../components/NavBar/NavBar";
 import SalesChart from "../../components/SalesChart/SalesChart";
 import SalesTable from "../../components/SalesTable/SalesTable";
 import StatsBar from "../../components/StatsBar/StatsBar";
@@ -22,7 +21,6 @@ const Terminal = () => {
   return (
     <Layout>
       <Flex direction="column" justify="center" align="center">
-        <NavBar />
         <CollectionBio />
         <StatsBar />
         <>

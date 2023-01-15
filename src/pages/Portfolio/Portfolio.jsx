@@ -5,9 +5,7 @@ import { useParams } from "react-router-dom";
 import loading from "../../assets/animations/loading.json";
 import eth from "../../assets/images/ethereum.svg";
 import Card from "../../components/Card/Card";
-import Footer from "../../components/Footer/Footer";
 import { Layout } from "../../components/Layout/Layout";
-import NavBar from "../../components/NavBar/NavBar";
 import PortfolioProfile from "../../components/PortfolioProfile/PortfolioProfile";
 import PortfolioStats from "../../components/PortfolioStats/PortfolioStats";
 import { usePortfolioGrouped } from "../../hooks/usePortfolioGrouped";
@@ -26,7 +24,6 @@ const Portfolio = () => {
     return (
       <Layout>
         <Progress size="xs" isIndeterminate />
-        <NavBar />
       </Layout>
     );
   }
@@ -36,7 +33,6 @@ const Portfolio = () => {
       <Layout>
         <div className="portfolio">
           <Progress size="xs" isIndeterminate />
-          <NavBar />
           <PortfolioProfile
             ens={
               stats?.data?.ensName ? stats?.data.ensName : stats?.data.address
@@ -56,7 +52,6 @@ const Portfolio = () => {
   return (
     <Layout>
       <div className="portfolio">
-        <NavBar />
         <PortfolioProfile
           ens={stats?.data?.ensName ? stats?.data.ensName : stats?.data.address}
           totalValue={stats?.data.portfolioStats?.totalPortfolioValue}
@@ -93,7 +88,6 @@ const Portfolio = () => {
             )}
           </div>
         }
-        <Footer />
       </div>
     </Layout>
   );

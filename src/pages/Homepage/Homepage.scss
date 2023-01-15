@@ -1,11 +1,11 @@
 @use "../../styles/partials/mixins" as *;
 
 .homepage {
-    height: 100vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
 
     &__container {
         width: 100%;

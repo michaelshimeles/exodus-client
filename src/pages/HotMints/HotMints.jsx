@@ -2,11 +2,9 @@ import { Flex, Select } from "@chakra-ui/react";
 import Lottie from "lottie-react";
 import { useState } from "react";
 import loading from "../../assets/animations/loading.json";
-import Footer from "../../components/Footer/Footer";
 import HotMintsCard from "../../components/HotMintsCard/HotMintsCard";
 import HotMintsTitle from "../../components/HotMintsTitle/HotMintsTitle";
 import { Layout } from "../../components/Layout/Layout";
-import NavBar from "../../components/NavBar/NavBar";
 import { useHotMints } from "../../hooks/useHotMints";
 import "./HotMints.scss";
 
@@ -23,7 +21,6 @@ const HotMints = () => {
   return (
     <Layout>
       <div className="hotmints">
-        <NavBar />
         <div className="hotmints__container">
           <HotMintsTitle />
           <div className="hotmints__cards">
@@ -87,7 +84,6 @@ const HotMints = () => {
             </Flex>
           </div>
         </div>
-        <Footer />
       </div>
     </Layout>
   );

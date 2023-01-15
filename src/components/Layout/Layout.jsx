@@ -1,5 +1,7 @@
 import theme from "../../theme";
 import { useColorMode } from "@chakra-ui/color-mode";
+import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
 
 export const Layout = ({ children }) => {
   const { colorMode } = useColorMode();
@@ -11,10 +13,13 @@ export const Layout = ({ children }) => {
           colorMode === "light"
             ? theme.config.colors.white
             : theme.config.colors.black,
-        minHeight: "120vh",
+        minHeight: "100vh",
       }}
     >
+      <NavBar />
+
       {children}
+      <Footer />
     </div>
   );
 };

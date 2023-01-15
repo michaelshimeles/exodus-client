@@ -1,4 +1,12 @@
-import { Flex, Heading, Text, Button, Image, Link, Hide } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Text,
+  Button,
+  Image,
+  Link,
+  Hide,
+} from "@chakra-ui/react";
 import { Link as ReachLink } from "react-router-dom";
 import Hero from "../../assets/images/hero2.png";
 const HeroSection = () => {
@@ -37,12 +45,12 @@ const HeroSection = () => {
             <Flex justify="flex-start" align="center" w="100%" gap="1rem">
               <Link
                 as={ReachLink}
-                to="/hotmints"
+                to="/collections"
                 _hover={{ textDecoration: "none" }}
-                w={["50", "30%"]}
+                w={["50", "20%"]}
               >
                 <Button variant="outline" h="3rem" w="100%">
-                  Hot Mints
+                  🔥 Collections
                 </Button>
               </Link>
             </Flex>
