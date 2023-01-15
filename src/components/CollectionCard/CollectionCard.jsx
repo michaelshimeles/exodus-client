@@ -105,12 +105,13 @@ const CollectionCard = ({
           columns={variant === "lg" || variant === "xl" ? 6 : 4}
           fontSize={["xs", "xs", "xs", "sm"]}
           h="3.5rem"
-          w="full"
+          w="100%"
           pl="1.25rem"
           border="1px"
           borderColor={borderColor}
           mb="0.25rem"
           bgColor={bgColor}
+          
         >
           <HStack>
             <Image

@@ -1,19 +1,16 @@
 import {
-  Flex,
-  Select,
+  Flex, Heading, Select,
   Show,
   Tab,
   TabList,
   Tabs,
   Text,
-  useColorMode,
-  Box,
-  Heading,
+  useColorMode
 } from "@chakra-ui/react";
-import { useState } from "react";
 import Lottie from "lottie-react";
-import loading from "../../assets/animations/loading.json";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import loading from "../../assets/animations/loading.json";
 import CollectionCard from "../../components/CollectionCard/CollectionCard";
 import { useTopCollections } from "../../hooks/useTopCollections";
 import { useTrending } from "../../hooks/useTrending";
@@ -37,8 +34,9 @@ const TopCollections = () => {
       justifyContent="center"
       alignItems="center"
       gap="1.5rem"
+      w="100%"
     >
-      <Flex justifyContent="space-between" alignItems="center" w="100%">
+      <Flex justifyContent="space-between" alignItems="center" w="90%">
         <Text
           size="4xl"
           bgGradient="linear-gradient(45deg, rgba(105, 234, 203, 1), rgba(234, 204, 248, 1), rgba(102, 84, 241, 1))"
@@ -113,7 +111,7 @@ const TopCollections = () => {
         </Flex>
       </Flex>
       <Flex
-        w="100%"
+        w="90%"
         flexDirection="column"
         justifyContent="center"
         alignItems="center"
@@ -151,7 +149,7 @@ const TopCollections = () => {
         </Flex>
         {topColLoading ? <Lottie animationData={loading} /> : <></>}
         {trendingLoading ? <Lottie animationData={loading} /> : <></>}
-        <Box w="100%">
+        <Flex direction="column" w="100%">
           {topColClicked ? (
             topCol?.data?.collections.map((collection) => {
               return (
@@ -214,7 +212,7 @@ const TopCollections = () => {
           ) : (
             <Heading>No Trending Found</Heading>
           )}
-        </Box>
+        </Flex>
       </Flex>
     </Flex>
   );

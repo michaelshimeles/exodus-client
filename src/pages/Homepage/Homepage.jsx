@@ -11,7 +11,6 @@ import {
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import HeroSection from "../../components/HeroSection/HeroSection";
 import { Layout } from "../../components/Layout/Layout";
-import "./Homepage.scss";
 
 const Homepage = () => {
   window.scrollTo(0, 0);
