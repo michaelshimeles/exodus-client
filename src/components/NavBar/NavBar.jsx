@@ -1,6 +1,5 @@
 import { HamburgerIcon } from "@chakra-ui/icons";
 import {
-  Button,
   Collapse,
   Drawer,
   DrawerBody,
@@ -17,7 +16,7 @@ import {
   Show,
   Text,
   useColorModeValue,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
 
 import axios from "axios";
@@ -114,15 +113,7 @@ const NavBar = () => {
                 fontWeight="bold"
                 _hover={{ textDecoration: "none" }}
               >
-                <Button
-                  variant="ghost"
-                  rounded="none"
-                  h="2.75rem"
-                  w="9rem"
-                  _hover={{ textDecoration: "none" }}
-                >
-                  🖼️ Collections
-                </Button>
+                🖼️ Collections
               </Link>
               <Link
                 as={ReactLink}
@@ -130,9 +121,7 @@ const NavBar = () => {
                 fontWeight="bold"
                 _hover={{ textDecoration: "none" }}
               >
-                <Button variant="ghost" rounded="none" h="2.75rem" w="9rem">
-                  🔥 Hot Mints
-                </Button>
+                🔥 Hot Mints
               </Link>
               {addressState ? (
                 <Link
@@ -141,9 +130,7 @@ const NavBar = () => {
                   fontWeight="bold"
                   _hover={{ textDecoration: "none" }}
                 >
-                  <Button variant="ghost" rounded="none" h="2.75rem" w="9rem">
-                    📊 Portfolio
-                  </Button>
+                  📊 Portfolio
                 </Link>
               ) : (
                 <Link
@@ -187,6 +174,14 @@ const NavBar = () => {
                       onClick={handleSearch}
                       ref={searchRef}
                     />
+                    <Link
+                      as={ReactLink}
+                      to="/collections"
+                      fontWeight="bold"
+                      _hover={{ textDecoration: "none" }}
+                    >
+                      🖼️ Collections
+                    </Link>
                     <Link
                       as={ReactLink}
                       to="/hotmints"
