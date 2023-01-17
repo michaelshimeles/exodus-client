@@ -36,7 +36,7 @@ const ListingsTable = () => {
                 orderKind={listing.kind}
                 updatedTime={listing.updatedTime}
                 image={listing.metadata.data.image || eth}
-                key={index}
+                key={listing?.tokenSetId?.split(":")[2]}
                 tokenName={listing.metadata.data.tokenName || ""}
                 price={`${listing.price.amount.decimal}` || ""}
               />

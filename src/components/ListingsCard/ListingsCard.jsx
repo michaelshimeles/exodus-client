@@ -51,6 +51,7 @@ const ListingsCard = ({
         w="100%"
         borderRadius="5px"
         height="56px"
+
       >
         <Image
           src={image}
@@ -96,31 +97,27 @@ const ListingsCard = ({
           </Flex>
         </Flex>
       </Flex>
-                  <Modal
-              isOpen={isOpen}
-              onClose={onClose}
-              motionPreset="scale"
+      <Modal isOpen={isOpen} onClose={onClose} motionPreset="scale">
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Token ID: {tokenId}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Image w="50%" src={image} rounded="md" />
+          </ModalBody>
+          <ModalFooter>
+            <Flex
+              fontWeight="bold"
+              justify="space-between"
+              align="center"
+              w="100%"
             >
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>Token ID: {tokenId}</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                  <Image w="50%" src={image} rounded="md" />
-                </ModalBody>
-                <ModalFooter>
-                  <Flex
-                    fontWeight="bold"
-                    justify="space-between"
-                    align="center"
-                    w="100%"
-                  >
-                    <Text>Status: {status}</Text>
-                    <Text fontWeight="bold">{price} ETH</Text>
-                  </Flex>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
+              <Text>Status: {status}</Text>
+              <Text fontWeight="bold">{price} ETH</Text>
+            </Flex>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Flex>
   );
 };
