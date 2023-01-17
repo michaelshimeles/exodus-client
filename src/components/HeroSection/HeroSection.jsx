@@ -1,11 +1,7 @@
 import {
-  Flex,
-  Heading,
-  Text,
-  Button,
-  Image,
-  Link,
-  Hide,
+  Button, Flex,
+  Heading, Hide, Image,
+  Link, Text
 } from "@chakra-ui/react";
 import { Link as ReachLink } from "react-router-dom";
 import Hero from "../../assets/images/hero2.png";
@@ -30,6 +26,7 @@ const HeroSection = () => {
               bgGradient="linear-gradient(175deg, rgba(105, 234, 203, 1), rgba(234, 204, 248, 1), rgba(102, 84, 241, 1))"
               bgClip="text"
               bgSize="100%"
+              
             >
               meet Exodus
             </Text>

@@ -1,15 +1,15 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage/Homepage";
-import Terminal from "./pages/Terminal/Terminal";
-import "./App.scss";
-import Portfolio from "./pages/Portfolio/Portfolio";
-import HotMints from "./pages/HotMints/HotMints";
-import { WagmiConfig, createClient } from "wagmi";
 import { ConnectKitProvider, getDefaultClient } from "connectkit";
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { mainnet, polygon, optimism, arbitrum, goerli } from "wagmi/chains";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createClient, WagmiConfig } from "wagmi";
+import { arbitrum, goerli, mainnet, optimism, polygon } from "wagmi/chains";
+import "./App.scss";
 import { Collections } from "./pages/Collections/Collections";
+import Homepage from "./pages/Homepage/Homepage";
+import HotMints from "./pages/HotMints/HotMints";
+import Portfolio from "./pages/Portfolio/Portfolio";
+import Terminal from "./pages/Terminal/Terminal";
 
 const queryClient = new QueryClient();
 
