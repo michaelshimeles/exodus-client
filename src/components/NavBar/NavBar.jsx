@@ -16,8 +16,9 @@ import {
   Show,
   Text,
   useColorModeValue,
-  useDisclosure
+  useDisclosure,
 } from "@chakra-ui/react";
+import { useQueryClient } from "react-query";
 
 import axios from "axios";
 import { ConnectKitButton } from "connectkit";
@@ -66,6 +67,22 @@ const NavBar = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  // prefetch hot mints data on hover over link
+  const queryClient = useQueryClient();
+
+  const fetchHotMints = ({ queryKey }) => {
+    const time = queryKey[1];
+    return axios.get(`${process.env.REACT_APP_URL}/hotmints`, {
+      params: {
+        time: time,
+      },
+    });
+  };
+
+  const onHoverFetchHotMints = () => {
+    queryClient.prefetchQuery(["hot-mints", "5m"], fetchHotMints);
   };
 
   return (
@@ -120,6 +137,7 @@ const NavBar = () => {
                 to="/hotmints"
                 fontWeight="bold"
                 _hover={{ textDecoration: "none" }}
+                onMouseOver={onHoverFetchHotMints}
               >
                 🔥 Hot Mints
               </Link>
